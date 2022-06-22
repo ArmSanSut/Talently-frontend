@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Prompt:ital,wght@0,200;1,100&display=swap');
+
+.bg {
+    background-color: darkblue;
+    height: 100vh !important;
+    max-width: 100% !important;
+    position: relative;
+    /* margin: 0 !important;
+    padding: 0 !important; */
+    font-family: 'Prompt', sans-serif;
+    font-weight: bold;
+    font-size: large;
+    z-index: 0 !important;
+}
+
+.column {
+    z-index: 3 !important;
+}
+
+.bluebg  {
+    top: 0;
+    left: 0;
+    z-index: 0 !important;
+    max-width: 100% !important;
+}
+
+.purplebg {
+    right: 0;
+    bottom: 0;
+    position: fixed !important;
+    z-index: 1 !important;
+    max-width: 100% !important;
+}
+
+.yellowbg {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    z-index: 0 !important;
+    max-width: 100% !important;
+}
+
+nav .container2 {
+    z-index: 3 !important;
+    top: 40px;
+    right: 20%;
+    /* top: 0; */
+    position: absolute;
+    /* flex-wrap: wrap !important;
+    display: flex !important;
+    justify-content: flex-end !important; */
+    float: right !important;
+}
+
+nav .logo {
+    max-width: 350px;
+    max-height: 300px;
+    position: absolute;
+    top: 17px;
+    left: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+    top: 17px;
+    left: 3%;
+}
+
+.container2 .item a:hover {
+    color: rgb(249, 175, 3) !important;
+    cursor: pointer !important;
+}
+
+.container2 .item a {
+    color: rgb(255, 255, 255);
+}
+
+.icon {
+    z-index: 3 !important;
+    color: white;
+    font-size: 30px;
+    float: right !important;
+    margin-top: 30px ;
+    margin-right: 30px ;
+    cursor: pointer !important;
+    display: none; 
+}
+
+/* lebel #btn {
+    cursor: pointer !important;
+} */
+
+
+.check {
+    display: none;
+}
+
+@media (min-width: 1118px) {
+   nav .item {
+       margin:0 50px;
+   }
+}
+
+@media (max-width: 1118px) {
+     nav .logo, 
+     .bluebg .purplebg .yellowbg {
+        left: 8%;
+    }
+}
+
+@media (max-width: 944px) {
+    nav .logo,
+    .bluebg .purplebg .yellowbg {
+        left: 2%;
+        top: 20px;
+        width: 300px;
+    }
+    nav ul li a{
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 860px) {
+    .icon {
+        display: block;
+    }
+    ul {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        /* left: -100%; */
+        text-align: center;
+        /* transition: all .5s; */
+        /* background: rgb(15, 55, 82); */
+    }
+    /* ul li{
+        left: -100%;
+    } */
+    nav ul li {
+        display: block;
+        top: 30%;
+        margin: 120px 0 0 0;
+        line-height: 30px;
+    }
+    nav ul li a {
+        font-size: 20px;
+    }
+    .check:checked ~ul {
+        left: 0;
+    }
+
+    nav .container2 {
+        top: 0%;
+        right: 0%;
+    }
+
+    /* .check:checked ~ .icon {
+        display: none;
+    } */
+}
+
+
+
+  
+
+

@@ -1,0 +1,58 @@
+.box {
+    z-index: 3 !important;
+    border: 1px solid black;
+    background: white;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 100px 300px;
+    border-radius: 20px;
+    z-index: 2 !important;
+}
+
+.inbox {
+    color: black;
+    margin: 100px 20px;
+}
+
+.head {
+    margin: 30px 150px;
+}
+
+.c1, .c2, .c3, .c4 {
+    border: 1px solid black;
+    background: white;
+    border-radius: 20px;
+    margin: 30px 150px;
+}
+
+.checkbox {
+    margin: 20px 20px;
+}
+
+.btn {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 150px;
+}
+
+.list-btn1 {
+    padding: 10px 20px;
+    background: #FFFFFF;
+border: 1px solid #1533E1;
+border-radius: 30px;
+color: #1533E1;
+}
+
+.list-btn2 {
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: linear-gradient(180deg, #EB9714 0%, #FF814B 100%);
+    border: none;
+    width: 125px;
+    height: 45px;
+}
+
+

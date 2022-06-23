@@ -6,14 +6,21 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    margin: 100px 300px;
-    border-radius: 20px;
+    margin: 0 300px;
+    border-radius: 30px;
     z-index: 2 !important;
 }
 
 .inbox {
     color: black;
-    margin: 100px 20px;
+    display: flex;
+    flex-direction: column;
+    /* max-width: 200px; */
+
+}
+
+.bar {
+    margin: 30px 150px;
 }
 
 .head {
@@ -24,7 +31,7 @@
     border: 1px solid black;
     background: white;
     border-radius: 20px;
-    margin: 30px 150px;
+    margin: 15px 150px;
 }
 
 .checkbox {
@@ -41,15 +48,14 @@
 .list-btn1 {
     padding: 10px 20px;
     background: #FFFFFF;
-border: 1px solid #1533E1;
-border-radius: 30px;
-color: #1533E1;
+    border: 1px solid #1533E1;
+    border-radius: 30px;
+    color: #1533E1;
 }
 
 .list-btn2 {
     padding: 10px 20px;
     border-radius: 30px;
-    background: linear-gradient(180deg, #EB9714 0%, #FF814B 100%);
     border: none;
     width: 125px;
     height: 45px;

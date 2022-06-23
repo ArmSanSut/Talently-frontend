@@ -1,13 +1,15 @@
 import React from "react";
+import axios from "axios";
 import "./quiz.css";
 import Choices from "./Choices";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Progress } from "antd";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const QuizItem = () => {
   const [number, setNumber] = useState(1);
   const [percent, setPercent] = useState(2.86);
+  const [question, setQuestion] = useState([]);
 
   const increase = () => {
     let newNumber = number + 1;
@@ -18,7 +20,21 @@ const QuizItem = () => {
     }
 
     setNumber(newNumber);
+
   };
+
+  const getData = () => {
+    const url = "http://localhost:3000"
+    axios.get(`${url}/api/user/`).then((res) => {
+      // data = res.data;
+      console.log(res.data);
+      setQuestion(res.data);
+    });
+  };
+  useEffect(() => {
+    getData()
+  }, [])
+
 
   return (
     <div className="box">
@@ -28,45 +44,27 @@ const QuizItem = () => {
           <Progress percent={percent} showInfo={false} />
         </div>
         <div>
-          <h5 className="head">หากคุณต้องการประสบความสำเร็จ สิ่งสำคัญคือ</h5>
+          <h5 className="head">
+            {question.map(val =>
+              val.id == number && (
+                `Question ${val.id} : ${val.question}` 
+                
+              )
+            )}
+          </h5>
         </div>
         <div className="choice-list-grid">
-          <Choices order={'1'} title={'Choice1'}/>
-          <Choices order={'2'} title={'Choice2'}/>
-          <Choices order={'3'} title={'Choice3'}/>
-          <Choices order={'4'} title={'Choice4'}/>
-          {/* <div className="list">
-            <p className="c1">
-              <label for="c1">
-                <input type="checkbox" className="checkbox"></input>
-                ช่วยเหลือผู้คน
-              </label>
-            </p>
-          </div>
-          <div className="list">
-            <p className="c2">
-              <label for="c2">
-                <input type="checkbox" className="checkbox"></input>
-                ทำตามสิ่งที่คาดหวัง
-              </label>
-            </p>
-          </div>
-          <div className="list">
-            <p className="c3">
-              <label for="c3">
-                <input type="checkbox" className="checkbox"></input>
-                เรียนรู้ให้ได้มากที่สุด
-              </label>
-            </p>
-          </div>
-          <div className="list">
-            <p className="c4">
-              <label for="c4">
-                <input type="checkbox" className="checkbox"></input>
-                แข่งขันและเอาชนะ
-              </label>
-            </p>
-          </div> */}
+          {question.map(val =>
+            val.id == number && (
+              <>
+                <Choices order={'1'} title={val.choice_1} />
+                <Choices order={'2'} title={val.choice_2} />
+                <Choices order={'3'} title={val.choice_3} />
+                <Choices order={'4'} title={val.choice_4} />
+              </>
+
+            )
+          )}
         </div>
 
         <div className="btn">
@@ -81,6 +79,7 @@ const QuizItem = () => {
           >
             ต่อไป
           </Button>
+
         </div>
       </div>
     </div>

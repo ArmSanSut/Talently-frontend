@@ -1,7 +1,8 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route, Link } from "react-router-dom";
-import LayoutQuiz from './components/Layout';
+import LayoutQuiz from './components/LayoutQuiz';
+// import Choices from './components/Choices';
 
 
 function App() {

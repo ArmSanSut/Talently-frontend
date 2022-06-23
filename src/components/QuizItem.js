@@ -27,6 +27,11 @@ const QuizItem = () => {
     }
 
     setNumber(newNumber);
+    setOrder(["4","3","2","1"]);
+    setChoice1('');
+    setChoice2('');
+    setChoice3('');
+    setChoice4('');
 
   };
 

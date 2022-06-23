@@ -36,15 +36,19 @@ const QuizItem = () => {
   };
 
   const handleClick1 = e => {
-    setChoice1(order.pop())
+    if(!choice1)
+    setChoice1(order.pop());
   }
   const handleClick2 = e => {
+    if(!choice2)
     setChoice2(order.pop())
   }
   const handleClick3 = e => {
+    if(!choice3)
     setChoice3(order.pop())
   }
   const handleClick4 = e => {
+    if(!choice4)
     setChoice4(order.pop())
   }
 

@@ -9,6 +9,13 @@ const QuizItem = () => {
   const [number, setNumber] = useState(1);
   const [percent, setPercent] = useState(2.86);
 
+  const [choice1, setChoice1] = useState(''); 
+  const [choice2, setChoice2] = useState(''); 
+  const [choice3, setChoice3] = useState(''); 
+  const [choice4, setChoice4] = useState(''); 
+
+  const [order, setOrder] = useState(["4","3","2","1"]);
+
   const increase = () => {
     let newNumber = number + 1;
     setPercent(newNumber * 2.86);
@@ -19,6 +26,28 @@ const QuizItem = () => {
 
     setNumber(newNumber);
   };
+
+  const handleClick1 = e => {
+    setChoice1(order.pop())
+  }
+  const handleClick2 = e => {
+    setChoice2(order.pop())
+  }
+  const handleClick3 = e => {
+    setChoice3(order.pop())
+  }
+  const handleClick4 = e => {
+    setChoice4(order.pop())
+  }
+
+  const handleReset = e => {
+    setOrder(["4","3","2","1"]);
+    setChoice1('');
+    setChoice2('');
+    setChoice3('');
+    setChoice4('');
+
+  }
 
   return (
     <div className="box">
@@ -31,10 +60,10 @@ const QuizItem = () => {
           <h5 className="head">หากคุณต้องการประสบความสำเร็จ สิ่งสำคัญคือ</h5>
         </div>
         <div className="choice-list-grid">
-          <Choices order={'1'} title={'Choice1'}/>
-          <Choices order={'2'} title={'Choice2'}/>
-          <Choices order={'3'} title={'Choice3'}/>
-          <Choices order={'4'} title={'Choice4'}/>
+          <div onClick={handleClick1}><Choices order={choice1} title={'Choice1'}/></div>
+          <div onClick={handleClick2}><Choices order={choice2} title={'Choice3'}/></div>
+          <div onClick={handleClick3}><Choices order={choice3} title={'Choice2'}/></div>
+          <div onClick={handleClick4}><Choices order={choice4} title={'Choice4'}/></div>
           {/* <div className="list">
             <p className="c1">
               <label for="c1">
@@ -70,7 +99,7 @@ const QuizItem = () => {
         </div>
 
         <div className="btn">
-          <button className="list-btn1">เคลียร์คำตอบ</button>
+          <button className="list-btn1" onClick={handleReset}>เคลียร์คำตอบ</button>
           <Button
             className="list-btn2"
             onClick={increase}

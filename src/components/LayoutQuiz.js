@@ -12,7 +12,6 @@ const LayoutQuiz = () => {
       <img className="bluebg" src="bluebg.png" />
       <img className="purplebg" src="purplebg.png" />
       <img className="yellowbg" src="yellowbg.png" />
-
       <div className="top">
         <nav>
           <img className="logo" src="logo.png" />

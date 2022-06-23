@@ -58,8 +58,8 @@ nav {
 }
 
 nav .logo {
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 350px;
+    max-height: 400px;
     position: absolute;
     top: 17px;
     left: 0 !important;
@@ -110,7 +110,7 @@ label #btn-icon {
     display: none;
 }
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
    nav li {
        margin:0 50px;
    }
@@ -180,14 +180,12 @@ label #btn-icon {
         position: absolute;
         width: 100%;
         height: 100vh;
-        /* left: -100%; */
+        left: -100%;
         text-align: center;
         transition: all .5s;
         background: rgb(15, 55, 82);
     }
-    /* ul li{
-        left: -100%;
-    } */
+ 
     nav ul li {
         display: block;
         top: 30%;
@@ -221,7 +219,7 @@ label #btn-icon {
     .yellowbg {
         width: 300px;
     }
-}
+} */
 
 
 

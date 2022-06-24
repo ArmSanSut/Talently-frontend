@@ -8,34 +8,32 @@ import Quiz from "./QuizItem";
 
 const LayoutQuiz = () => {
   return (
-    <div className="bg">
+    <div className="quiz-bg">
       <img className="bluebg" src="bluebg.png" />
       <img className="purplebg" src="purplebg.png" />
       <img className="yellowbg" src="yellowbg.png" />
-      <div className="top">
-        <nav>
-          <img className="logo" src="logo.png" />
-          <ul >
-            <li >
+      <nav className="nav-quiz1">
+        <img className="quiz-logo" src="logo.png" />
+        {/* <input type="checkbox" className="check" />
+        <label for="check">
+          <i className="fas fa-bars" id="btn-icon"></i>
+        </label> */}
+        <ul className="quiz-center">
+          <li className="item-quiz-center">
             <Link to="/about">เกี่ยวกับเรา</Link>
-              
-            </li>
-            <li >
-              <Link to="/test">แบบทดสอบ</Link>
-            </li>
-            <li >
+          </li>
+          <li className="item-quiz-center">
+            <Link to="/test">แบบทดสอบ</Link>
+          </li>
+        </ul>
+        <ul className="quiz-login">
+          <li className="item-quiz-login">
             <Link to="/login">เข้าสู่ระบบ</Link>
-            </li>
-            <li className="item">
-              <input type="checkbox" className="check" />
-              <label for="check">
-                <i className="fas fa-bars" id="btn-icon"></i>
-              </label>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <Quiz />
+          </li>
+          <li className="item"></li>
+        </ul>
+      </nav>
+      {/* <Quiz /> */}
       <Outlet />
     </div>
   );

@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Prompt:ital,wght@0,200;1,100&display=swap');
 
-body {
+.profile {
     background: white;
     height: 500vh;
+    z-index: -2;
+}
+
+.hide-navbar {
+    display: none;
 }
 
 .profile-bg {
@@ -63,12 +68,16 @@ li.item-center {
 }
 
 ul.right {
-    margin-right: 100px;
+    margin-right: 200px;
     padding: 0;
 }
 
+li.item-right {
+    margin-top: 30px;
+}
+
 @media (min-width: 1200px) {
-    ul.nav2, i#profile-icon, .profile-check {
+    ul.nav2, i#profile-icon2 {
         display: none;
     }
 }
@@ -81,7 +90,7 @@ ul.right {
     ul.center {
         margin-right: 100px;
     }
-    ul.nav2, i#profile-icon, .profile-check {
+    ul.nav2, i#profile-icon2 {
         display: none;
     }
 }
@@ -110,7 +119,7 @@ ul.right {
     ul.right {
         margin-right: 100px;
     }
-    ul.nav2, i#profile-icon, .profile-check {
+    ul.nav2, i#profile-icon2 {
         display: none;
     }
 }
@@ -139,7 +148,7 @@ ul.right {
     ul.right {
         margin-right: 80px;
     }
-    ul.nav2, i#profile-icon, .profile-check {
+    ul.nav2, i#profile-icon2 {
         display: none;
     }
 }
@@ -169,15 +178,20 @@ ul.right {
         margin-right: 250px;
         margin-top: 60px;
         align-items: center;
+        justify-content: center;
+        float:none;
+        z-index: 3;
     }
     nav.head-profile2 ul.nav2 li.item2 {
         margin: 5px 0 10px 0;
         line-height: 30px;
+        filter:none;
     }
    label.label-profile{
         float: right;
     }
-    label.label-profile i#profile-icon {
+    label.label-profile i#profile-icon1,
+    label.label-profile i#profile-icon2 {
         font-size: 25px;
         margin-top: 30px;
         margin-right: 20px;
@@ -185,11 +199,6 @@ ul.right {
         z-index: 1 !important;
         display:block;
         margin-left: 500px;
-    }
-    .profile-check {
-        display:inline;
-        margin-top: 30px;
-        z-index: 3 !important;
     }
 }
 

@@ -70,13 +70,14 @@ const QuizItem = () => {
     setChoice2('');
     setChoice3('');
     setChoice4('');
+    setChoiceSelected([]);
 
   }
   const getData = () => {
     const url = "http://localhost:3000"
     axios.get(`${url}/api/user/`).then((res) => {
       // data = res.data;
-      console.log(res.data);
+      // console.log(res.data);
       setQuestion(res.data);
     });
   };

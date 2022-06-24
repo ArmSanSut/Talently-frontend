@@ -11,14 +11,16 @@ const QuizItem = () => {
   const [percent, setPercent] = useState(2.86);
   const [question, setQuestion] = useState([]);
 
-  const [choice1, setChoice1] = useState(''); 
-  const [choice2, setChoice2] = useState(''); 
-  const [choice3, setChoice3] = useState(''); 
-  const [choice4, setChoice4] = useState(''); 
+  const [choice1, setChoice1] = useState('');
+  const [choice2, setChoice2] = useState('');
+  const [choice3, setChoice3] = useState('');
+  const [choice4, setChoice4] = useState('');
 
-  const [order, setOrder] = useState(["4","3","2","1"]);
+  const [choiceSelected, setChoiceSelected] = useState([]);
 
-  const increase = () => {
+  const [order, setOrder] = useState(["4", "3", "2", "1"]);
+
+  const handleNext = () => {
     let newNumber = number + 1;
     setPercent(newNumber * 2.86);
 
@@ -27,7 +29,7 @@ const QuizItem = () => {
     }
 
     setNumber(newNumber);
-    setOrder(["4","3","2","1"]);
+    setOrder(["4", "3", "2", "1"]);
     setChoice1('');
     setChoice2('');
     setChoice3('');
@@ -36,24 +38,32 @@ const QuizItem = () => {
   };
 
   const handleClick1 = e => {
-    if(!choice1)
-    setChoice1(order.pop());
+    if (!choice1) {
+      setChoice1(order.pop());
+      setChoiceSelected(choiceSelected ? [...choiceSelected, "1"] : "1");
+    }
   }
   const handleClick2 = e => {
-    if(!choice2)
-    setChoice2(order.pop())
+    if (!choice2) {
+      setChoice2(order.pop())
+      setChoiceSelected(choiceSelected ? [...choiceSelected, "2"] : "2");
+    }
   }
   const handleClick3 = e => {
-    if(!choice3)
-    setChoice3(order.pop())
+    if (!choice3) {
+      setChoice3(order.pop())
+      setChoiceSelected(choiceSelected ? [...choiceSelected, "3"] : "3");
+    }
   }
   const handleClick4 = e => {
-    if(!choice4)
-    setChoice4(order.pop())
+    if (!choice4) {
+      setChoice4(order.pop())
+      setChoiceSelected(choiceSelected ? [...choiceSelected, "4"] : "4");
+    }
   }
 
   const handleReset = e => {
-    setOrder(["4","3","2","1"]);
+    setOrder(["4", "3", "2", "1"]);
     setChoice1('');
     setChoice2('');
     setChoice3('');
@@ -72,6 +82,10 @@ const QuizItem = () => {
     getData()
   }, [])
 
+  // useEffect(() => {
+    console.log(choiceSelected);
+  // }, choiceSelected)
+
 
   return (
     <div className="box">
@@ -84,19 +98,19 @@ const QuizItem = () => {
           <h5 className="head">
             {question.map(val =>
               val.id == number && (
-                `Question ${val.id} : ${val.question}` 
-                
+                `Question ${val.id} : ${val.question}`
+
               )
             )}
           </h5>
         </div>
         <div className="choice-list-grid">
-        
+
           {question.map(val =>
             val.id == number && (
               <>
                 <div onClick={handleClick1}><Choices order={choice1} title={val.choice_1} /></div>
-                <div onClick={handleClick2}><Choices order={choice2} title={val.choice_2}/></div>
+                <div onClick={handleClick2}><Choices order={choice2} title={val.choice_2} /></div>
                 <div onClick={handleClick3}><Choices order={choice3} title={val.choice_3} /></div>
                 <div onClick={handleClick4}><Choices order={choice4} title={val.choice_4} /></div>
               </>
@@ -109,7 +123,7 @@ const QuizItem = () => {
           <button className="list-btn1" onClick={handleReset}>เคลียร์คำตอบ</button>
           <Button
             className="list-btn2"
-            onClick={increase}
+            onClick={handleNext}
             style={{
               background: "linear-gradient(180deg, #EB9714 0%, #FF814B 100%",
               color: "white",

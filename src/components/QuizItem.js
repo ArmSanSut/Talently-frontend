@@ -16,11 +16,13 @@ const QuizItem = () => {
   const [choice3, setChoice3] = useState('');
   const [choice4, setChoice4] = useState('');
 
+
   const [choiceSelected, setChoiceSelected] = useState([]);
 
   const [order, setOrder] = useState(["4", "3", "2", "1"]);
 
   const handleNext = () => {
+    if(choiceSelected.length != 4) return;
     let newNumber = number + 1;
     setPercent(newNumber * 2.86);
 
@@ -81,13 +83,13 @@ const QuizItem = () => {
   useEffect(() => {
     getData()
   }, [])
-
-  // useEffect(() => {
     console.log(choiceSelected);
-  // }, choiceSelected)
+
 
 
   return (
+    <div>
+      {/* < Choices select={choiceSelected} /> */}
     <div className="box">
       <div className="inbox">
         <div className="bar">
@@ -113,8 +115,9 @@ const QuizItem = () => {
                 <div onClick={handleClick2}><Choices order={choice2} title={val.choice_2} /></div>
                 <div onClick={handleClick3}><Choices order={choice3} title={val.choice_3} /></div>
                 <div onClick={handleClick4}><Choices order={choice4} title={val.choice_4} /></div>
+                
               </>
-
+              
             )
           )}
         </div>
@@ -131,10 +134,12 @@ const QuizItem = () => {
           >
             ต่อไป
           </Button>
-
+          
         </div>
       </div>
     </div>
+    </div>
+    
   );
 };
 

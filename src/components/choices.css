@@ -2,7 +2,7 @@ ul.choiceList{
     display: flex;
     /* flex-wrap: wrap; */
     list-style-type: none;
-    border: 1px solid red;
+    border: 1px solid black;
     border-radius: 0.5rem;
     margin: 10px 70px;
     align-items: center;
@@ -18,13 +18,30 @@ ul.choiceList{
     flex-direction: column;
 }
 
-li span.choiceBox {
-    border: 1px solid red;
+li.selected span.choiceBox {
+    border: 1px solid black;
     /* width: 1rem;
     height: 1rem; */
     padding: 0.3rem 1.1rem;
     /* transform: translateY(0.1rem); */
-    background-color: red;
+    background-color: darkblue;
     margin-right: 0.5rem;
     border-radius: 0.5rem 0 0 0.5rem;
 }
+
+li.selected svg.choiceBox {
+    background-color: darkblue;
+}
+
+li.not-selected span.choiceBox {
+    border: 1px solid black;
+    /* width: 1rem;
+    height: 1rem; */
+    padding: 0.3rem 1.1rem;
+    /* transform: translateY(0.1rem); */
+    background-color: white;
+    margin-right: 0.5rem;
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+
+

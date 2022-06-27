@@ -52,26 +52,23 @@ const LayoutProfile = () => {
               ></i>
             )}
           </label>
-          <div className="blur-background">
-            <ul className={`nav2 ${showSecondNav ? "" : "hide-navbar"}`}>
-              <li className={`item2 ${showSecondNav ? "" : "hide-navbar"}`}>
+            <ul className={`nav2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
+              <li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
                 <Link to="/about">เกี่ยวกับเรา</Link>
               </li>
-              <li className={`item2 ${showSecondNav ? "" : "hide-navbar"}`}>
+              <li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
                 <Link to="/test">แบบทดสอบ</Link>
               </li>
-              <li className={`item2 ${showSecondNav ? "" : "hide-navbar"}`}>
+              <li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
                 <Link to="/contact">ติดต่อเรา</Link>
               </li>
-              <li className={`item2 ${showSecondNav ? "" : "hide-navbar"}`}>
+              <li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
                 <Link to="/help">ช่วยเหลือ</Link>
               </li>
-              <li className={`item2 ${showSecondNav ? "" : "hide-navbar"}`}>
+              <li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
                 <Link to="/login">เข้าสู่ระบบ</Link>
               </li>
             </ul>
-          </div>
-
           {/* <input type="checkbox" className="profile-check" /> */}
         </nav>
       </div>

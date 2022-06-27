@@ -98,7 +98,7 @@ const QuizItem = () => {
     <div className="box">
       <div className="inbox">
         <div className="bar">
-          <p>คำถามที่ {number} จาก 35</p>
+          <p style={{margin: "0px", fontSize: "16px"}}>คำถามที่ {number} จาก 35</p>
           <Progress percent={percent} showInfo={false} />
         </div>
         <div>
@@ -132,10 +132,10 @@ const QuizItem = () => {
           <Button
             className="list-btn2"
             onClick={handleNext}
-            style={{
-              background: "linear-gradient(180deg, #EB9714 0%, #FF814B 100%",
-              color: "white",
-            }}
+            // style={{
+            //   background: "linear-gradient(180deg, #EB9714 0%, #FF814B 100%",
+            //   color: "white",
+            // }}
           >
             ต่อไป
           </Button>

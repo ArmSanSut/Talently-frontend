@@ -4,7 +4,7 @@ import { Col, Row, Button } from "antd";
 import "./layout.css";
 import { Link, Outlet } from "react-router-dom";
 import { MenuOutlined } from "@ant-design/icons";
-import Quiz from "./QuizItem";
+import QuizItem from "./QuizItem";
 
 const LayoutQuiz = () => {
   return (
@@ -33,7 +33,10 @@ const LayoutQuiz = () => {
           <li className="item"></li>
         </ul>
       </nav>
-      {/* <Quiz /> */}
+    
+      <QuizItem />
+   
+     
       <Outlet />
     </div>
   );

@@ -36,6 +36,10 @@ const QuizItem = () => {
     setChoice2('');
     setChoice3('');
     setChoice4('');
+    //   setChoiceSelected([]);
+    // 
+
+
 
   };
 

@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Prompt:ital,wght@0,200;1,100&display=swap');
+
+.header-text {
+    text-align: center;
+    font-weight: bolder;
+    margin-bottom: 5.5rem !important;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Prompt', sans-serif;
+    font-weight: 1500;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(100, 111, 210, 0.519);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+    border-radius: 10px;
+}
+
+.input {
+    width: 250px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.btn-submit {
+    background-color: #F7F132;
+    border-radius: 10px;
+}

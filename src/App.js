@@ -1,7 +1,7 @@
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Routes, Route} from "react-router-dom";
 import LayoutQuiz from "./components/QuizPage/LayoutQuiz";
 import LayoutProfile from "./components/ProfilePage/LayoutProfile";
 import RegisterForm from "./components/RegisterForm/register";

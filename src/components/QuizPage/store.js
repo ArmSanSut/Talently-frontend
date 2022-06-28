@@ -3,9 +3,8 @@ import storeReducer from "./storeReducer";
 
 const store = configureStore({
 	reducer: {
-		quizPage : storeReducer
+		answer : storeReducer
 	}
-
 });
 
 export default store;

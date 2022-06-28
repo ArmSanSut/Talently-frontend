@@ -3,14 +3,16 @@ import axios from "axios";
 import "./quiz.css";
 import Choices from "./Choices";
 import { Button, Progress } from "antd";
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { addAnswer } from "./storeReducer";
+import { useNavigate } from "react-router-dom";
 
 const QuizItem = () => {
 
+	const state = useSelector(x => x.answer.answers);
 	const dispatch = useDispatch();
-
+	const navigate = useNavigate();
 	const [number, setNumber] = useState(1);
 	const [percent, setPercent] = useState(2.86);
 	const [question, setQuestion] = useState([]);
@@ -25,10 +27,10 @@ const QuizItem = () => {
 
 	const [order, setOrder] = useState(["4", "3", "2", "1"]);
 
+	// Mockup Data for score and userID as 1
 	const handleNext = (id) => {
 		if (choiceSelected.length !== 4) return;
-		let check = dispatch(addAnswer({ id, answer: choiceSelected.join() }));
-		console.log(check);
+		dispatch(addAnswer([1, id, choiceSelected.join(), 1]));
 		if (number < 35) {
 			setNumber(number + 1);
 		}
@@ -46,10 +48,18 @@ const QuizItem = () => {
 		setChoiceSelected([]);
 	};
 
-	const handleSubmit = () => {
-		console.log("Submit Form");
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		axios.post("http://localhost:3000/api/user/quiz/", {
+			answers: state,
+			
+		}).then((response) => {
+			console.log(response);
+			navigate("/profile");
+		}).catch((error) => {
+			console.log(error);
+		});
 	};
-
 	const handleClick1 = e => {
 		e.preventDefault();
 		if (!choice1) {
@@ -89,6 +99,7 @@ const QuizItem = () => {
 		setChoiceSelected([]);
 
 	};
+
 	const getData = () => {
 		const url = "http://localhost:3000";
 		axios.get(`${url}/api/user/`).then((res) => {
@@ -100,7 +111,7 @@ const QuizItem = () => {
 	}, []);
 	console.log(choiceSelected);
 
-
+	console.log(state);
 
 	return (
 		<div>
@@ -116,7 +127,6 @@ const QuizItem = () => {
 							{question.map(val =>
 								val.id === number && (
 									`Question ${val.id} : ${val.question}`
-
 								)
 							)}
 						</h5>
@@ -140,7 +150,7 @@ const QuizItem = () => {
 					<div className="btn">
 						<button className="list-btn1" onClick={handleReset}>เคลียร์คำตอบ</button>
 						{number === 35 ? <Button
-							onclick={handleSubmit}
+							onClick={handleSubmit}
 						>
 							ส่งคำตอบ
 						</Button> : <Button

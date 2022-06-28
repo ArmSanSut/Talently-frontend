@@ -4,15 +4,14 @@ export const storeReducer = createSlice({
 	initialState: {
 		answers: [],
 		current: 1,
+		score: []
 	},
 	reducers: {
 		addAnswer: (state, action) => {
-			if (state.current < action.payload.id) return false;
-			if (state.current !== action.payload.id) return true;
 			state.current++;
 			state.answers.push(action.payload);
 		},
-		clearAnswer : (state) => {
+		clearAnswer: (state) => {
 			state.answers = [];
 			state.current = 1;
 		}

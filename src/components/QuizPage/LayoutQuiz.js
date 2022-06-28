@@ -3,8 +3,7 @@ import "antd/dist/antd.css";
 import { Col, Row, Button } from "antd";
 import "./layout.css";
 import { Link, Outlet } from "react-router-dom";
-import { MenuOutlined } from "@ant-design/icons";
-import Quiz from "./QuizItem";
+import QuizItem from "./QuizItem";
 
 const LayoutQuiz = () => {
 
@@ -38,7 +37,7 @@ const LayoutQuiz = () => {
       </nav>
       </div>      
       <div className={`box-question ${showSecondNav ? "show-navbar-quiz" : ""}`}>
-      <Quiz />
+      <QuizItem />
       </div>
       <nav className="nav-quiz2">
       <img className="quiz-logo" src="logo.png" />

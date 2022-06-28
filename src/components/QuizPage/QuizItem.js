@@ -6,12 +6,13 @@ import { Button, Progress } from "antd";
 import { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addAnswer } from "./storeReducer";
+import { useNavigate } from "react-router-dom";
 
 const QuizItem = () => {
 
 	const state = useSelector(x => x.answer.answers);
 	const dispatch = useDispatch();
-
+	const navigate = useNavigate();
 	const [number, setNumber] = useState(1);
 	const [percent, setPercent] = useState(2.86);
 	const [question, setQuestion] = useState([]);
@@ -51,9 +52,10 @@ const QuizItem = () => {
 		e.preventDefault();
 		axios.post("http://localhost:3000/api/user/quiz/", {
 			answers: state,
-			// navigate("/login");
+			
 		}).then((response) => {
 			console.log(response);
+			navigate("/profile");
 		}).catch((error) => {
 			console.log(error);
 		});
@@ -147,7 +149,7 @@ const QuizItem = () => {
 
 					<div className="btn">
 						<button className="list-btn1" onClick={handleReset}>เคลียร์คำตอบ</button>
-						{number === 3 ? <Button
+						{number === 35 ? <Button
 							onClick={handleSubmit}
 						>
 							ส่งคำตอบ

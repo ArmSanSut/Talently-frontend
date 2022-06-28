@@ -31,14 +31,10 @@ const QuizItem = () => {
 	const handleNext = (id) => {
 		if (choiceSelected.length !== 4) return;
 		dispatch(addAnswer([1, id, choiceSelected.join(), 1]));
-		if (number < 35) {
+		if (number < 36) {
 			setNumber(number + 1);
 		}
 		setPercent(number * 2.86);
-
-		if (number == 35) {
-			console.log("complete test");
-		}
 
 		setOrder(["4", "3", "2", "1"]);
 		setChoice1("");
@@ -155,7 +151,7 @@ const QuizItem = () => {
 							ส่งคำตอบ
 						</Button> : <Button
 							className="list-btn2"
-							onClick={() => handleNext(question[number - 1].id)}
+							onClick={() => handleNext(question[number].id)}
 						>
 							ต่อไป
 						</Button>}

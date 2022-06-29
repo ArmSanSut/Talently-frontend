@@ -1,13 +1,29 @@
-import React from "react";
+/* eslint-disable linebreak-style */
+/* eslint-disable indent */
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./quiz.css";
 import Choices from "./Choices";
-import { Button, Progress } from "antd";
-import { useState, useEffect } from "react";
+import { Button, Progress, Modal } from "antd";
 import { useDispatch } from "react-redux";
 import { addAnswer } from "./storeReducer";
+import Login from "../Login/Login";
 
+// eslint-disable-next-line react/prop-types
 const QuizItem = () => {
+	const [isModalVisible, setIsModalVisible] = useState(false);
+
+	const showModal = () => {
+		setIsModalVisible(true);
+	};
+
+	const handleOk = () => {
+		setIsModalVisible(false);
+	};
+
+	const handleCancel = () => {
+		setIsModalVisible(false);
+	};
 
 	const dispatch = useDispatch();
 
@@ -44,10 +60,6 @@ const QuizItem = () => {
 		setChoice3("");
 		setChoice4("");
 		setChoiceSelected([]);
-	};
-
-	const handleSubmit = () => {
-		console.log("Submit Form");
 	};
 
 	const handleClick1 = e => {
@@ -100,11 +112,8 @@ const QuizItem = () => {
 	}, []);
 	console.log(choiceSelected);
 
-
-
 	return (
 		<div>
-			{/* < Choices select={choiceSelected} /> */}
 			<div className="box">
 				<div className="inbox">
 					<div className="bar">
@@ -132,15 +141,15 @@ const QuizItem = () => {
 									<div onClick={handleClick4}><Choices order={choice4} title={val.choice_4} /></div>
 
 								</>
-
 							)
-						)}
+						)
+						}
 					</div>
 
 					<div className="btn">
 						<button className="list-btn1" onClick={handleReset}>เคลียร์คำตอบ</button>
 						{number === 35 ? <Button
-							onclick={handleSubmit}
+							onClick={showModal}
 						>
 							ส่งคำตอบ
 						</Button> : <Button
@@ -149,10 +158,12 @@ const QuizItem = () => {
 						>
 							ต่อไป
 						</Button>}
-
 					</div>
 				</div>
 			</div>
+			<Modal className="modal-login" title="Please Login!!" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
+				<Login />
+			</Modal>
 		</div>
 
 	);

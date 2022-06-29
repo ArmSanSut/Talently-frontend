@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import { createSlice } from "@reduxjs/toolkit";
 export const storeReducer = createSlice({
 	name: "answer",

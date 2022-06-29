@@ -1,18 +1,33 @@
-import React from "react";
+/* eslint-disable linebreak-style */
+/* eslint-disable indent */
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./quiz.css";
 import Choices from "./Choices";
-import { Button, Progress } from "antd";
-import { useState, useEffect} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { Button, Progress, Modal } from "antd";
+import { useDispatch } from "react-redux";
 import { addAnswer } from "./storeReducer";
-import { useNavigate } from "react-router-dom";
+import Login from "../Login/Login";
+// import { useNavigate } from "react-router-dom";
 
+// eslint-disable-next-line react/prop-types
 const QuizItem = () => {
+	const [isModalVisible, setIsModalVisible] = useState(false);
 
-	const state = useSelector(x => x.answer.answers);
+	const showModal = () => {
+		setIsModalVisible(true);
+	};
+
+	const handleOk = () => {
+		setIsModalVisible(false);
+	};
+
+	const handleCancel = () => {
+		setIsModalVisible(false);
+	};
+
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
+
 	const [number, setNumber] = useState(1);
 	const [percent, setPercent] = useState(2.86);
 	const [question, setQuestion] = useState([]);
@@ -27,11 +42,11 @@ const QuizItem = () => {
 
 	const [order, setOrder] = useState(["4", "3", "2", "1"]);
 
-	// Mockup Data for score and userID as 1
 	const handleNext = (id) => {
 		if (choiceSelected.length !== 4) return;
-		dispatch(addAnswer([1, id, choiceSelected.join(), 1]));
-		if (number < 36) {
+		let check = dispatch(addAnswer({ id, answer: choiceSelected.join() }));
+		console.log(check);
+		if (number < 35) {
 			setNumber(number + 1);
 		}
 		setPercent(number * 2.86);
@@ -44,18 +59,19 @@ const QuizItem = () => {
 		setChoiceSelected([]);
 	};
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		axios.post("http://localhost:3000/api/user/quiz/", {
-			answers: state,
+	// const handleSubmit = (e) => {
+	// 	const navigate = useNavigate();
+	// 	e.preventDefault();
+	// 	axios.post("http://localhost:3000/api/user/quiz/", {
+	// 		answers: state,
 			
-		}).then((response) => {
-			console.log(response);
-			navigate("/profile");
-		}).catch((error) => {
-			console.log(error);
-		});
-	};
+	// 	}).then((response) => {
+	// 		console.log(response);
+	// 		navigate("/profile");
+	// 	}).catch((error) => {
+	// 		console.log(error);
+	// 	});
+	// };
 	const handleClick1 = e => {
 		e.preventDefault();
 		if (!choice1) {
@@ -95,7 +111,6 @@ const QuizItem = () => {
 		setChoiceSelected([]);
 
 	};
-
 	const getData = () => {
 		const url = "http://localhost:3000";
 		axios.get(`${url}/api/user/`).then((res) => {
@@ -107,11 +122,8 @@ const QuizItem = () => {
 	}, []);
 	console.log(choiceSelected);
 
-	console.log(state);
-
 	return (
 		<div>
-			{/* < Choices select={choiceSelected} /> */}
 			<div className="box">
 				<div className="inbox">
 					<div className="bar">
@@ -138,27 +150,29 @@ const QuizItem = () => {
 									<div onClick={handleClick4}><Choices order={choice4} title={val.choice_4} /></div>
 
 								</>
-
 							)
-						)}
+						)
+						}
 					</div>
 
 					<div className="btn">
 						<button className="list-btn1" onClick={handleReset}>เคลียร์คำตอบ</button>
 						{number === 35 ? <Button
-							onClick={handleSubmit}
+							onClick={showModal}
 						>
 							ส่งคำตอบ
 						</Button> : <Button
 							className="list-btn2"
-							onClick={() => handleNext(question[number].id)}
+							onClick={() => handleNext(question[number - 1].id)}
 						>
 							ต่อไป
 						</Button>}
-
 					</div>
 				</div>
 			</div>
+			<Modal className="modal-login" title="Please Login!!" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
+				<Login />
+			</Modal>
 		</div>
 
 	);

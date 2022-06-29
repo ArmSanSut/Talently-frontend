@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
@@ -14,7 +15,7 @@ root.render(
 			<Provider store={store}>
 				<App />
 			</Provider>
-		</BrowserRouter>a
+		</BrowserRouter>
 	</React.StrictMode>
 );
 

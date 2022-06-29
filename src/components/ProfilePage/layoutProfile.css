@@ -222,7 +222,145 @@ li.item-right {
 }
 
 
+.dashboard-container {
+    background-color: #F4F8FE;
+    border-radius: 15px;
+    height: 1500px;
+    margin: 160px;
+    display: grid;
+}
+.about-me-container {
+    background-color: white;
+    height: 250px;
+    border-radius: 15px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.personality-container{
+    background-color: #FDF2E4;
+    height: 150px;
+    border-radius: 15px;
+    margin: 20px;
+    margin-top: 10px;
+}
+.user-detail{
+    /* border: 2px solid black; */
+    border-radius: 15px;
+    width: 50%;
+    height: 200px;
+    margin: 10px;
+}
+.description-detail{
+    background: linear-gradient(104.01deg, #FF9B36 16.19%, #FF3879 48.23%, #A255FF 85%);
+    border-radius: 15px;
+    width: 50%;
+    height: 200px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
 
+.results-container{
+    height: 1000px;
+    border-radius: 15px;
+    margin: 15px;   
+    display: flex;
+}
+.left-container{
+    /* border: 2px solid black; */
+    background-color: white;
+    border-radius: 15px;
+    width: 50%;
+    height: 1000px;
+    margin: 5px;
+}
+.motivated-box{
+    border: 2px solid black;
+    border-radius: 15px;
+    width: 95%;
+    height: 29%;
+    margin: 10px;
+    margin-top: 20px;
+}
+.environment-box{
+    border: 2px solid black;
+    border-radius: 15px;
+    width: 95%;
+    height: 29%;
+    margin: 10px;
+    margin-top: 20px;
+}
+.work-box{
+    border: 2px solid black;
+    width: 95%;
+    border-radius: 15px;
+    height: 29%;
+    margin: 10px;
+    margin-top: 20px;
+}
+.right-container{
+    /* border: 4px solid red; */
+    width: 50%;
+    height: 980px;
+    margin: 5px;
+}
+.radar-chart-box{
+    border: 2px solid black;
+    background-color: white;
+    border-radius: 15px;
+    width: 96%;
+    height: 20%;
+    margin: 20px;
+    margin-top: 0px;
+}
+.strength-box{
+    border: 2px solid black;
+    background-color: white;
+    border-radius: 15px;
+    width: 96%;
+    height: 20%;
+    margin: 20px;
+}
+.achievement-box{
+    border: 2px solid black;
+    background-color: white;
+    border-radius: 15px;
+    width: 96%;
+    height: 20%;
+    margin: 20px;
+}
 
+.text-rigth-container{
+    text-align: center;
+    margin-top: 0.5rem;
+    font-weight: bold;
+}
+
+.text-personality-container{
+    margin: 1rem;
+    font-weight: bold;
+}
+.text-results-container {
+    margin: 0.8rem;
+    font-weight: bold;
+}
+.text-description{
+    width: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    margin: 15px;
+    margin-top: 45px;
+}
+.text-description-2 {
+    width: 50%;
+    font-size: 19px;
+    color: white;
+    margin: 15px;
+    margin-top: 0px;
+}
 

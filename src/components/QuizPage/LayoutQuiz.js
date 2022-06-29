@@ -27,7 +27,7 @@ const LayoutQuiz = () => {
 							<Link to="/about">เกี่ยวกับเรา</Link>
 						</li>
 						<li className="item-quiz-center">
-							<Link to="/test">แบบทดสอบ</Link>
+							<Link to="/quiz">แบบทดสอบ</Link>
 						</li>
 					</ul>
 					<ul className="quiz-login">
@@ -62,7 +62,7 @@ const LayoutQuiz = () => {
 						<Link to="/about">เกี่ยวกับเรา</Link>
 					</li>
 					<li className={`item-quiz ${showSecondNav ? "" : "hide-navbar-quiz"}`}>
-						<Link to="/test">แบบทดสอบ</Link>
+						<Link to="/quiz">แบบทดสอบ</Link>
 					</li>
 					<li className={`item-quiz ${showSecondNav ? "" : "hide-navbar-quiz"}`}>
 						<Link to="/login">เข้าสู่ระบบ</Link>

@@ -8,6 +8,7 @@ import { Button, Progress, Modal } from "antd";
 import { useDispatch } from "react-redux";
 import { addAnswer } from "./storeReducer";
 import Login from "../Login/Login";
+// import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const QuizItem = () => {
@@ -50,10 +51,6 @@ const QuizItem = () => {
 		}
 		setPercent(number * 2.86);
 
-		if (number == 35) {
-			console.log("complete test");
-		}
-
 		setOrder(["4", "3", "2", "1"]);
 		setChoice1("");
 		setChoice2("");
@@ -62,6 +59,19 @@ const QuizItem = () => {
 		setChoiceSelected([]);
 	};
 
+	// const handleSubmit = (e) => {
+	// 	const navigate = useNavigate();
+	// 	e.preventDefault();
+	// 	axios.post("http://localhost:3000/api/user/quiz/", {
+	// 		answers: state,
+			
+	// 	}).then((response) => {
+	// 		console.log(response);
+	// 		navigate("/profile");
+	// 	}).catch((error) => {
+	// 		console.log(error);
+	// 	});
+	// };
 	const handleClick1 = e => {
 		e.preventDefault();
 		if (!choice1) {
@@ -125,7 +135,6 @@ const QuizItem = () => {
 							{question.map(val =>
 								val.id === number && (
 									`Question ${val.id} : ${val.question}`
-
 								)
 							)}
 						</h5>

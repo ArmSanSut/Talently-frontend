@@ -4,14 +4,16 @@ import React from "react";
 import "antd/dist/antd.css";
 import { Button, Checkbox, Form, Input } from "antd";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 // eslint-disable-next-line react/prop-types
 const Login = () => {
-
+	const state = useSelector(x => x.answer.answers);
 	const [form] = Form.useForm();
 
 	const onFinish = async (values) => {
+		const navigate = useNavigate();
 		console.log("Success:", values);
 
 		try {
@@ -21,6 +23,16 @@ const Login = () => {
 				password: values.password,
 			});
 			localStorage.setItem("token", result.data.token);
+
+			await axios.post("http://localhost:3000/api/user/quiz/", {
+				answers: state,
+				
+			}).then((response) => {
+				console.log(response);
+				navigate("/profile");
+			}).catch((error) => {
+				console.log(error);
+			});
 		} catch (e) {
 			form.setFields([
 				{

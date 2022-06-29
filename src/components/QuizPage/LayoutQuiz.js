@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /* eslint-disable linebreak-style */
+=======
+>>>>>>> 3bd27faec27505c9149bbf1185ee81a98e3c221f
 import React, { useState } from "react";
 import "antd/dist/antd.css";
 import "./layout.css";

@@ -4,8 +4,9 @@ import "./layoutProfile.css";
 import { Link, useNavigate } from "react-router-dom";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Modal } from "antd";
-import AchievementCreate from "./achievement/achievemntCreate";
+import AchievementCreate from "./achievement/achievementCreate";
 import MotivateBar from "./motivateBar";
+import EnvironmentBar from "./environmentBar";
 
 const LayoutProfile = () => {
 	const [isModalVisible, setIsModalVisible] = useState(false);	
@@ -147,11 +148,17 @@ const LayoutProfile = () => {
 									<h3 className="text-motivated">Best Environment</h3>
 									<img className="icon-2" src="important_sign.png" style={{ width : "20px", height :"20px", margin : 10, marginTop : 18 }}/>
 								</div>
+								<div>
+									<EnvironmentBar />
+								</div>
 							</div>
 							<div className="work-box">
 								<div className="work-header-box">
 									<img className="icon" src="icon.png" style={{ margin : 10, width : "30px", height :"30px" }}/>
 									<h3 className="text-motivated">Ideal Work</h3>
+								</div>
+								<div>
+									<MotivateBar />
 								</div>
 							</div>
 						</div>

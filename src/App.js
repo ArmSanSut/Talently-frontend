@@ -6,7 +6,7 @@ import LayoutQuiz from "./components/QuizPage/LayoutQuiz";
 import LayoutProfile from "./components/ProfilePage/LayoutProfile";
 import RegisterForm from "./components/RegisterForm/register";
 import StrengthSelectedPage from "./components/Strength/StrengthSelectedPage";
-import AchievementCreate from "./components/achievement/achievemntCreate";
+import AchievementCreate from "./components/ProfilePage/achievement/achievementCreate";
 // import Choices from "./components/Choices";
 
 function App() {

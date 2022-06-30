@@ -3,18 +3,19 @@ import "./layoutProfile.css";
 import { Link, useNavigate } from "react-router-dom";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Modal } from "antd";
-import AchievementCreate from "./achievement/achievemntCreate";
+import AchievementCreate from "./achievement/achievementCreate";
 import MotivateBar from "./motivateBar";
+import axios from "axios";
 
 const LayoutProfile = () => {
 	const [isModalVisible, setIsModalVisible] = useState(false);	
-	  const handleOk = () => {
+	const handleOk = () => {
 		setIsModalVisible(false);
-	  };
+	};
 	
-	  const handleCancel = () => {
+	const handleCancel = () => {
 		setIsModalVisible(false);
-	  };
+	};
 	
 
 	const [showSecondNav, setShowSecondNav] = useState(false);

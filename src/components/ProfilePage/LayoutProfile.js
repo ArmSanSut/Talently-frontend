@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import React, { useState, useEffect } from "react";
 import "./layoutProfile.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -5,6 +6,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Modal } from "antd";
 import AchievementCreate from "./achievement/achievementCreate";
 import MotivateBar from "./motivateBar";
+import EnvironmentBar from "./environmentBar";
 import axios from "axios";
 
 const LayoutProfile = () => {
@@ -159,11 +161,17 @@ const LayoutProfile = () => {
 									<h3 className="text-motivated">Best Environment</h3>
 									<img className="icon-2" src="important_sign.png" style={{ width: "20px", height: "20px", margin: 10, marginTop: 18 }} />
 								</div>
+								<div>
+									<EnvironmentBar />
+								</div>
 							</div>
 							<div className="work-box">
 								<div className="work-header-box">
 									<img className="icon" src="icon.png" style={{ margin: 10, width: "30px", height: "30px" }} />
 									<h3 className="text-motivated">Ideal Work</h3>
+								</div>
+								<div>
+									<MotivateBar />
 								</div>
 							</div>
 						</div>

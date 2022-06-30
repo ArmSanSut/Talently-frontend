@@ -494,7 +494,7 @@ li.item-right {
     border: none;
 }
 
-.text-rigth-container {
+.text-right-container {
     margin: 10px;
     font-style: normal;
     font-weight: bold;
@@ -502,15 +502,15 @@ li.item-right {
     line-height: 32px;
 }
 
-.text-rigth-container-1 {
+.text-right-container-1 {
     text-align: center;
 }
 
-.text-rigth-container-2 {
+.text-right-container-2 {
     text-align: center;
 }
 
-.text-rigth-container-3 {
+.text-right-container-3 {
     text-align: center;
 }
 

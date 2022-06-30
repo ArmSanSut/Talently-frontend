@@ -3,7 +3,24 @@
 .header-text {
     text-align: center;
     font-weight: bolder;
-    margin-bottom: 5.5rem !important;
+    margin-bottom: 2rem !important;
+    font-size: 30px;
+}
+
+.register-bg {
+    background: darkblue;
+    position: relative;
+    height: 100vh;
+}
+
+.purple-bg {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.group-bg {
+    width: 1125px;
 }
 
 .register-form {
@@ -16,13 +33,13 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 500px;
-    padding: 40px;
+    width: 600px;
     transform: translate(-50%, -50%);
-    background: rgba(100, 111, 210, 0.519);
+    background: white;
     box-sizing: border-box;
     box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
     border-radius: 10px;
+    opacity: 0.96;
 }
 
 .input {
@@ -32,6 +49,37 @@
 }
 
 .btn-submit {
-    background-color: #F7F132;
-    border-radius: 10px;
+    background: linear-gradient(107.87deg, #114E96 0%, #0B25E0 100.04%);
+    border-radius: 30px;
+    padding: 1.5rem 9rem;
+    color: white;
+    margin: 1rem 0rem;
+    
+}
+
+.btn-submit span{
+    font-size: 16px;
+    position: absolute;
+    left: calc(50% - 60px/2 - 1px);
+    top: calc(50% - 24px/2);
+    font-style: normal;
+    font-weight: 500;
+}
+
+.btn-submit:hover {
+    color: #0B25E0;
+    border: 1px solid #0B25E0;
+}
+
+p {
+    font-size: 12px;
+    margin: 0;
+}
+
+input#basic_name.ant-input.input,
+input#basic_sirname.ant-input.input,
+input#basic_username.ant-input.input,
+input#basic_email.ant-input.input,
+span.ant-input-affix-wrapper.ant-input-password.input {
+    width: 285px;
 }

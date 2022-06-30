@@ -1,0 +1,9 @@
+.left-side-bar {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.right-side-bar {
+    width: 50%;
+}

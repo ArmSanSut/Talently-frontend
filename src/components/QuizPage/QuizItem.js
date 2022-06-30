@@ -44,9 +44,8 @@ const QuizItem = () => {
 
 	const handleNext = (id) => {
 		if (choiceSelected.length !== 4) return;
-		let check = dispatch(addAnswer({ id, answer: choiceSelected.join() }));
-		console.log(check);
-		if (number < 35) {
+		dispatch(addAnswer([1, id, choiceSelected.join(), 1]));
+		if (number < 36) {
 			setNumber(number + 1);
 		}
 		setPercent(number * 2.86);
@@ -64,7 +63,7 @@ const QuizItem = () => {
 	// 	e.preventDefault();
 	// 	axios.post("http://localhost:3000/api/user/quiz/", {
 	// 		answers: state,
-			
+
 	// 	}).then((response) => {
 	// 		console.log(response);
 	// 		navigate("/profile");
@@ -157,7 +156,7 @@ const QuizItem = () => {
 
 					<div className="btn">
 						<button className="list-btn1" onClick={handleReset}>เคลียร์คำตอบ</button>
-						{number === 35 ? <Button
+						{number === 35 ? <Button className="list-btn-sent-ans"
 							onClick={showModal}
 						>
 							ส่งคำตอบ
@@ -170,7 +169,12 @@ const QuizItem = () => {
 					</div>
 				</div>
 			</div>
-			<Modal className="modal-login" title="Please Login!!" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
+			<Modal
+				className="modal-login"
+				title="LOGIN" visible={isModalVisible}
+				onOk={handleOk} onCancel={handleCancel}
+				footer={null}
+			>
 				<Login />
 			</Modal>
 		</div>

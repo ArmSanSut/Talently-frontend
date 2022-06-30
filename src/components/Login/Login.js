@@ -7,6 +7,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+
 // eslint-disable-next-line react/prop-types
 const Login = () => {
 	const state = useSelector(x => x.answer.answers);
@@ -26,13 +27,15 @@ const Login = () => {
 
 			await axios.post("http://localhost:3000/api/user/quiz/", {
 				answers: state,
-				
+
 			}).then((response) => {
 				console.log(response);
 				navigate("/profile");
 			}).catch((error) => {
 				console.log(error);
 			});
+
+
 		} catch (e) {
 			form.setFields([
 				{
@@ -63,6 +66,7 @@ const Login = () => {
 			onFinish={onFinish}
 			onFinishFailed={onFinishFailed}
 			autoComplete="off"
+			className="login-form"
 		>
 			<Form.Item
 				label="Username"

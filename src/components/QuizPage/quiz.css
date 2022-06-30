@@ -75,6 +75,16 @@
     color: white;
 }
 
+.list-btn-sent-ans {
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    width: 125px;
+    height: 45px;
+    background: linear-gradient(107.87deg, #114E96 0%, #0B25E0 100.04%);
+    color: white;
+}
+
 .modal-login {
     margin-top: 100px;
     padding: 0;
@@ -86,9 +96,16 @@
 }
 
 .ant-modal-header {
-    border-radius: 10px 10px 10px 10px !important;
+    border-radius: 10px 10px 0px 0px !important;
+    background: linear-gradient(107.87deg, #599BE9 0%, #0B25E0 100.04%);
+    /* border: 0.1rem solid black; */
 }
 
+.ant-modal-title {
+    color: white;
+    text-align: center;
+    font-size: 22px;
+}
 
 
 

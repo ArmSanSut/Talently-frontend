@@ -1,16 +1,15 @@
-/* eslint-disable linebreak-style */
 import React from "react";
-import "./strenght.css";
+import "./strength.css";
 import "antd/dist/antd.css";
 import { AiFillMinusCircle, AiOutlineArrowRight } from "react-icons/ai";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const StrengtSelectedPage = () => {
-	const [, updateState] = useState();
+const StrengthSelectedPage = () => {
+	const [updateState] = useState();
 	const forceUpdate = React.useCallback(() => updateState({}), []);
-	const [strenghtSelected, setStrenghtSelected] = useState([]);
-	const [strenghtList, setStrenghtList] = useState([]);
+	const [strengthSelected, setStrengthSelected] = useState([]);
+	const [strengthList, setStrengthList] = useState([]);
 
 	const getData = async () => {
 		const url = "http://localhost:3000";
@@ -21,7 +20,7 @@ const StrengtSelectedPage = () => {
 					...val, isSelect: false
 				};
 			});
-			setStrenghtList(strength);
+			setStrengthList(strength);
 		});
 	};
 	useEffect(() => {
@@ -31,31 +30,31 @@ const StrengtSelectedPage = () => {
 	const checkBoxSelected = (e) => {
 		console.log(e.target.value);
 		let id = parseInt(e.target.value, 10);
-		for (let i = 0; i < strenghtSelected.length; i++) {
-			if (id === strenghtSelected[i]) {
-				strenghtSelected.splice(i, 1);
-				let temp = strenghtList;
+		for (let i = 0; i < strengthSelected.length; i++) {
+			if (id === strengthSelected[i]) {
+				strengthSelected.splice(i, 1);
+				let temp = strengthList;
 				temp[id - 1].isSelect = false;
-				setStrenghtList(temp);
+				setStrengthList(temp);
 				forceUpdate();
-				console.log(strenghtList);
+				console.log(strengthList);
 				console.log("slice");
 				return;
 			}
 		}
-		if (strenghtSelected.length === 8) return;
-		strenghtList[id - 1].isSelect = true;
-		setStrenghtSelected([...strenghtSelected, id]);
-		console.log(strenghtSelected);
+		if (strengthSelected.length === 8) return;
+		strengthList[id - 1].isSelect = true;
+		setStrengthSelected([...strengthSelected, id]);
+		console.log(strengthSelected);
 	};
 
-	const box = strenghtList.map((x) => (
-		<div className="item" key={x.id}>
+	const box = strengthList.map((x) => (
+		<div className="item" key= {x.id}>
 			<ul className="column-item">
 				<li>
-					{x.isSelect && strenghtSelected.length === 8 ? (
+					{x.isSelect && strengthSelected.length === 8 ? (
 						<input className="box-larger" type="checkbox" name="checked" value={x.id} id={x.title} onClick={checkBoxSelected} />
-					) : strenghtSelected.length === 8 && x.isSelect === false ? (
+					) : strengthSelected.length === 8 && x.isSelect === false ? (
 						<input className="box-larger" disabled type="checkbox" name="checked" value={x.id} id={x.title} onClick={checkBoxSelected} />
 					) : (
 						<input className="box-larger" type="checkbox" name="checked" value={x.id} id={x.title} onClick={checkBoxSelected} />
@@ -70,12 +69,12 @@ const StrengtSelectedPage = () => {
 		</div>
 	));
 
-	console.log(strenghtSelected);
+	console.log(strengthSelected);
 
 	return (
 		<div>
 			<h2 className="head">
-            Now, choose your top eight life priorities out of the following list:{" "}
+				Now, choose your top eight life priorities out of the following list:{" "}
 			</h2>
 			<form >
 				<div className="flex-container">
@@ -86,7 +85,7 @@ const StrengtSelectedPage = () => {
 						<AiFillMinusCircle></AiFillMinusCircle> Clear Answer
 					</button>
 					<button className="continue-btn" type="submit" value="Submit" >
-                    Continue <AiOutlineArrowRight></AiOutlineArrowRight>
+						Continue <AiOutlineArrowRight></AiOutlineArrowRight>
 					</button>
 				</div>
 			</form>
@@ -94,4 +93,4 @@ const StrengtSelectedPage = () => {
 	);
 };
 
-export default StrengtSelectedPage;
+export default StrengthSelectedPage;

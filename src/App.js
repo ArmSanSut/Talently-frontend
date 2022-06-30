@@ -6,6 +6,7 @@ import LayoutQuiz from "./components/QuizPage/LayoutQuiz";
 import LayoutProfile from "./components/ProfilePage/LayoutProfile";
 import RegisterForm from "./components/RegisterForm/register";
 import StrengthSelectedPage from "./components/Strength/StrengthSelectedPage";
+import AchievementCreate from "./components/achievement/achievemntCreate";
 // import Choices from "./components/Choices";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
 				<Route path="/profile" element={<LayoutProfile />} />
 				<Route path="/register" element={<RegisterForm />} />
 				<Route path="/strength" element={<StrengthSelectedPage />} />
+				<Route path="/achievement" element={<AchievementCreate />} />
 				{/* <Route path="login" element={<Dashboard />} /> */}
 				{/* </Route> */}
 			</Routes>

@@ -1,10 +1,23 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import React, { useState } from "react";
 import "./layoutProfile.css";
 import { Link, useNavigate } from "react-router-dom";
 import { UserOutlined } from "@ant-design/icons";
-import { Avatar } from "antd";
+import { Avatar, Modal } from "antd";
+import AchievementCreate from "./achievement/achievemntCreate";
+import MotivateBar from "./motivateBar";
 
 const LayoutProfile = () => {
+	const [isModalVisible, setIsModalVisible] = useState(false);	
+	  const handleOk = () => {
+		setIsModalVisible(false);
+	  };
+	
+	  const handleCancel = () => {
+		setIsModalVisible(false);
+	  };
+	
+
 	const [showSecondNav, setShowSecondNav] = useState(false);
 	const navigate = useNavigate();
 
@@ -16,7 +29,9 @@ const LayoutProfile = () => {
 		navigate("/strength");
 	};
 	const handleAddAchievement = () => {
-		console.log("add 2 click");
+		// navigate("/achievement");
+		// console.log("add 2 click");
+		setIsModalVisible(true);
 	};
 	return (
 		<div className="profile">
@@ -122,6 +137,9 @@ const LayoutProfile = () => {
 									<h3 className="text-motivated">Motivated By</h3>
 									<img className="icon-2" src="important_sign.png" style={{ width : "20px", height :"20px", margin : 10, marginTop : 18 }}/>
 								</div>
+								<div>
+									<MotivateBar />
+								</div>
 							</div>
 							<div className="environment-box">
 								<div className="environment-header-box">
@@ -156,6 +174,9 @@ const LayoutProfile = () => {
 									<div className="achievement-box-head">
 										<h5 className="text-rigth-container-3">ความสำเร็จในชีวิต</h5>
 										<button className="btn2" onClick={handleAddAchievement}>+ เพิ่ม</button>
+										<Modal title="Personal Achievements" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
+											<AchievementCreate />
+										</Modal>
 									</div>
 									
 								</div>		

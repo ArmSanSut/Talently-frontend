@@ -1,0 +1,11 @@
+.achievement-form {
+    margin-top: 18px;
+    margin-right: 55px;
+    margin-bottom: 2px;
+    margin-left: 0px;
+    display: flex;
+    flex-direction: column;
+}
+.achievement-box {
+    border: none;
+}

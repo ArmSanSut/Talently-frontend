@@ -2,7 +2,8 @@ import React from "react";
 import "./strength.css";
 import "antd/dist/antd.css";
 import { AiFillMinusCircle, AiOutlineArrowRight } from "react-icons/ai";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
+// import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const StrengthSelectedPage = () => {
@@ -26,6 +27,26 @@ const StrengthSelectedPage = () => {
 	useEffect(() => {
 		getData();
 	}, []);
+
+	const handleSubmit = (e) => {
+		// const navigate = useNavigate();
+		e.preventDefault();
+		axios.post("http://localhost:3000/api/user/strength/1", {
+			strength_1 : strengthSelected[0],
+			strength_2 : strengthSelected[1],
+			strength_3 : strengthSelected[2],
+			strength_4 : strengthSelected[3],
+			strength_5 : strengthSelected[4],
+			strength_6 : strengthSelected[5],
+			strength_7 : strengthSelected[6],
+			strength_8 : strengthSelected[7]
+		}).then((response) => {
+			console.log(response.data);
+			window.location.href = "/profile";
+		}).catch((error) => {
+			console.log(error);
+		});
+	};
 
 	const checkBoxSelected = (e) => {
 		console.log(e.target.value);
@@ -84,7 +105,7 @@ const StrengthSelectedPage = () => {
 					<button className="clear-ans-btn" type="reset">
 						<AiFillMinusCircle></AiFillMinusCircle> Clear Answer
 					</button>
-					<button className="continue-btn" type="submit" value="Submit" >
+					<button className="continue-btn" onClick={handleSubmit}>
 						Continue <AiOutlineArrowRight></AiOutlineArrowRight>
 					</button>
 				</div>

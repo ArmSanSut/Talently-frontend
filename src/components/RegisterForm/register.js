@@ -23,6 +23,7 @@ const RegisterForm = () => {
 		catch (err) {
 
 		}
+
 	};
 	const handleSubmitFormFailed = () => {
 

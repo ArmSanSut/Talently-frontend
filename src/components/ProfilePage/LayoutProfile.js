@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable no-mixed-spaces-and-tabs */
 import React, { useState, useEffect } from "react";
 import "./layoutProfile.css";
@@ -8,9 +9,31 @@ import AchievementCreate from "./achievement/achievementCreate";
 import MotivateBar from "./motivateBar";
 import EnvironmentBar from "./environmentBar";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 const LayoutProfile = () => {
 	const [isModalVisible, setIsModalVisible] = useState(false);	
+	const [firstName, setFirstName] = useState([]);
+	const [lastName, setLastName] = useState([]);
+	const [email, setEmail] = useState([]);
+
+	useEffect(() => {
+		const token = localStorage.getItem("token");
+		if (token) {
+			var decode = jwt_decode(token);
+			console.log(decode);
+
+			const getFirstName = decode.firstname;
+			setFirstName(getFirstName);
+
+			const getLastName = decode.lastName;
+			setLastName(getLastName);
+
+			const getEmail = decode.email;
+			setEmail(getEmail);
+		}
+	}, []);
+
 	const handleOk = () => {
 		setIsModalVisible(false);
 	};
@@ -22,18 +45,33 @@ const LayoutProfile = () => {
 
 	const [showSecondNav, setShowSecondNav] = useState(false);
 	const [strength, setStrength] = useState([]);
+	const [achievement, setAchievement] = useState([]);
 
 	const navigate = useNavigate();
+	
 
 	useEffect(() => {
 		const getStrength = () => {
-			axios.get("http://localhost:3000/api/user/strength/1")
+			const id = localStorage.getItem("ID");
+			axios.get(`http://localhost:3000/api/user/strength/${id}`)
 				.then((res) => {
 					setStrength(res.data);
 				}).catch(err => console.log(err));
 		};
 		getStrength();
 	}, []);
+
+	useEffect(() => {
+		const getAchievement = () => {
+			const id = localStorage.getItem("ID");
+			axios.get(`http://localhost:3000/api/user/achievement/${id}`)
+				.then((response)=> {
+					setAchievement(response.data);
+				}).catch(err => console.log(err));
+		};
+		getAchievement();
+		console.log(achievement);
+	}, [isModalVisible]);
 
 	const handleHamburgerClick = (e) => {
 		e.preventDefault();
@@ -43,15 +81,16 @@ const LayoutProfile = () => {
 		navigate("/strength");
 	};
 	const handleAddAchievement = () => {
-		// navigate("/achievement");
-		// console.log("add 2 click");
 		setIsModalVisible(true);
 	};
+
+	// console.log(achievement);
+
 	return (
 		<div className="profile">
 			<div className="profile-bg">
 				<img className="profile-bluebg" src="bluebg.png" />
-				<img className="profile-purplebg" src="profile-purplebg.png" />
+				<img className="profile-purplebg" src="purplebg.png" />
 				<nav className="head-profile1">
 					<img className="profile-logo" src="logo.png" />
 					<ul className="center">
@@ -114,8 +153,8 @@ const LayoutProfile = () => {
 					<div className="about-me-container">
 						<div className="user-detail" >
 							<Avatar size={55} icon={<UserOutlined />} style={{ marginTop: 2 }} />
-							<h4>Amonrat Pongka</h4>
-							<h4>Amonrat.Pongka@gmail.com</h4>
+							<h4>{firstName} {lastName}</h4>
+							<h4>{email}</h4>
 							<div className="hashtag-box">
 								<h4 className="hashtag">#dreamer</h4>
 							</div>
@@ -187,9 +226,16 @@ const LayoutProfile = () => {
 										<button className="btn1" onClick={handleAddStrength}>+ เพิ่ม</button>
 									</div>
 								</div>
-								{strength && strength.map(x => (<>
-									<img key={x.image} src={"http://localhost:3000/strength_images/" + x.image} />
-								</>))}
+								<div className="display-image-strength">
+									{strength && strength.map(x => (
+										
+										<div >
+											<img key={x.image} src={"http://localhost:3000/strength_images/" + x.image} style={{ margin : 10,  }}/>
+										</div>
+									
+										
+									))}
+								</div>
 							</div>
 							<div className="achievement-box">
 								<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
@@ -198,8 +244,21 @@ const LayoutProfile = () => {
 										<h5 className="text-right-container-3">ความสำเร็จในชีวิต</h5>
 										<button className="btn2" onClick={handleAddAchievement}>+ เพิ่ม</button>
 										<Modal title="Personal Achievements" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
-											<AchievementCreate />
+											<AchievementCreate setIsModalVisible={setIsModalVisible}/>
 										</Modal>
+									</div>
+									<div className="display-achievement">
+										{achievement && achievement.map(y => (
+											<div>
+												<>
+													<h3>{y.title}</h3>
+													<p>{y.description}</p>	
+													<p>{y.date_start}</p>
+													<p>{y.date_end}</p>
+												</>
+												
+											</div>
+										))}
 									</div>
 
 								</div>
@@ -211,7 +270,6 @@ const LayoutProfile = () => {
 					</div>
 				</div>
 			</div>
-
 		</div>
 	);
 };

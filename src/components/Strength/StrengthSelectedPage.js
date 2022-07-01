@@ -29,9 +29,9 @@ const StrengthSelectedPage = () => {
 	}, []);
 
 	const handleSubmit = (e) => {
-		// const navigate = useNavigate();
+		const id = localStorage.getItem("ID");
 		e.preventDefault();
-		axios.post("http://localhost:3000/api/user/strength/1", {
+		axios.post(`http://localhost:3000/api/user/strength/${id}`, {
 			strength_1 : strengthSelected[0],
 			strength_2 : strengthSelected[1],
 			strength_3 : strengthSelected[2],

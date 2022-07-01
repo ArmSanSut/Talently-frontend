@@ -5,16 +5,38 @@ import "antd/dist/antd.css";
 import { Button, Checkbox, Form, Input } from "antd";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import jwtDecode from "jwt-decode";
+import "./login.css";
+// import { decode } from "jsonwebtoken";
+
+// import { useSelector } from "react-redux";
 
 
 // eslint-disable-next-line react/prop-types
 const Login = () => {
-	const state = useSelector(x => x.answer.answers);
-	const [form] = Form.useForm();
+	// const state = useSelector(x => x.answer.answers);
+	// const [form] = Form.useForm();
+	const navigate = useNavigate();
+
+	const postAnswer = async () => {
+		let answers = JSON.parse(localStorage.getItem("answers"));
+		const id = parseInt(localStorage.getItem("ID"), 10);
+		if (answers) {
+			console.log(answers);
+			for (let index = 0; index < answers.length; index++) {
+				answers[index][0] = id;
+			}
+			axios.post("http://localhost:3000/api/user/quiz/", answers)
+				.then(res => {
+					console.log(res.data);
+					localStorage.removeItem("answers");
+				})
+				.catch(err => console.log(err));
+		}
+	};
 
 	const onFinish = async (values) => {
-		const navigate = useNavigate();
+		// const navigate = useNavigate();
 		console.log("Success:", values);
 
 		try {
@@ -23,28 +45,17 @@ const Login = () => {
 				username: values.username,
 				password: values.password,
 			});
+			const decode = jwtDecode(result.data.token);
+			console.log(decode.id);
 			localStorage.setItem("token", result.data.token);
+			localStorage.setItem("ID", decode.id);
 
-			await axios.post("http://localhost:3000/api/user/quiz/", {
-				answers: state,
+			await postAnswer();
 
-			}).then((response) => {
-				console.log(response);
-				navigate("/profile");
-			}).catch((error) => {
-				console.log(error);
-			});
-
-
+			navigate("/profile");
 		} catch (e) {
-			form.setFields([
-				{
-					name: "username",
-					errors: [e.response.data.error],
-				},
-			]);
+			console.log(e);
 		}
-
 	};
 
 	const onFinishFailed = (errorInfo) => {
@@ -127,6 +138,7 @@ const Login = () => {
 
 			</Form.Item>
 		</Form>
+
 	);
 };
 

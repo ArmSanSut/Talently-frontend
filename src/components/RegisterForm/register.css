@@ -21,6 +21,7 @@
 
 .group-bg {
     width: 1125px;
+    position: absolute;
 }
 
 .register-form {

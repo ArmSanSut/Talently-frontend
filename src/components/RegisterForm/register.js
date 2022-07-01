@@ -4,8 +4,10 @@ import "antd/dist/antd.css";
 import { Button, Form, Input } from "antd";
 import "./register.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
+	const navigate = useNavigate();
 	const handleSubmitForm = async (values) => {
 
 		console.log("Registration Successfully", values);
@@ -23,7 +25,7 @@ const RegisterForm = () => {
 		catch (err) {
 
 		}
-
+		navigate("/login");
 	};
 	const handleSubmitFormFailed = () => {
 

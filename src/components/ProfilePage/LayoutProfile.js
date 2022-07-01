@@ -12,13 +12,13 @@ import axios from "axios";
 
 const LayoutProfile = () => {
 	const [isModalVisible, setIsModalVisible] = useState(false);	
-	  const handleOk = () => {
+	const handleOk = () => {
 		setIsModalVisible(false);
-	  };
+	};
 	
-	  const handleCancel = () => {
+	const handleCancel = () => {
 		setIsModalVisible(false);
-	  };
+	};
 	
 
 	const [showSecondNav, setShowSecondNav] = useState(false);
@@ -63,7 +63,7 @@ const LayoutProfile = () => {
 		<div className="profile">
 			<div className="profile-bg">
 				<img className="profile-bluebg" src="bluebg.png" />
-				<img className="profile-purplebg" src="profile-purplebg.png" />
+				<img className="profile-purplebg" src="purplebg.png" />
 				<nav className="head-profile1">
 					<img className="profile-logo" src="logo.png" />
 					<ul className="center">
@@ -71,7 +71,7 @@ const LayoutProfile = () => {
 							<Link to="/about">เกี่ยวกับเรา</Link>
 						</li>
 						<li className="item-center">
-							<Link to="/test">แบบทดสอบ</Link>
+							<Link to="/quiz">แบบทดสอบ</Link>
 						</li>
 						<li className="item-center">
 							<Link to="/contact">ติดต่อเรา</Link>
@@ -238,7 +238,6 @@ const LayoutProfile = () => {
 					</div>
 				</div>
 			</div>
-
 		</div>
 	);
 };

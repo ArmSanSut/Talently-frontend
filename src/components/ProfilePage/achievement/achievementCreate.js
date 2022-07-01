@@ -8,10 +8,10 @@ const { TextArea } = Input;
 const { RangePicker } = DatePicker;
 
 const AchievementCreate = () => {
-	const onFinish = () => {
-		
+	const onFinish = (values) => {
+		console.log("success", values);
 		const id = localStorage.getItem("ID"); 
-		const achievement_result = axios.post(`http://lcoalhost:3000/api/user/achievement/:${id}`);
+		const achievement_result = axios.post(`http://lcoalhost:3000/api/user/achievement/${id}`);
 		console.log("Success:", achievement_result);
 	};
 

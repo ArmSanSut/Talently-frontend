@@ -9,9 +9,31 @@ import AchievementCreate from "./achievement/achievementCreate";
 import MotivateBar from "./motivateBar";
 import EnvironmentBar from "./environmentBar";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 const LayoutProfile = () => {
 	const [isModalVisible, setIsModalVisible] = useState(false);	
+	const [firstName, setFirstName] = useState([]);
+	const [lastName, setLastName] = useState([]);
+	const [email, setEmail] = useState([]);
+
+	useEffect(() => {
+		const token = localStorage.getItem("token");
+		if (token) {
+			var decode = jwt_decode(token);
+			console.log(decode);
+
+			const getFirstName = decode.firstname;
+			setFirstName(getFirstName);
+
+			const getLastName = decode.lastName;
+			setLastName(getLastName);
+
+			const getEmail = decode.email;
+			setEmail(getEmail);
+		}
+	}, []);
+
 	const handleOk = () => {
 		setIsModalVisible(false);
 	};
@@ -131,8 +153,8 @@ const LayoutProfile = () => {
 					<div className="about-me-container">
 						<div className="user-detail" >
 							<Avatar size={55} icon={<UserOutlined />} style={{ marginTop: 2 }} />
-							<h4>Amonrat Pongka</h4>
-							<h4>Amonrat.Pongka@gmail.com</h4>
+							<h4>{firstName} {lastName}</h4>
+							<h4>{email}</h4>
 							<div className="hashtag-box">
 								<h4 className="hashtag">#dreamer</h4>
 							</div>

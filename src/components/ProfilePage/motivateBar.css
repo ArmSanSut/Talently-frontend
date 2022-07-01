@@ -14,10 +14,4 @@
     justify-content: center;
     margin: 10px;
 }
-.progress-display .ant-progress-inner {
-    transform: rotateY(3.142rad);
-}
 
-/* .progress.ant-progress-outer {
-
-} */

@@ -129,10 +129,13 @@ const QuizItem = () => {
 						<div>
 							<div className="bar">
 								<p style={{ margin: "0px", fontSize: "16px" }}>คำถามที่ {number} จาก 35</p>
-								<Progress percent={percent} showInfo={false} />
+								<Progress percent={percent} showInfo={false} strokeColor={{
+									"0%": "#3A13B8",
+									"100%": "#A255FF",
+								}} />
 							</div>
 							<div>
-								<h5 className="head">
+								<h5 className="head-quiz">
 									{question.map(val =>
 										val.id === number && (
 											`Question ${val.id} : ${val.question}`

@@ -6,6 +6,7 @@ import { Button, Checkbox, Form, Input } from "antd";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
+import "./login.css";
 // import { decode } from "jsonwebtoken";
 
 // import { useSelector } from "react-redux";
@@ -137,6 +138,7 @@ const Login = () => {
 
 			</Form.Item>
 		</Form>
+
 	);
 };
 

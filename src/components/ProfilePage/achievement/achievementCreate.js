@@ -2,13 +2,17 @@ import React from "react";
 import "./achievement.css";
 import { Button, DatePicker, Form, Input } from "antd";
 import "antd/dist/antd.css";
+import axios from "axios";
 
 const { TextArea } = Input;
 const { RangePicker } = DatePicker;
 
 const AchievementCreate = () => {
-	const onFinish = (values) => {
-		console.log("Success:", values);
+	const onFinish = () => {
+		
+		const id = localStorage.getItem("ID"); 
+		const achievement_result = axios.post(`http://lcoalhost:3000/api/user/achievement/:${id}`);
+		console.log("Success:", achievement_result);
 	};
 
 	const onFinishFailed = (errorInfo) => {

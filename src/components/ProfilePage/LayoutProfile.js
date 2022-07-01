@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable no-mixed-spaces-and-tabs */
 import React, { useState, useEffect } from "react";
 import "./layoutProfile.css";
@@ -22,6 +23,7 @@ const LayoutProfile = () => {
 
 	const [showSecondNav, setShowSecondNav] = useState(false);
 	const [strength, setStrength] = useState([]);
+	const [achievement, setAchievement] = useState([]);
 
 	const navigate = useNavigate();
 
@@ -34,6 +36,16 @@ const LayoutProfile = () => {
 		};
 		getStrength();
 	}, []);
+
+	useEffect(() => {
+		const getAchievement = () => {
+			axios.get("hhtp:localhost:3000/api/user/achievement/1")
+				.then((response)=> {
+					setAchievement(response.data);
+				}).catch(err => console.log(err));
+		};
+		getAchievement();
+	});
 
 	const handleHamburgerClick = (e) => {
 		e.preventDefault();
@@ -187,9 +199,16 @@ const LayoutProfile = () => {
 										<button className="btn1" onClick={handleAddStrength}>+ เพิ่ม</button>
 									</div>
 								</div>
-								{strength && strength.map(x => (<>
-									<img key={x.image} src={"http://localhost:3000/strength_images/" + x.image} />
-								</>))}
+								<div className="display-image-strength">
+									{strength && strength.map(x => (
+										
+										<div >
+											<img key={x.image} src={"http://localhost:3000/strength_images/" + x.image} style={{ margin : 10,  }}/>
+										</div>
+									
+										
+									))}
+								</div>
 							</div>
 							<div className="achievement-box">
 								<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
@@ -200,6 +219,14 @@ const LayoutProfile = () => {
 										<Modal title="Personal Achievements" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
 											<AchievementCreate />
 										</Modal>
+									</div>
+									<div className="display-achievement">
+										{achievement && achievement.map(y => (
+											<div>
+												<h3>{y.title}</h3>
+												<p>{y.description}</p>
+											</div>
+										))}
 									</div>
 
 								</div>

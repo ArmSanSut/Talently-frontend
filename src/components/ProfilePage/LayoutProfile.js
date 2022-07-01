@@ -26,10 +26,12 @@ const LayoutProfile = () => {
 	const [achievement, setAchievement] = useState([]);
 
 	const navigate = useNavigate();
+	
 
 	useEffect(() => {
 		const getStrength = () => {
-			axios.get("http://localhost:3000/api/user/strength/1")
+			const id = localStorage.getItem("ID");
+			axios.get(`http://localhost:3000/api/user/strength/${id}`)
 				.then((res) => {
 					setStrength(res.data);
 				}).catch(err => console.log(err));
@@ -39,13 +41,15 @@ const LayoutProfile = () => {
 
 	useEffect(() => {
 		const getAchievement = () => {
-			axios.get("hhtp:localhost:3000/api/user/achievement/1")
+			const id = localStorage.getItem("ID");
+			axios.get(`http://localhost:3000/api/user/achievement/${id}`)
 				.then((response)=> {
 					setAchievement(response.data);
 				}).catch(err => console.log(err));
 		};
 		getAchievement();
-	});
+		console.log(achievement);
+	}, [isModalVisible]);
 
 	const handleHamburgerClick = (e) => {
 		e.preventDefault();
@@ -55,10 +59,11 @@ const LayoutProfile = () => {
 		navigate("/strength");
 	};
 	const handleAddAchievement = () => {
-		// navigate("/achievement");
-		// console.log("add 2 click");
 		setIsModalVisible(true);
 	};
+
+	// console.log(achievement);
+
 	return (
 		<div className="profile">
 			<div className="profile-bg">
@@ -217,14 +222,19 @@ const LayoutProfile = () => {
 										<h5 className="text-right-container-3">ความสำเร็จในชีวิต</h5>
 										<button className="btn2" onClick={handleAddAchievement}>+ เพิ่ม</button>
 										<Modal title="Personal Achievements" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
-											<AchievementCreate />
+											<AchievementCreate setIsModalVisible={setIsModalVisible}/>
 										</Modal>
 									</div>
 									<div className="display-achievement">
 										{achievement && achievement.map(y => (
 											<div>
-												<h3>{y.title}</h3>
-												<p>{y.description}</p>
+												<>
+													<h3>{y.title}</h3>
+													<p>{y.description}</p>	
+													<p>{y.date_start}</p>
+													<p>{y.date_end}</p>
+												</>
+												
 											</div>
 										))}
 									</div>

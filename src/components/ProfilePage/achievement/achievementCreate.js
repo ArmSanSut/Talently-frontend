@@ -1,18 +1,37 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import React, { useState } from "react";
 import "./achievement.css";
 import { Button, DatePicker, Form, Input } from "antd";
 import "antd/dist/antd.css";
 import axios from "axios";
+// import { useNavigate } from "react-router-dom";
 
 const { TextArea } = Input;
 const { RangePicker } = DatePicker;
 
-const AchievementCreate = () => {
-	const onFinish = (values) => {
+const AchievementCreate = ({setIsModalVisible}) => {
+	// const navigate = useNavigate();
+	const [dateSelected, setDateSelected] = useState([]);
+
+	const onSelectedDate = (date,dateString) => {
+		console.log(dateString);
+		setDateSelected(dateString);
+	};
+	const onFinish = async (values) => {
+		
 		console.log("success", values);
+		console.log("date start", dateSelected);
+		
 		const id = localStorage.getItem("ID"); 
-		const achievement_result = axios.post(`http://lcoalhost:3000/api/user/achievement/${id}`);
-		console.log("Success:", achievement_result);
+		await axios.post(`http://localhost:3000/api/user/achievement/${id}` , {
+			date_start : dateSelected[0],
+			date_end : dateSelected[1],
+			title : values.title,
+			description : values.description
+			
+		});
+		setIsModalVisible(false);
+		// navigate("/profile");
 	};
 
 	const onFinishFailed = (errorInfo) => {
@@ -70,12 +89,8 @@ const AchievementCreate = () => {
 					}}
 				>
 					<RangePicker
-						showTime={{
-							format: "HH:mm",
-						}}
-						format="YYYY-MM-DD HH:mm"
-						// onChange={onChange}
-						// onOk={onOk}
+						format="YYYY-MM-DD"
+						onChange={onSelectedDate}
 					/>
 				</Form.Item>
 

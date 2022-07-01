@@ -15,3 +15,6 @@
     margin: 10px;
 }
 
+.progress-display .ant-progres-inner {
+    transform: rotate(3.142rad);
+}

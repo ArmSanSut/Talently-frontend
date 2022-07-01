@@ -14,3 +14,13 @@
     justify-content: center;
     margin: 10px;
 }
+
+.progress-display .ant-progress-inner {
+    transform: rotate(3.142rad);
+}
+
+/* .ant-progress-bg {
+    background: white;
+} */
+
+

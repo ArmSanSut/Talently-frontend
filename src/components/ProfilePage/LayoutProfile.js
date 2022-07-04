@@ -149,7 +149,7 @@ const LayoutProfile = () => {
 							<Link to="/about">เกี่ยวกับเรา</Link>
 						</li>
 						<li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
-							<Link to="/test">แบบทดสอบ</Link>
+							<Link to="/quiz">แบบทดสอบ</Link>
 						</li>
 						<li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
 							<Link to="/contact">ติดต่อเรา</Link>

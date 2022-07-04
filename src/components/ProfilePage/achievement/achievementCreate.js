@@ -1,34 +1,36 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import "./achievement.css";
-import { Button, DatePicker, Form, Input } from "antd";
+import { Button, DatePicker, Form, Input, Select } from "antd";
 import "antd/dist/antd.css";
 import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 
 const { TextArea } = Input;
 const { RangePicker } = DatePicker;
+const { Option } = Select;
 
-const AchievementCreate = ({setIsModalVisible}) => {
+const AchievementCreate = ({ setIsModalVisible }) => {
 	// const navigate = useNavigate();
 	const [dateSelected, setDateSelected] = useState([]);
 
-	const onSelectedDate = (date,dateString) => {
+	const onSelectedDate = (date, dateString) => {
 		console.log(dateString);
 		setDateSelected(dateString);
 	};
 	const onFinish = async (values) => {
-		
+
 		console.log("success", values);
 		console.log("date start", dateSelected);
-		
-		const id = localStorage.getItem("ID"); 
-		await axios.post(`http://localhost:3000/api/user/achievement/${id}` , {
-			date_start : dateSelected[0],
-			date_end : dateSelected[1],
-			title : values.title,
-			description : values.description
-			
+
+		const id = localStorage.getItem("ID");
+		await axios.post(`http://localhost:3000/api/user/achievement/${id}`, {
+			date_start: dateSelected[0],
+			date_end: dateSelected[1],
+			title: values.title,
+			description: values.description,
+			type: values.type
+
 		});
 		setIsModalVisible(false);
 		// navigate("/profile");
@@ -56,6 +58,22 @@ const AchievementCreate = ({setIsModalVisible}) => {
 				autoComplete="off"
 			>
 				<Form.Item
+					name="type"
+					label="Type"
+					rules={[
+						{
+							required: true,
+							message: "Please select type!",
+						},
+					]}
+				>
+					<Select placeholder="select your type achievements">
+						<Option value="Personal">Personal</Option>
+						<Option value="Career">Career</Option>
+						<Option value="other">Other</Option>
+					</Select>
+				</Form.Item>
+				<Form.Item
 					label="Title"
 					name="title"
 					rules={[
@@ -80,9 +98,9 @@ const AchievementCreate = ({setIsModalVisible}) => {
 				</Form.Item>
 
 				<Form.Item
-					label = "Time Selected"
+					label="Time Selected"
 					name="date"
-					
+
 					wrapperCol={{
 						offset: 0,
 						span: 18,
@@ -101,7 +119,7 @@ const AchievementCreate = ({setIsModalVisible}) => {
 					}}
 				>
 					<Button type="primary" htmlType="submit" >
-                        Submit
+						Submit
 					</Button>
 				</Form.Item>
 			</Form>

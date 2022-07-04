@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Prompt:ital,wght@0,200;1,100&display=swap');
+
+.layout-login {
+    height: 909px;
+    position: relative;
+    display: flex;
+    justify-content:space-between;
+    font-family: 'Prompt', sans-serif;
+    font-weight: bold;
+}
+
+.layout-l {
+    background: darkblue;
+    width: 50%;
+    position: relative;
+}
+
+.blue-loginbg {
+    position: absolute;
+    left: 0%;
+    right: 73.09%;
+    top: 0%;
+    bottom: 77.16%;
+}
+
+.yellow-loginbg {
+    position: absolute;
+    left: 0%;
+    right: 61.67%;
+    top: 83.91%;
+    bottom: 0%;
+}
+
+.word-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 400px;
+}
+
+h1.word {
+    color: white;
+    font-weight: 700;
+    font-size: 64px;
+}
+
+p.paragraph {
+    color: white;
+    font-size: 15px;
+    padding: 0px 140px;
+}
+
+.layout-r{
+    background: white;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    opacity: 0.95;
+    width: 50%;
+    right: 0;
+}
+
+.box-login {
+    border: 1px solid white;
+    box-shadow: 2px 2px 2px 2px gray;
+    position: absolute;
+    padding: 30px 0px;
+    width: 503px;
+    height: 389px;
+    margin-top: 280px;
+    margin-left: 100px;
+}
+
+.head-login {
+    margin-left: 70px;
+    margin-bottom: 50px;
+    font-weight:bolder;
+    font-size: 25px;
+}

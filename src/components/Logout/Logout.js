@@ -5,9 +5,13 @@ function Logout() {
 
 
 	const token = localStorage.getItem("token");
+	const ID = localStorage.getItem("ID");
+	const image = localStorage.getItem("image");
 
-	if (token) {
+	if (token || ID || image) {
 		localStorage.removeItem("token");
+		localStorage.removeItem("ID");
+		localStorage.removeItem("image");
 	}
 	window.location.href = "/";
 	return (

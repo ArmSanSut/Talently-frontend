@@ -7,12 +7,13 @@ import Choices from "./Choices";
 import { Button, Progress, Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { addAnswer } from "./storeReducer";
-// import Login from "../Login/Login";
+import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const QuizItem = () => {
-	const answers = useSelector(state => state.answer.answers);
-	console.log("answers", answers);
+	const navigate = useNavigate();
+	const answers_selected = useSelector(state => state.answer.answers);
+	console.log("answers", answers_selected);
 
 	const dispatch = useDispatch();
 
@@ -30,19 +31,29 @@ const QuizItem = () => {
 
 	const [isModalVisible, setIsModalVisible] = useState(false);
 
-	// const [id, setID] = useState();
 
-	const showModal = () => {
-		// if (choiceSelected.length !== 4) return;
-		// dispatch(addAnswer([1, id, choiceSelected.join(), 1]));
-		setIsModalVisible(true);
-		console.log("numberShowmodal", number);
+	const onSubmitAnswer = () => {
 		if (number === 4) {
-			console.log("numberIf", number);
-			const answerStr = JSON.stringify(answers);
-			console.log(answerStr);
-			localStorage.setItem("answers", answerStr);
+			console.log("answers bug", answers_selected);
+			const answerStr = JSON.stringify(answers_selected);
+			console.log("3",answerStr);
+			let answers = JSON.parse(answerStr);
+		const id = parseInt(localStorage.getItem("ID"), 10);
+		if (answers) {
+			console.log("4",answers);
+			for (let index = 0; index < answers.length; index++) {
+				answers[index][0] = id;
+			}
+			axios.post("http://localhost:3000/api/user/quiz/", answers)
+				.then(res => {
+					console.log(res.data);
+				})
+				.catch(err => console.log(err));
 		}
+		}
+		
+		
+		navigate("/profile");
 	};
 
 	const handleOk = () => {
@@ -179,7 +190,7 @@ const QuizItem = () => {
 										{/* <Login /> */}
 									</Modal>
 									<Button className="list-btn-sent-ans"
-										onClick={showModal}
+										onClick={(onSubmitAnswer)}
 									>
 										ส่งคำตอบ
 									</Button>

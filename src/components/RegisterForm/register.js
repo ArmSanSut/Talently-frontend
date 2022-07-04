@@ -1,26 +1,29 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-empty */
-import React from "react";
+import React, {  useState } from "react";
 import "antd/dist/antd.css";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input} from "antd";
 import "./register.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
 	const navigate = useNavigate();
+	const [image, setImage] = useState("");
 	const handleSubmitForm = async (values) => {
 
 		console.log("Registration Successfully", values);
 
 		try {
+			const formData = new FormData();
+			formData.append("name", values.name);
+			formData.append("sirname", values.sirname);
+			formData.append("username", values.username);
+			formData.append("email", values.email);
+			formData.append("password", values.password);
+			formData.append("image", image);
 			const url = "http://localhost:3000";
-			await axios.post(`${url}/api/user/register/`, {
-				name: values.name,
-				sirname: values.sirname,
-				username: values.username,
-				email: values.email,
-				password: values.password,
-			});
+			await axios.post(`${url}/api/user/register/`, formData);
 		}
 		catch (err) {
 
@@ -30,11 +33,13 @@ const RegisterForm = () => {
 	const handleSubmitFormFailed = () => {
 
 	};
+
+	
 	return (
-		<div className="register-bg">
+		<div className="register-bg" >
 			<img className="purple-bg" src="purpleRegister.png" />
 			<img className="group-bg" src="groupbgRegister.png" />
-			<div className="register-form">
+			<div className="register-form" style={{ flexDirection : "column" }}>
 				<Form
 					style={{
 						marginTop: "2.5rem",
@@ -113,6 +118,7 @@ const RegisterForm = () => {
 					>
 						<Input.Password className="input" />
 					</Form.Item>
+					<input type="file" onChange={(e) => setImage(e.target.files[0])} /> Upload Image
 					<Form.Item
 						wrapperCol={{
 							offset: 0,
@@ -126,6 +132,7 @@ const RegisterForm = () => {
 					</Form.Item>
 
 				</Form>
+				
 			</div>
 
 		</div>

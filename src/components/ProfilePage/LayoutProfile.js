@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import "./layoutProfile.css";
 import { Link, useNavigate } from "react-router-dom";
-import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Modal } from "antd";
 import AchievementCreate from "./achievement/achievementCreate";
 import MotivateBar from "./motivateBar";
@@ -20,6 +19,9 @@ const LayoutProfile = () => {
 	const [firstName, setFirstName] = useState([]);
 	const [lastName, setLastName] = useState([]);
 	const [email, setEmail] = useState([]);
+	const [image, ] = useState(() => {
+		return localStorage.getItem("image");
+	} );
 
 	useEffect(() => {
 		const token = localStorage.getItem("token");
@@ -30,7 +32,7 @@ const LayoutProfile = () => {
 			const getFirstName = decode.firstname;
 			setFirstName(getFirstName);
 
-			const getLastName = decode.lastName;
+			const getLastName = decode.lastname;
 			setLastName(getLastName);
 
 			const getEmail = decode.email;
@@ -93,6 +95,9 @@ const LayoutProfile = () => {
 
 	const showDescription = () => {
 		setIsModalDescription(true);
+	};
+	const onEditImage = ()=> {
+		console.log("click to edit");
 	};
 
 	return (
@@ -161,7 +166,7 @@ const LayoutProfile = () => {
 				<div className="dashboard-container">
 					<div className="about-me-container">
 						<div className="user-detail" >
-							<Avatar size={55} icon={<UserOutlined />} style={{ marginTop: 2 }} />
+							<Avatar size={55} src= {`http://localhost:3000/static/users_images/${image}`} style={{ marginTop: 2 }} onClick={onEditImage}/>
 							<h4>{firstName} {lastName}</h4>
 							<h4>{email}</h4>
 							<div className="hashtag-box">

@@ -7,7 +7,7 @@ import Choices from "./Choices";
 import { Button, Progress, Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { addAnswer } from "./storeReducer";
-import Login from "../Login/Login";
+// import Login from "../Login/Login";
 
 // eslint-disable-next-line react/prop-types
 const QuizItem = () => {
@@ -113,6 +113,7 @@ const QuizItem = () => {
 	const getData = () => {
 		const url = "http://localhost:3000";
 		axios.get(`${url}/api/user/`).then((res) => {
+			console.log(res.data);
 			setQuestion(res.data);
 		});
 	};
@@ -136,7 +137,7 @@ const QuizItem = () => {
 							</div>
 							<div>
 								<h5 className="head-quiz">
-									{question.map(val =>
+									{question && question.map(val =>
 										val.id === number && (
 											`Question ${val.id} : ${val.question}`
 										)
@@ -145,7 +146,7 @@ const QuizItem = () => {
 							</div>
 							<div className="choice-list-grid">
 
-								{question.map(val =>
+								{question && question.map(val =>
 									val.id === number && (
 										<>
 											<div onClick={handleClick1}><Choices order={choice1} title={val.choice_1} /></div>
@@ -181,7 +182,7 @@ const QuizItem = () => {
 										onOk={handleOk} onCancel={handleCancel}
 										footer={null}
 									>
-										<Login />
+										{/* <Login /> */}
 									</Modal>
 									<Button className="list-btn-sent-ans"
 										onClick={showModal}

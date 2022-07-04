@@ -7,9 +7,6 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import "./login.css";
-// import { decode } from "jsonwebtoken";
-
-// import { useSelector } from "react-redux";
 
 
 // eslint-disable-next-line react/prop-types
@@ -55,6 +52,7 @@ const Login = () => {
 			navigate("/profile");
 		} catch (e) {
 			console.log(e);
+			alert("Your username or password is not correctly!!, please try again...");
 		}
 	};
 

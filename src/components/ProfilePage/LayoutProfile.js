@@ -10,9 +10,13 @@ import MotivateBar from "./motivateBar";
 import EnvironmentBar from "./environmentBar";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import { BsFlag } from "react-icons/bs";
+import { AiFillCalendar } from "react-icons/ai";
+import { BsCheckSquare } from "react-icons/bs";
 
 const LayoutProfile = () => {
-	const [isModalVisible, setIsModalVisible] = useState(false);	
+	const [isModalVisible, setIsModalVisible] = useState(false);
+	const [isModalDescription, setIsModalDescription] = useState(false);
 	const [firstName, setFirstName] = useState([]);
 	const [lastName, setLastName] = useState([]);
 	const [email, setEmail] = useState([]);
@@ -36,19 +40,21 @@ const LayoutProfile = () => {
 
 	const handleOk = () => {
 		setIsModalVisible(false);
+		setIsModalDescription(false);
 	};
-	
+
 	const handleCancel = () => {
 		setIsModalVisible(false);
+		setIsModalDescription(false);
 	};
-	
+
 
 	const [showSecondNav, setShowSecondNav] = useState(false);
 	const [strength, setStrength] = useState([]);
 	const [achievement, setAchievement] = useState([]);
 
 	const navigate = useNavigate();
-	
+
 
 	useEffect(() => {
 		const getStrength = () => {
@@ -65,7 +71,8 @@ const LayoutProfile = () => {
 		const getAchievement = () => {
 			const id = localStorage.getItem("ID");
 			axios.get(`http://localhost:3000/api/user/achievement/${id}`)
-				.then((response)=> {
+				.then((response) => {
+					console.log("data", response);
 					setAchievement(response.data);
 				}).catch(err => console.log(err));
 		};
@@ -84,7 +91,9 @@ const LayoutProfile = () => {
 		setIsModalVisible(true);
 	};
 
-	// console.log(achievement);
+	const showDescription = () => {
+		setIsModalDescription(true);
+	};
 
 	return (
 		<div className="profile">
@@ -169,14 +178,14 @@ const LayoutProfile = () => {
 						<div style={{ display: "flex", color: "black" }}>
 							<div>
 								<ul style={{ listStyleType: "none", width: "100%" }}>
-									<li>ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
-									<li>ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
+									<li><BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
+									<li><BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
 								</ul>
 							</div>
 							<div>
 								<ul style={{ listStyleType: "none", width: "100%" }}>
-									<li>ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
-									<li>ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
+									<li><BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
+									<li> <BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
 								</ul>
 							</div>
 						</div>
@@ -219,49 +228,52 @@ const LayoutProfile = () => {
 								<h5 className="text-right-container-1">พลังงาน / แรงขับเคลื่อน</h5>
 							</div>
 							<div className="strength-box">
-								<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-									<div></div>
-									<div className="strength-box-head">
-										<h5 className="text-right-container-2">จุดแข็ง 8 อันดับแรก</h5>
-										<button className="btn1" onClick={handleAddStrength}>+ เพิ่ม</button>
-									</div>
+								{/* <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}> */}
+								<div className="strength-box-head">
+									<h5 className="text-right-container-2">จุดแข็ง 8 อันดับแรก</h5>
+									<button className="btn1" onClick={handleAddStrength}>+ เพิ่ม</button>
 								</div>
+								{/* </div> */}
 								<div className="display-image-strength">
 									{strength && strength.map(x => (
-										
+
 										<div >
-											<img key={x.image} src={"http://localhost:3000/strength_images/" + x.image} style={{ margin : 10,  }}/>
+											<img className="img-strength" key={x.image} src={"http://localhost:3000/strength_images/" + x.image} style={{ margin: 10, }} />
 										</div>
-									
-										
+
+
 									))}
 								</div>
 							</div>
 							<div className="achievement-box">
-								<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-									<div></div>
-									<div className="achievement-box-head">
+								{/* <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}> */}
+								<div className="achievement-box-head">
+									<div>
 										<h5 className="text-right-container-3">ความสำเร็จในชีวิต</h5>
+									</div>
+									<div>
 										<button className="btn2" onClick={handleAddAchievement}>+ เพิ่ม</button>
-										<Modal title="Personal Achievements" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
-											<AchievementCreate setIsModalVisible={setIsModalVisible}/>
+										<Modal title="Achievements" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
+											<AchievementCreate setIsModalVisible={setIsModalVisible} />
 										</Modal>
 									</div>
-									<div className="display-achievement">
-										{achievement && achievement.map(y => (
-											<div>
-												<>
-													<h3>{y.title}</h3>
-													<p>{y.description}</p>	
-													<p>{y.date_start}</p>
-													<p>{y.date_end}</p>
-												</>
-												
-											</div>
-										))}
-									</div>
-
 								</div>
+								<div className="display-achievement">
+									{achievement && achievement.map(y => (
+										<div className="achievement">
+											<h3 className="title">{y.title} </h3>
+											<Modal title="Achievement" visible={isModalDescription} onOk={handleOk} onCancel={handleCancel} footer={null}>
+												<h3 className="title">{y.title}</h3>
+												<h6>Description :<p className="description"> {y.description}</p></h6>
+												<h6>Duration <AiFillCalendar></AiFillCalendar> : <p className="date"> {y.date_start} to {y.date_end}</p></h6>
+											</Modal>
+											<p className="date">{y.date_start} to {y.date_end} <a className="read-more" onClick={showDescription}>อ่านต่อ </a></p>
+											<p className="type-achievement"><BsFlag></BsFlag> {y.type}</p>
+										</div>
+									))}
+								</div>
+
+								{/* </div> */}
 
 
 

@@ -10,7 +10,7 @@
 .register-bg {
     background: darkblue;
     position: relative;
-    height: 100vh;
+    height: 909px;
 }
 
 .purple-bg {
@@ -20,8 +20,10 @@
 }
 
 .group-bg {
-    width: 1125px;
     position: absolute;
+    left: -11.25%;
+    right: 10.82%;
+    bottom: 0%;
 }
 
 .register-form {

@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Prompt:ital,wght@0,200;1,100&display=swap');
+
+.layout-home {
+    background: darkblue;
+    height: 909px;
+    position: relative;
+    font-family: 'Prompt', sans-serif;
+}
+
+.blue-homebg {
+    position: absolute;
+    left: 0%;
+    right: 73.32%;
+    top: 0%;
+}
+
+.logo-homebg {
+    position: absolute;
+    left: 0%;
+    right: 73.32%;
+    top: 2%;
+    width: 350px;
+}
+
+.yellow-homebg {
+    position: absolute;
+    left: 0%;
+    right: 61.98%;
+    top: 83.91%;
+    bottom: 0%;
+}
+
+.purple-homebg {
+    position: absolute;
+    left: 39.97%;
+    right: 0%;
+    top: 15.49%;
+}
+
+.combine-homebg {
+    position: absolute;
+    left: 48.22%;
+    right: 11.6%;
+    top: 12.66%;
+    bottom: 19.44%;
+}
+
+.people-homebg {
+    position: absolute;
+    left: 51.17%;
+    right: 5.65%;
+    top: 27.11%;
+    bottom: 19.56%;
+}
+
+ul.head-home-nav {
+    display: flex;
+    float: right;
+    z-index: 999 !important;
+    margin-right: 200px;
+    list-style-type: none;
+}
+
+li.head-home-nav-item {
+    margin: 40px 20px;
+}
+
+li.head-home-nav-btn {
+    margin: 30px 20px;
+}
+
+ul li a:hover {
+    color: rgb(249, 175, 3) !important;
+    cursor: pointer !important;
+}
+
+.btn-to-quiz {
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    width: 125px;
+    height: 45px;
+    background: linear-gradient(180deg, #EB9714 0%, #FF814B 100%);
+    color: white;
+}
+
+.content-home {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+}
+
+p.about-home {
+    color: #B3CAE3;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+h1.talent-home {
+    color: white;
+    font-weight: 700;
+    font-size: 64px;
+}
+
+p.home-paragraph {
+    font-weight: 400;
+    font-size: 16px;
+    color: #EAF6FF;
+    padding: 0px 850px 0px 0px;
+    margin-bottom: 30px;
+}
+
+.btn-to-quiz-content {
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    width: 191px;
+    height: 64px;
+    background: linear-gradient(180deg, #EB9714 0%, #FF814B 100%);
+    color: white;
+    font-weight: 700;
+font-size: 24px;
+}

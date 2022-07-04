@@ -14,21 +14,6 @@ import HomeLayout from "./components/HomePage/HomeLayout";
 function App() {
 
 	return (
-<<<<<<< HEAD
-		<div className="display">
-			<Routes>
-				{/* <Route path="/" element={<LayoutQuiz />}> */}
-				<Route path="/login" element={<Login />} />
-				<Route path="/quiz" element={<LayoutQuiz />} />
-				<Route path="/profile" element={<LayoutProfile />} />
-				<Route path="/register" element={<RegisterForm />} />
-				<Route path="/strength" element={<StrengthSelectedPage />} />
-				<Route path="/achievement" element={<AchievementCreate />} />
-				{/* <Route path="/login" element={<Login />} /> */}
-				{/* </Route> */}
-			</Routes>
-		</div>
-=======
 		<Routes>
 
 			<Route index element={<HomeLayout />} />
@@ -40,7 +25,6 @@ function App() {
 			<Route path="/achievement" element={<AchievementCreate />} />
 
 		</Routes>
->>>>>>> ba36f23c7ca40db745065aba1066f9b10c113d44
 	);
 }
 

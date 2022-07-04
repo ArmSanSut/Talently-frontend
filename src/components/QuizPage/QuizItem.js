@@ -149,10 +149,10 @@ const QuizItem = () => {
 								{question && question.map(val =>
 									val.id === number && (
 										<>
-											<div onClick={handleClick1}><Choices order={choice1} title={val.choice_1} /></div>
-											<div onClick={handleClick2}><Choices order={choice2} title={val.choice_2} /></div>
-											<div onClick={handleClick3}><Choices order={choice3} title={val.choice_3} /></div>
-											<div onClick={handleClick4}><Choices order={choice4} title={val.choice_4} /></div>
+											<div onClick={handleClick1}><Choices order={choice1} title={val.choice_1.split("::")[1]} /></div>
+											<div onClick={handleClick2}><Choices order={choice2} title={val.choice_2.split("::")[1]} /></div>
+											<div onClick={handleClick3}><Choices order={choice3} title={val.choice_3.split("::")[1]} /></div>
+											<div onClick={handleClick4}><Choices order={choice4} title={val.choice_4.split("::")[1]} /></div>
 
 										</>
 									)

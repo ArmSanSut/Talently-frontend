@@ -9,11 +9,11 @@ const Choices = ({order, title, select}) => {
 		<div className="choice-list-div">
 			<ul className="choiceList"  >
 				<li className= {select ? "not-selected": "selected"}>
-					{order === "1" && (<><RiNumber1 className="choiceBox"></RiNumber1> {title}</>)}
-					{order === "2" && (<><RiNumber2 className="choiceBox"></RiNumber2> {title}</>)}
-					{order === "3" && (<><RiNumber3 className="choiceBox"></RiNumber3> {title}</>)}
-					{order === "4" && (<><RiNumber4 className="choiceBox"></RiNumber4> {title}</>)}
-					{order === "" && (<><span className="choiceBox"></span>{title}</>)}
+					{order === 1 && (<><RiNumber1 className="choiceBox"></RiNumber1> {title}</>)}
+					{order === 2 && (<><RiNumber2 className="choiceBox"></RiNumber2> {title}</>)}
+					{order === 3 && (<><RiNumber3 className="choiceBox"></RiNumber3> {title}</>)}
+					{order === 4 && (<><RiNumber4 className="choiceBox"></RiNumber4> {title}</>)}
+					{order == "" && (<><span className="choiceBox"></span>{title}</>)}
 				</li>
 			</ul>
 

@@ -123,7 +123,7 @@ const LayoutProfile = () => {
 					</ul>
 					<ul className="right">
 						<li className="item-right">
-							<Link to="/login">เข้าสู่ระบบ</Link>
+							<Link to="/logout">ออกจากระบบ</Link>
 						</li>
 					</ul>
 				</nav>
@@ -158,7 +158,7 @@ const LayoutProfile = () => {
 							<Link to="/help">ช่วยเหลือ</Link>
 						</li>
 						<li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
-							<Link to="/login">เข้าสู่ระบบ</Link>
+							<Link to="/logout">ออกจากระบบ</Link>
 						</li>
 					</ul>
 					{/* <input type="checkbox" className="profile-check" /> */}

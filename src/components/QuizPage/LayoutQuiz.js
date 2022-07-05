@@ -32,7 +32,7 @@ const LayoutQuiz = () => {
 					</ul>
 					<ul className="quiz-login">
 						<li className="item-quiz-login">
-							<Link to="/login">เข้าสู่ระบบ</Link>
+							<Link to="/logout">ออกจากระบบ</Link>
 						</li>
 					</ul>
 				</nav>
@@ -65,7 +65,7 @@ const LayoutQuiz = () => {
 						<Link to="/quiz">แบบทดสอบ</Link>
 					</li>
 					<li className={`item-quiz ${showSecondNav ? "" : "hide-navbar-quiz"}`}>
-						<Link to="/login">เข้าสู่ระบบ</Link>
+						<Link to="/logout">ออกจากระบบ</Link>
 					</li>
 				</ul>
 			</nav>

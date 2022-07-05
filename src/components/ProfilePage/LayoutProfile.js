@@ -148,6 +148,7 @@ const LayoutProfile = () => {
 	};
 
 	const editDescription = (i) => {
+		console.log("i", i);
 		setIsModalUpdateAchievement(true);
 		setIndex(i);
 	};
@@ -355,8 +356,9 @@ const LayoutProfile = () => {
 										<div className="achievement" >
 											<div>
 												<h3 className="title" key={y.id}>{y.title}
-													<a className="edit-description" onClick={() => editDescription(i)}> <AiOutlineEdit></AiOutlineEdit></a>
+													
 													<a className="delete-achievement" onClick={() => deleteAchievement(y.id)}><AiOutlineDelete></AiOutlineDelete></a>
+													<a className="edit-description" onClick={() => editDescription(i)}> <AiOutlineEdit></AiOutlineEdit></a>
 												</h3>
 												<Modal title="Achievement" visible={isModalDescription} onOk={handleOk} onCancel={handleCancel} footer={null}>
 													<h3 className="title">{y.title}</h3>

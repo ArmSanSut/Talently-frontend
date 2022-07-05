@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import "./achievement/achievement.css";
@@ -14,6 +15,17 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement }) => {
 	console.log("id", achievement);
 	// const navigate = useNavigate();
 	const [dateSelected, setDateSelected] = useState([]);
+	// const [typeSelected, setTypeSelected] = useState([]);
+
+	// useEffect(() => {
+	// 	setTypeSelected(achievement.type);
+	// }, []);
+	// console.log(typeSelected);
+
+
+	// const achievement_list = achievement[parseInt(achievement.id)];
+	// console.log("11", achievement_list);
+	// const type_achievement = achievement_list.type;
 
 	const onSelectedDate = (date, dateString) => {
 		console.log(dateString);
@@ -60,6 +72,7 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement }) => {
 				<Form.Item
 					name="type"
 					label="Type"
+					// initialValue={type_achievement}
 					rules={[
 						{
 							required: true,
@@ -75,6 +88,7 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement }) => {
 				</Form.Item>
 				<Form.Item
 					label="Title"
+					// initialValue="hello-t"
 					name="title"
 					rules={[
 						{
@@ -87,6 +101,7 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement }) => {
 
 				<Form.Item
 					label="Description"
+					// initialValue={achievement.description}
 					name="description"
 					rules={[
 						{
@@ -99,6 +114,7 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement }) => {
 
 				<Form.Item
 					label="Time Selected"
+					// initialValue={achievement.date}
 					name="date"
 
 					wrapperCol={{

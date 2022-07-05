@@ -139,7 +139,13 @@ p.description {
     font-size: 15px;
     color: #4b7eff;
     float: right;
-    /* margin-top: 10px; */
+    margin-right: 10px;
+}
+
+.delete-achievement {
+    font-size: 15px;
+    color: #4b7eff;
+    float: right;
 }
 
 .read-more {

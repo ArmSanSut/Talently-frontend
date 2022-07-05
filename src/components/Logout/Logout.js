@@ -16,7 +16,7 @@ function Logout() {
 	window.location.href = "/";
 	return (
 
-		<h1 className="center">we are logging you out...</h1>
+		<h1 className="center">We are logging you out...</h1>
 	);
 }
 

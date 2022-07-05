@@ -90,7 +90,7 @@ const StrengthSelectedPage = () => {
 		</div>
 	));
 
-	console.log(strengthSelected);
+	console.log("length",strengthSelected.length);
 
 	return (
 		<div>

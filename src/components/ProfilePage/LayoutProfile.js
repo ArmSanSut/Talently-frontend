@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import "./layoutProfile.css";
 import { Link, useNavigate } from "react-router-dom";
-import { Avatar, Modal } from "antd";
+import { Avatar, Form, Modal, Button } from "antd";
 import AchievementCreate from "./achievement/achievementCreate";
 import MotivateBar from "./motivateBar";
 import EnvironmentBar from "./environmentBar";
@@ -15,13 +15,15 @@ import { BsCheckSquare } from "react-icons/bs";
 
 const LayoutProfile = () => {
 	const [isModalVisible, setIsModalVisible] = useState(false);
+	const [isEditModalVisible, setIsEditModalVisible] = useState(false);
 	const [isModalDescription, setIsModalDescription] = useState(false);
 	const [firstName, setFirstName] = useState([]);
 	const [lastName, setLastName] = useState([]);
 	const [email, setEmail] = useState([]);
-	const [image, ] = useState(() => {
+	const [image , setImage] = useState(null);
+	const [profileImage , setProfileImage ] = useState(() => {
 		return localStorage.getItem("image");
-	} );
+	});
 
 	useEffect(() => {
 		const token = localStorage.getItem("token");
@@ -43,11 +45,13 @@ const LayoutProfile = () => {
 	const handleOk = () => {
 		setIsModalVisible(false);
 		setIsModalDescription(false);
+		setIsEditModalVisible(false);
 	};
 
 	const handleCancel = () => {
 		setIsModalVisible(false);
 		setIsModalDescription(false);
+		setIsEditModalVisible(false);
 	};
 
 
@@ -96,8 +100,29 @@ const LayoutProfile = () => {
 	const showDescription = () => {
 		setIsModalDescription(true);
 	};
-	const onEditImage = ()=> {
+	const onEditImage = () => {
 		console.log("click to edit");
+		setIsEditModalVisible(true);
+	};
+	const handleSubmitForm = () => {
+		try {
+			const formData = new FormData();
+			formData.append("image", image);
+			console.log("profileImage",profileImage);
+			console.log("image",image);
+			const url = "http://localhost:3000";
+			const id = localStorage.getItem("ID");
+			axios.put(`${url}/api/user/edit-image/${id}`, formData).then(result => {
+				setProfileImage(result.data.profileImage);
+				localStorage.setItem("image", result.data.profileImage);
+				console.log(result.data);
+			});
+		}
+		catch (err) {
+			console.log("ERROR", err);
+		}
+		setIsEditModalVisible(false);
+		// setImage(image);
 	};
 
 	return (
@@ -123,7 +148,7 @@ const LayoutProfile = () => {
 					</ul>
 					<ul className="right">
 						<li className="item-right">
-							<Link to="/login">เข้าสู่ระบบ</Link>
+							<Link to="/">ออกจากระบบ</Link>
 						</li>
 					</ul>
 				</nav>
@@ -161,12 +186,29 @@ const LayoutProfile = () => {
 							<Link to="/login">เข้าสู่ระบบ</Link>
 						</li>
 					</ul>
-					{/* <input type="checkbox" className="profile-check" /> */}
 				</nav>
 				<div className="dashboard-container">
 					<div className="about-me-container">
 						<div className="user-detail" >
-							<Avatar size={55} src= {`http://localhost:3000/static/users_images/${image}`} style={{ marginTop: 2 }} onClick={onEditImage}/>
+							<Avatar size={55} src={`http://localhost:3000/static/users_images/${profileImage}`} style={{ marginTop: 2 }} onClick={onEditImage} />
+							<Modal title="Edit Profile Image" visible={isEditModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
+								<Form
+									onFinish={handleSubmitForm}
+								>
+									<input type="file" onChange={(e) => setImage(e.target.files[0])} /> Upload Image
+									<Form.Item
+										wrapperCol={{
+											offset: 0,
+											span: 16,
+										}}
+									>
+										<Button className="btn-submit" htmlType="submit">
+											ลงทะเบียน
+										</Button>
+
+									</Form.Item>
+								</Form>
+							</Modal>
 							<h4>{firstName} {lastName}</h4>
 							<h4>{email}</h4>
 							<div className="hashtag-box">
@@ -229,16 +271,11 @@ const LayoutProfile = () => {
 							</div>
 						</div>
 						<div className="right-container">
-							<div className="radar-chart-box">
-								<h5 className="text-right-container-1">พลังงาน / แรงขับเคลื่อน</h5>
-							</div>
 							<div className="strength-box">
-								{/* <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}> */}
 								<div className="strength-box-head">
 									<h5 className="text-right-container-2">จุดแข็ง 8 อันดับแรก</h5>
 									<button className="btn1" onClick={handleAddStrength}>+ เพิ่ม</button>
 								</div>
-								{/* </div> */}
 								<div className="display-image-strength">
 									{strength && strength.map(x => (
 
@@ -251,7 +288,6 @@ const LayoutProfile = () => {
 								</div>
 							</div>
 							<div className="achievement-box">
-								{/* <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}> */}
 								<div className="achievement-box-head">
 									<div>
 										<h5 className="text-right-container-3">ความสำเร็จในชีวิต</h5>
@@ -277,11 +313,6 @@ const LayoutProfile = () => {
 										</div>
 									))}
 								</div>
-
-								{/* </div> */}
-
-
-
 							</div>
 						</div>
 					</div>

@@ -115,6 +115,10 @@ const LayoutProfile = () => {
 	const handleAddStrength = () => {
 		navigate("/strength");
 	};
+	const handleEditStrength = ()=> {
+		console.log("click to edit");
+		navigate("/edit-strength");
+	};
 	const handleAddAchievement = () => {
 		setIsModalVisible(true);
 	};
@@ -171,6 +175,8 @@ const LayoutProfile = () => {
 				console.log("achievement", achievement);
 			}).catch(err => console.log(err));
 	};
+
+	
 
 	return (
 		<div className="profile">
@@ -250,7 +256,7 @@ const LayoutProfile = () => {
 										}}
 									>
 										<Button className="btn-submit" htmlType="submit">
-											ลงทะเบียน
+											ยืนยันการเปลี่นแปลง
 										</Button>
 
 									</Form.Item>
@@ -321,7 +327,10 @@ const LayoutProfile = () => {
 							<div className="strength-box">
 								<div className="strength-box-head">
 									<h5 className="text-right-container-2">จุดแข็ง 8 อันดับแรก</h5>
-									<button className="btn1" onClick={handleAddStrength}>+ เพิ่ม</button>
+									{ strength.length === 8 ?  	<button className="btn1" onClick={handleEditStrength}>+ แก้ไข</button>								
+										:					
+										<button className="btn1" onClick={handleAddStrength}>+ เพิ่ม</button>
+									}
 								</div>
 								<div className="display-image-strength">
 									{strength && strength.map(x => (

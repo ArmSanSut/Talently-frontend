@@ -13,7 +13,8 @@ import { useNavigate } from "react-router-dom";
 const QuizItem = () => {
 	const navigate = useNavigate();
 	const answers_selected = useSelector(state => state.answer.answers);
-	console.log("answers", answers_selected);
+	// console.log("answers", answers_selected);
+	const user_id = localStorage.getItem("ID");
 
 	const dispatch = useDispatch();
 
@@ -30,18 +31,78 @@ const QuizItem = () => {
 	const [choiceSelected, setChoiceSelected] = useState([]);
 
 	const onSubmitAnswer = () => {
-		if (number === 4) {
-			console.log("answers bug", answers_selected);
+		if (number === 36) {
+			// console.log("answers bug", answers_selected);
 			const answerStr = JSON.stringify(answers_selected);
-			console.log("3",answerStr);
+			// console.log("3",answerStr);
 			let answers = JSON.parse(answerStr);
 		const id = parseInt(localStorage.getItem("ID"), 10);
 		if (answers) {
-			console.log("4",answers);
+			const score = {
+				scoreM : {
+					M1 : 0,
+					M2 : 0,
+					M3 : 0,
+					M4 : 0,
+					M5 : 0,
+					M6 : 0,
+					M7 : 0,
+					M8 : 0,
+					M9 : 0,
+					M10 : 0,
+					M11 : 0,
+					M12 : 0
+				},
+				scoreB : {
+					B1 : 0,
+					B2 : 0,
+					B3 : 0,
+					B4 : 0,
+					B5 : 0,
+					B6 : 0,
+					B7 : 0,
+					B8 : 0
+				},
+				scoreW : {
+					W1 : 0,
+					W2 : 0,
+					W3 : 0,
+					W4 : 0,
+					W5 : 0,
+					W6 : 0,
+					W7 : 0,
+					W8 : 0
+				}
+			};
+
+			for (let i = 0; i < 35; i++){
+				let answerSplit = answers_selected[i].answer.split(",");
+				// console.log(answerSplit);
+				if (i < 15){
+					for (let index = 0; index < 4; index++) {
+						score["scoreM"][answerSplit[index]] += 4 - index;
+					}
+				}else if ( i >= 15 && i < 25){
+					for (let index = 0; index < 4; index++) {
+						score["scoreB"][answerSplit[index]] += 4 - index;
+					}
+				}else {
+					for (let index = 0; index < 4; index++) {
+						score["scoreW"][answerSplit[index]] += 4 - index;
+					}
+				}
+			}
+			console.log({id,score});
+			// console.log("test answers",answers);
 			for (let index = 0; index < answers.length; index++) {
 				answers[index][0] = id;
 			}
-			axios.post("http://localhost:3000/api/user/quiz/", answers)
+			// console.log("test2",{answers,score});
+			axios.post("http://localhost:3000/api/user/quiz/", {	
+				user_id,
+				answers,
+				score
+			})
 				.then(res => {
 					console.log(res.data);
 				})
@@ -49,13 +110,15 @@ const QuizItem = () => {
 		}
 		}
 		
-		
 		navigate("/profile");
 	};
 
 	const handleNext = (id) => {
 		if (choiceSelected.length !== 4) return;
-		dispatch(addAnswer([1, id, choiceSelected.join(), 1]));
+		dispatch(addAnswer({
+			no : id ,
+			answer : choiceSelected.join()
+		}));
 		if (number < 37) {
 			setNumber(number + 1);
 			console.log("number", number);
@@ -107,20 +170,20 @@ const QuizItem = () => {
 	const getData = () => {
 		const url = "http://localhost:3000";
 		axios.get(`${url}/api/user/`).then((res) => {
-			console.log(res.data);
+			// console.log(res.data);
 			setQuestion(res.data);
 		});
 	};
 	useEffect(() => {
 		getData();
 	}, []);
-	console.log(choiceSelected);
+	// console.log(choiceSelected);
 
 	return (
 		<div>
 			<div className="box">
 				<div className="inbox">
-					{number <= 3 ?
+					{number <= 35 ?
 						<div>
 							<div className="bar">
 								<p style={{ margin: "0px", fontSize: "16px" }}>คำถามที่ {number} จาก 35</p>
@@ -168,7 +231,7 @@ const QuizItem = () => {
 						:
 						<div className="finished-ans">
 							<p className="thanks">Thank you for your attention!!</p>
-							{number === 4 ?
+							{number === 36 ?
 								<div className="sent-ans">
 									<Button className="list-btn-sent-ans"
 										onClick={(onSubmitAnswer)}

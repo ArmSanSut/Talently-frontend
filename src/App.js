@@ -10,6 +10,7 @@ import StrengthSelectedPage from "./components/Strength/StrengthSelectedPage";
 import AchievementCreate from "./components/ProfilePage/achievement/achievementCreate";
 import LayoutLogin from "./components/Login/LayoutLogin";
 import HomeLayout from "./components/HomePage/HomeLayout";
+import Logout from "./components/Logout/Logout";
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
 			<Route path="/profile" element={<LayoutProfile />} />
 			<Route path="/strength" element={<StrengthSelectedPage />} />
 			<Route path="/achievement" element={<AchievementCreate />} />
-
+			<Route path="/logout" element={<Logout />} />
 		</Routes>
 	);
 }

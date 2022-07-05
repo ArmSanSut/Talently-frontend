@@ -10,13 +10,15 @@ import EnvironmentBar from "./environmentBar";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { BsFlag } from "react-icons/bs";
-import { AiFillCalendar } from "react-icons/ai";
+import { AiFillCalendar, AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import { BsCheckSquare } from "react-icons/bs";
+import UpdateAchievement from "./UpdateAchievement";
 
 const LayoutProfile = () => {
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	const [isEditModalVisible, setIsEditModalVisible] = useState(false);
 	const [isModalDescription, setIsModalDescription] = useState(false);
+	const [isModalUpdateAchievement, setIsModalUpdateAchievement] = useState(false);
 	const [firstName, setFirstName] = useState([]);
 	const [lastName, setLastName] = useState([]);
 	const [email, setEmail] = useState([]);
@@ -24,6 +26,7 @@ const LayoutProfile = () => {
 	const [profileImage , setProfileImage ] = useState(() => {
 		return localStorage.getItem("image");
 	});
+	const [index, setIndex] = useState();
 
 	useEffect(() => {
 		const token = localStorage.getItem("token");
@@ -46,12 +49,14 @@ const LayoutProfile = () => {
 		setIsModalVisible(false);
 		setIsModalDescription(false);
 		setIsEditModalVisible(false);
+		setIsModalUpdateAchievement(false);
 	};
 
 	const handleCancel = () => {
 		setIsModalVisible(false);
 		setIsModalDescription(false);
 		setIsEditModalVisible(false);
+		setIsModalUpdateAchievement(false);
 	};
 
 
@@ -80,11 +85,28 @@ const LayoutProfile = () => {
 				.then((response) => {
 					console.log("data", response);
 					setAchievement(response.data);
+					console.log(response.data);
+					console.log(achievement.length);
 				}).catch(err => console.log(err));
 		};
 		getAchievement();
 		console.log(achievement);
 	}, [isModalVisible]);
+
+	useEffect(() => {
+		const getAchievement = () => {
+			const id = localStorage.getItem("ID");
+			axios.get(`http://localhost:3000/api/user/achievement/${id}`)
+				.then((response) => {
+					console.log("data", response);
+					setAchievement(response.data);
+					console.log(response.data);
+					console.log("achievement", achievement);
+				}).catch(err => console.log(err));
+		};
+		getAchievement();
+		console.log(achievement);
+	}, [isModalUpdateAchievement]);
 
 	const handleHamburgerClick = (e) => {
 		e.preventDefault();
@@ -123,6 +145,30 @@ const LayoutProfile = () => {
 		}
 		setIsEditModalVisible(false);
 		// setImage(image);
+	};
+
+	const editDescription = (i) => {
+		setIsModalUpdateAchievement(true);
+		setIndex(i);
+	};
+
+	const deleteAchievement = async (id) => {
+		console.log("id", id);
+		try {
+			await axios.delete(`http://localhost:3000/api/user/achievement/${id}`);
+
+		} catch (e) {
+			console.log(e);
+		}
+
+		const user_id = localStorage.getItem("ID");
+		axios.get(`http://localhost:3000/api/user/achievement/${user_id}`)
+			.then((response) => {
+				console.log("data", response);
+				setAchievement(response.data);
+				console.log(response.data);
+				console.log("achievement", achievement);
+			}).catch(err => console.log(err));
 	};
 
 	return (
@@ -183,7 +229,7 @@ const LayoutProfile = () => {
 							<Link to="/help">ช่วยเหลือ</Link>
 						</li>
 						<li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
-							<Link to="/login">เข้าสู่ระบบ</Link>
+							<Link to="/logout">ออกจากระบบ</Link>
 						</li>
 					</ul>
 				</nav>
@@ -293,23 +339,33 @@ const LayoutProfile = () => {
 										<h5 className="text-right-container-3">ความสำเร็จในชีวิต</h5>
 									</div>
 									<div>
-										<button className="btn2" onClick={handleAddAchievement}>+ เพิ่ม</button>
+										{achievement.length <= 1 ?
+											<button className="btn2" onClick={handleAddAchievement}>+ เพิ่ม</button> :
+											<></>}
 										<Modal title="Achievements" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
 											<AchievementCreate setIsModalVisible={setIsModalVisible} />
+										</Modal>
+										<Modal title="Update Achievements" visible={isModalUpdateAchievement} onOk={handleOk} onCancel={handleCancel} footer={null}>
+											<UpdateAchievement setIsModalUpdateAchievement={setIsModalUpdateAchievement} achievement={achievement[index]} />
 										</Modal>
 									</div>
 								</div>
 								<div className="display-achievement">
-									{achievement && achievement.map(y => (
-										<div className="achievement">
-											<h3 className="title">{y.title} </h3>
-											<Modal title="Achievement" visible={isModalDescription} onOk={handleOk} onCancel={handleCancel} footer={null}>
-												<h3 className="title">{y.title}</h3>
-												<h6>Description :<p className="description"> {y.description}</p></h6>
-												<h6>Duration <AiFillCalendar></AiFillCalendar> : <p className="date"> {y.date_start} to {y.date_end}</p></h6>
-											</Modal>
-											<p className="date">{y.date_start} to {y.date_end} <a className="read-more" onClick={showDescription}>อ่านต่อ </a></p>
-											<p className="type-achievement"><BsFlag></BsFlag> {y.type}</p>
+									{achievement && achievement.map((y, i) => (
+										<div className="achievement" >
+											<div>
+												<h3 className="title" key={y.id}>{y.title}
+													<a className="edit-description" onClick={() => editDescription(i)}> <AiOutlineEdit></AiOutlineEdit></a>
+													<a className="delete-achievement" onClick={() => deleteAchievement(y.id)}><AiOutlineDelete></AiOutlineDelete></a>
+												</h3>
+												<Modal title="Achievement" visible={isModalDescription} onOk={handleOk} onCancel={handleCancel} footer={null}>
+													<h3 className="title">{y.title}</h3>
+													<h6>Description :<p className="description"> {y.description}</p></h6>
+													<h6>Duration <AiFillCalendar></AiFillCalendar> : <p className="date"> {y.date_start} to {y.date_end}</p></h6>
+												</Modal>
+												<p className="date">{y.date_start} to {y.date_end} <a className="read-more" onClick={showDescription}>อ่านต่อ </a></p>
+												<p className="type-achievement"><BsFlag></BsFlag> {y.type}</p>
+											</div>
 										</div>
 									))}
 								</div>

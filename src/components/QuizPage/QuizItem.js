@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./quiz.css";
 import Choices from "./Choices";
-import { Button, Progress, Modal } from "antd";
+import { Button, Progress } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { addAnswer } from "./storeReducer";
 import { useNavigate } from "react-router-dom";
@@ -29,9 +29,6 @@ const QuizItem = () => {
 
 	const [choiceSelected, setChoiceSelected] = useState([]);
 
-	const [isModalVisible, setIsModalVisible] = useState(false);
-
-
 	const onSubmitAnswer = () => {
 		if (number === 4) {
 			console.log("answers bug", answers_selected);
@@ -54,14 +51,6 @@ const QuizItem = () => {
 		
 		
 		navigate("/profile");
-	};
-
-	const handleOk = () => {
-		setIsModalVisible(false);
-	};
-
-	const handleCancel = () => {
-		setIsModalVisible(false);
 	};
 
 	const handleNext = (id) => {
@@ -181,14 +170,6 @@ const QuizItem = () => {
 							<p className="thanks">Thank you for your attention!!</p>
 							{number === 4 ?
 								<div className="sent-ans">
-									<Modal
-										className="modal-login"
-										title="LOGIN" visible={isModalVisible}
-										onOk={handleOk} onCancel={handleCancel}
-										footer={null}
-									>
-										{/* <Login /> */}
-									</Modal>
 									<Button className="list-btn-sent-ans"
 										onClick={(onSubmitAnswer)}
 									>

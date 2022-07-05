@@ -11,7 +11,7 @@ import AchievementCreate from "./components/ProfilePage/achievement/achievementC
 import LayoutLogin from "./components/Login/LayoutLogin";
 import HomeLayout from "./components/HomePage/HomeLayout";
 import Logout from "./components/Logout/Logout";
-
+import StrengthEditedPage from "./components/Strength/UpdateStrength";
 function App() {
 
 	return (
@@ -23,6 +23,7 @@ function App() {
 			<Route path="/quiz" element={<LayoutQuiz />} />
 			<Route path="/profile" element={<LayoutProfile />} />
 			<Route path="/strength" element={<StrengthSelectedPage />} />
+			<Route path="/edit-strength" element={<StrengthEditedPage />} />
 			<Route path="/achievement" element={<AchievementCreate />} />
 			<Route path="/logout" element={<Logout />} />
 		</Routes>

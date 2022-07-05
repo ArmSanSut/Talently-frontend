@@ -11,15 +11,18 @@ import EnvironmentBar from "./environmentBar";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { BsFlag } from "react-icons/bs";
-import { AiFillCalendar } from "react-icons/ai";
+import { AiFillCalendar, AiOutlineEdit } from "react-icons/ai";
 import { BsCheckSquare } from "react-icons/bs";
+import UpdateAchievement from "./UpdateAchievement";
 
 const LayoutProfile = () => {
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	const [isModalDescription, setIsModalDescription] = useState(false);
+	const [isModalUpdateAchievement, setIsModalUpdateAchievement] = useState(false);
 	const [firstName, setFirstName] = useState([]);
 	const [lastName, setLastName] = useState([]);
 	const [email, setEmail] = useState([]);
+	const [index, setIndex] = useState();
 
 	useEffect(() => {
 		const token = localStorage.getItem("token");
@@ -30,7 +33,7 @@ const LayoutProfile = () => {
 			const getFirstName = decode.firstname;
 			setFirstName(getFirstName);
 
-			const getLastName = decode.lastName;
+			const getLastName = decode.lastname;
 			setLastName(getLastName);
 
 			const getEmail = decode.email;
@@ -41,11 +44,13 @@ const LayoutProfile = () => {
 	const handleOk = () => {
 		setIsModalVisible(false);
 		setIsModalDescription(false);
+		setIsModalUpdateAchievement(false);
 	};
 
 	const handleCancel = () => {
 		setIsModalVisible(false);
 		setIsModalDescription(false);
+		setIsModalUpdateAchievement(false);
 	};
 
 
@@ -74,11 +79,28 @@ const LayoutProfile = () => {
 				.then((response) => {
 					console.log("data", response);
 					setAchievement(response.data);
+					console.log(response.data);
+					console.log(achievement.length);
 				}).catch(err => console.log(err));
 		};
 		getAchievement();
 		console.log(achievement);
 	}, [isModalVisible]);
+
+	useEffect(() => {
+		const getAchievement = () => {
+			const id = localStorage.getItem("ID");
+			axios.get(`http://localhost:3000/api/user/achievement/${id}`)
+				.then((response) => {
+					console.log("data", response);
+					setAchievement(response.data);
+					console.log(response.data);
+					console.log("achievement",achievement);
+				}).catch(err => console.log(err));
+		};
+		getAchievement();
+		console.log(achievement);
+	}, [isModalUpdateAchievement]);
 
 	const handleHamburgerClick = (e) => {
 		e.preventDefault();
@@ -93,6 +115,11 @@ const LayoutProfile = () => {
 
 	const showDescription = () => {
 		setIsModalDescription(true);
+	};
+
+	const editDescription = (i) => {
+		setIsModalUpdateAchievement(true);
+		setIndex(i);
 	};
 
 	return (
@@ -252,31 +279,53 @@ const LayoutProfile = () => {
 										<h5 className="text-right-container-3">ความสำเร็จในชีวิต</h5>
 									</div>
 									<div>
-										<button className="btn2" onClick={handleAddAchievement}>+ เพิ่ม</button>
-										<Modal title="Achievements" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
-											<AchievementCreate setIsModalVisible={setIsModalVisible} />
-										</Modal>
+										{achievement.length <= 1 ?
+											<div>
+												<button className="btn2" onClick={handleAddAchievement}>+ เพิ่ม</button>
+												<Modal title="Achievements" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
+													<AchievementCreate setIsModalVisible={setIsModalVisible} />
+												</Modal>
+											</div>
+											:
+											<>
+												<Modal title="Update Achievements" visible={isModalUpdateAchievement} onOk={handleOk} onCancel={handleCancel} footer={null}>
+													<UpdateAchievement setIsModalUpdateAchievement={setIsModalUpdateAchievement} achievement={achievement[index]}/>
+												</Modal>
+											</>
+										}
 									</div>
 								</div>
 								<div className="display-achievement">
-									{achievement && achievement.map(y => (
-										<div className="achievement">
-											<h3 className="title">{y.title} </h3>
-											<Modal title="Achievement" visible={isModalDescription} onOk={handleOk} onCancel={handleCancel} footer={null}>
-												<h3 className="title">{y.title}</h3>
-												<h6>Description :<p className="description"> {y.description}</p></h6>
-												<h6>Duration <AiFillCalendar></AiFillCalendar> : <p className="date"> {y.date_start} to {y.date_end}</p></h6>
-											</Modal>
-											<p className="date">{y.date_start} to {y.date_end} <a className="read-more" onClick={showDescription}>อ่านต่อ </a></p>
-											<p className="type-achievement"><BsFlag></BsFlag> {y.type}</p>
+									{achievement && achievement.map((y,i) => (
+										<div className="achievement" >
+											{achievement.length <= 1 ?
+												<div>
+													<h3 className="title" key={y.id}>{y.title}</h3>
+													<Modal title="Achievement" visible={isModalDescription} onOk={handleOk} onCancel={handleCancel} footer={null}>
+														<h3 className="title">{y.title}</h3>
+														<h6>Description :<p className="description"> {y.description}</p></h6>
+														<h6>Duration <AiFillCalendar></AiFillCalendar> : <p className="date"> {y.date_start} to {y.date_end}</p></h6>
+													</Modal>
+													<p className="date">{y.date_start} to {y.date_end} <a className="read-more" onClick={showDescription}>อ่านต่อ </a></p>
+													<p className="type-achievement"><BsFlag></BsFlag> {y.type}</p>
+												</div>
+												:
+												<div>
+													<h3 className="title" key={y.id}>{y.title} <a className="edit-description" onClick={() => editDescription(i)}> <AiOutlineEdit></AiOutlineEdit></a></h3>
+													<Modal title="Achievement" visible={isModalDescription} onOk={handleOk} onCancel={handleCancel} footer={null}>
+														<h3 className="title">{y.title}</h3>
+														<h6>Description :<p className="description"> {y.description}</p></h6>
+														<h6>Duration <AiFillCalendar></AiFillCalendar> : <p className="date"> {y.date_start} to {y.date_end}</p></h6>
+													</Modal>
+													<p className="date">{y.date_start} to {y.date_end} <a className="read-more" onClick={showDescription}>อ่านต่อ </a></p>
+													<p className="type-achievement"><BsFlag></BsFlag> {y.type}</p>
+												</div>
+											}
 										</div>
 									))}
 								</div>
 
 								{/* </div> */}
-
-
-
 							</div>
 						</div>
 					</div>

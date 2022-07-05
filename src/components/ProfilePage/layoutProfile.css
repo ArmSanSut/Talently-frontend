@@ -99,14 +99,19 @@ li.item-right {
     position: absolute;
 }
 
+.display-achievement {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
 .achievement {
-    margin: 40px 17px;
+    margin: 10px 17px;
     padding: 5px 20px;
     width: 490px;
     height: 120px;
     border-radius: 10px;
     background: rgb(223, 221, 221);
-    position: absolute;
 }
 
 .achievement-box-head button.btn2 {
@@ -128,6 +133,13 @@ line-height: 32px;
 
 p.description {
     color: black; 
+}
+
+.edit-description {
+    font-size: 15px;
+    color: #4b7eff;
+    float: right;
+    /* margin-top: 10px; */
 }
 
 .read-more {

@@ -4,17 +4,18 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./quiz.css";
 import Choices from "./Choices";
-import { Button, Progress, Modal } from "antd";
+import { Button, Progress } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { addAnswer } from "./storeReducer";
-// import Login from "../Login/Login";
+import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const QuizItem = () => {
-	const answers = useSelector(state => state.answer.answers);
-	console.log("answers", answers);
+	const answersab = useSelector(state => state.answer.answers);
+	console.log("answers", answersab);
 
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const [number, setNumber] = useState(1);
 	const [percent, setPercent] = useState(2.86);
@@ -29,29 +30,29 @@ const QuizItem = () => {
 
 	const [order, setOrder] = useState(["4", "3", "2", "1"]);
 
-	const [isModalVisible, setIsModalVisible] = useState(false);
-
-	// const [id, setID] = useState();
-
-	const showModal = () => {
-		// if (choiceSelected.length !== 4) return;
-		// dispatch(addAnswer([1, id, choiceSelected.join(), 1]));
-		setIsModalVisible(true);
-		console.log("numberShowmodal", number);
+	const sentAnswer = () => {
 		if (number === 2) {
 			console.log("numberIf", number);
-			const answerStr = JSON.stringify(answers);
-			console.log(answerStr);
-			localStorage.setItem("answers", answerStr);
+			const answerStr = JSON.stringify(answersab);
+
+			let answers = JSON.parse(answerStr);
+			const id = parseInt(localStorage.getItem("ID"), 10);
+			if (answers) {
+				console.log(answers);
+				for (let index = 0; index < answers.length; index++) {
+					answers[index][0] = id;
+				}
+				axios.post("http://localhost:3000/api/user/quiz/", answers)
+					.then(res => {
+						console.log(res.data);
+						localStorage.removeItem("answers");
+					})
+					.catch(err => console.log(err));
+			}
 		}
-	};
 
-	const handleOk = () => {
-		setIsModalVisible(false);
-	};
 
-	const handleCancel = () => {
-		setIsModalVisible(false);
+		navigate("/profile");
 	};
 
 	const handleNext = (id) => {
@@ -176,16 +177,8 @@ const QuizItem = () => {
 							<p className="thanks">Thank you for your attention!!</p>
 							{number === 2 ?
 								<div className="sent-ans">
-									<Modal
-										className="modal-login"
-										title="LOGIN" visible={isModalVisible}
-										onOk={handleOk} onCancel={handleCancel}
-										footer={null}
-									>
-										{/* <Login /> */}
-									</Modal>
 									<Button className="list-btn-sent-ans"
-										onClick={showModal}
+										onClick={sentAnswer}
 									>
 										ส่งคำตอบ
 									</Button>

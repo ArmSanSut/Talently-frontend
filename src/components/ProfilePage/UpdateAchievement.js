@@ -24,7 +24,6 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement }) => {
 		console.log("successupdate", values);
 		console.log("date start", dateSelected);
 
-		// const id = localStorage.getItem("ID");
 		await axios.put(`http://localhost:3000/api/user/update_achievement/${achievement.id}`, {
 			date_start: dateSelected[0],
 			date_end: dateSelected[1],

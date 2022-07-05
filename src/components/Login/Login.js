@@ -11,6 +11,7 @@ import "./login.css";
 
 // eslint-disable-next-line react/prop-types
 const Login = () => {
+
 	const navigate = useNavigate();
 
 	const onFinish = async (values) => {
@@ -23,14 +24,16 @@ const Login = () => {
 				password: values.password,
 			});
 			const decode = jwtDecode(result.data.token);
-			console.log(decode.id);
+			console.log(decode);
 			localStorage.setItem("token", result.data.token);
 			localStorage.setItem("ID", decode.id);
+			localStorage.setItem("image", decode.image);
+
 			navigate("/quiz");
 
 		} catch (e) {
 			console.log(e);
-			alert("Your username or password is not correctly!!, please try again...");
+			alert("Your username or password is not correct!!, please try again...");
 		}
 	};
 

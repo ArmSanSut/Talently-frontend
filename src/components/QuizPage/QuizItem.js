@@ -11,15 +11,16 @@ import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const QuizItem = () => {
-	const answersab = useSelector(state => state.answer.answers);
-	console.log("answers", answersab);
+	const navigate = useNavigate();
+	const answers_selected = useSelector(state => state.answer.answers);
+	console.log("answers", answers_selected);
 
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
 
 	const [number, setNumber] = useState(1);
 	const [percent, setPercent] = useState(2.86);
 	const [question, setQuestion] = useState([]);
+	const [order, setOrder] = useState(1);
 
 	const [choice1, setChoice1] = useState("");
 	const [choice2, setChoice2] = useState("");
@@ -28,30 +29,27 @@ const QuizItem = () => {
 
 	const [choiceSelected, setChoiceSelected] = useState([]);
 
-	const [order, setOrder] = useState(["4", "3", "2", "1"]);
-
-	const sentAnswer = () => {
-		if (number === 2) {
-			console.log("numberIf", number);
-			const answerStr = JSON.stringify(answersab);
-
+	const onSubmitAnswer = () => {
+		if (number === 4) {
+			console.log("answers bug", answers_selected);
+			const answerStr = JSON.stringify(answers_selected);
+			console.log("3",answerStr);
 			let answers = JSON.parse(answerStr);
-			const id = parseInt(localStorage.getItem("ID"), 10);
-			if (answers) {
-				console.log(answers);
-				for (let index = 0; index < answers.length; index++) {
-					answers[index][0] = id;
-				}
-				axios.post("http://localhost:3000/api/user/quiz/", answers)
-					.then(res => {
-						console.log(res.data);
-						localStorage.removeItem("answers");
-					})
-					.catch(err => console.log(err));
+		const id = parseInt(localStorage.getItem("ID"), 10);
+		if (answers) {
+			console.log("4",answers);
+			for (let index = 0; index < answers.length; index++) {
+				answers[index][0] = id;
 			}
+			axios.post("http://localhost:3000/api/user/quiz/", answers)
+				.then(res => {
+					console.log(res.data);
+				})
+				.catch(err => console.log(err));
 		}
-
-
+		}
+		
+		
 		navigate("/profile");
 	};
 
@@ -64,51 +62,46 @@ const QuizItem = () => {
 		}
 		setPercent(number * 2.9);
 
-		setOrder(["4", "3", "2", "1"]);
 		setChoice1("");
 		setChoice2("");
 		setChoice3("");
 		setChoice4("");
 		setChoiceSelected([]);
+		setOrder(1);
 	};
 
-	const handleClick1 = e => {
-		e.preventDefault();
-		if (!choice1) {
-			setChoice1(order.pop());
-			setChoiceSelected(choiceSelected ? [...choiceSelected, "1"] : "1");
+	const handleClick = (key,choice) => {
+		if (!choice1 && choice == 1) {
+			setChoiceSelected(choiceSelected ? [...choiceSelected, key] : key);
+			setChoice1(order);
+			setOrder(order + 1);
 		}
-	};
-	const handleClick2 = e => {
-		e.preventDefault();
-		if (!choice2) {
-			setChoice2(order.pop());
-			setChoiceSelected(choiceSelected ? [...choiceSelected, "2"] : "2");
+		if (!choice2 && choice == 2) {
+			setChoiceSelected(choiceSelected ? [...choiceSelected, key] : key);
+			setChoice2(order);
+			setOrder(order + 1);
 		}
-	};
-	const handleClick3 = e => {
-		e.preventDefault();
-		if (!choice3) {
-			setChoice3(order.pop());
-			setChoiceSelected(choiceSelected ? [...choiceSelected, "3"] : "3");
+		if (!choice3 && choice == 3) {
+			setChoiceSelected(choiceSelected ? [...choiceSelected, key] : key);
+			setChoice3(order);
+			setOrder(order + 1);
 		}
-	};
-	const handleClick4 = e => {
-		e.preventDefault();
-		if (!choice4) {
-			setChoice4(order.pop());
-			setChoiceSelected(choiceSelected ? [...choiceSelected, "4"] : "4");
+		if (!choice4 && choice == 4) {
+			setChoiceSelected(choiceSelected ? [...choiceSelected, key] : key);
+			setChoice4(order);
+			setOrder(order + 1);
 		}
 	};
 
 	const handleReset = e => {
 		e.preventDefault();
-		setOrder(["4", "3", "2", "1"]);
 		setChoice1("");
 		setChoice2("");
 		setChoice3("");
 		setChoice4("");
 		setChoiceSelected([]);
+		setOrder(1);
+		
 
 	};
 	const getData = () => {
@@ -127,7 +120,7 @@ const QuizItem = () => {
 		<div>
 			<div className="box">
 				<div className="inbox">
-					{number <= 1 ?
+					{number <= 3 ?
 						<div>
 							<div className="bar">
 								<p style={{ margin: "0px", fontSize: "16px" }}>คำถามที่ {number} จาก 35</p>
@@ -140,7 +133,7 @@ const QuizItem = () => {
 								<h5 className="head-quiz">
 									{question && question.map(val =>
 										val.id === number && (
-											`Question ${val.id} : ${val.question}`
+											`${val.question} :`
 										)
 									)}
 								</h5>
@@ -150,10 +143,10 @@ const QuizItem = () => {
 								{question && question.map(val =>
 									val.id === number && (
 										<>
-											<div onClick={handleClick1}><Choices order={choice1} title={val.choice_1} /></div>
-											<div onClick={handleClick2}><Choices order={choice2} title={val.choice_2} /></div>
-											<div onClick={handleClick3}><Choices order={choice3} title={val.choice_3} /></div>
-											<div onClick={handleClick4}><Choices order={choice4} title={val.choice_4} /></div>
+											<div onClick={() => handleClick(val.choice_1.split("::")[0],1)}><Choices order={choice1} title={val.choice_1.split("::")[1]} /></div>
+											<div onClick={() => handleClick(val.choice_2.split("::")[0],2)}><Choices order={choice2} title={val.choice_2.split("::")[1]} /></div>
+											<div onClick={() => handleClick(val.choice_3.split("::")[0],3)}><Choices order={choice3} title={val.choice_3.split("::")[1]} /></div>
+											<div onClick={() => handleClick(val.choice_4.split("::")[0],4)}><Choices order={choice4} title={val.choice_4.split("::")[1]} /></div>
 
 										</>
 									)
@@ -175,10 +168,10 @@ const QuizItem = () => {
 						:
 						<div className="finished-ans">
 							<p className="thanks">Thank you for your attention!!</p>
-							{number === 2 ?
+							{number === 4 ?
 								<div className="sent-ans">
 									<Button className="list-btn-sent-ans"
-										onClick={sentAnswer}
+										onClick={(onSubmitAnswer)}
 									>
 										ส่งคำตอบ
 									</Button>

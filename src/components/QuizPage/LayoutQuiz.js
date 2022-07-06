@@ -29,6 +29,12 @@ const LayoutQuiz = () => {
 						<li className="item-quiz-center">
 							<Link to="/quiz">แบบทดสอบ</Link>
 						</li>
+						<li className="item-quiz-center">
+							<Link to="/contact">ติดต่อเรา</Link>
+						</li>
+						<li className="item-quiz-center">
+							<Link to="/help">ช่วยเหลือ</Link>
+						</li>
 					</ul>
 					<ul className="quiz-login">
 						<li className="item-quiz-login">
@@ -36,7 +42,7 @@ const LayoutQuiz = () => {
 						</li>
 					</ul>
 				</nav>
-			</div>      
+			</div>
 			<div className={`box-question ${showSecondNav ? "show-navbar-quiz" : ""}`}>
 				<QuizItem />
 			</div>
@@ -63,6 +69,12 @@ const LayoutQuiz = () => {
 					</li>
 					<li className={`item-quiz ${showSecondNav ? "" : "hide-navbar-quiz"}`}>
 						<Link to="/quiz">แบบทดสอบ</Link>
+					</li>
+					<li className={`item-quiz ${showSecondNav ? "" : "hide-navbar-quiz"}`}>
+						<Link to="/contact">ติดต่อเรา</Link>
+					</li>
+					<li className={`item-quiz ${showSecondNav ? "" : "hide-navbar-quiz"}`}>
+						<Link to="/help">ช่วยเหลือ</Link>
 					</li>
 					<li className={`item-quiz ${showSecondNav ? "" : "hide-navbar-quiz"}`}>
 						<Link to="/logout">ออกจากระบบ</Link>

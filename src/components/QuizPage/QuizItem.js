@@ -33,23 +33,23 @@ const QuizItem = () => {
 		if (number === 4) {
 			console.log("answers bug", answers_selected);
 			const answerStr = JSON.stringify(answers_selected);
-			console.log("3",answerStr);
+			console.log("3", answerStr);
 			let answers = JSON.parse(answerStr);
-		const id = parseInt(localStorage.getItem("ID"), 10);
-		if (answers) {
-			console.log("4",answers);
-			for (let index = 0; index < answers.length; index++) {
-				answers[index][0] = id;
+			const id = parseInt(localStorage.getItem("ID"), 10);
+			if (answers) {
+				console.log("4", answers);
+				for (let index = 0; index < answers.length; index++) {
+					answers[index][0] = id;
+				}
+				axios.post("http://localhost:3000/api/user/quiz/", answers)
+					.then(res => {
+						console.log(res.data);
+					})
+					.catch(err => console.log(err));
 			}
-			axios.post("http://localhost:3000/api/user/quiz/", answers)
-				.then(res => {
-					console.log(res.data);
-				})
-				.catch(err => console.log(err));
 		}
-		}
-		
-		
+
+
 		navigate("/profile");
 	};
 
@@ -70,7 +70,7 @@ const QuizItem = () => {
 		setOrder(1);
 	};
 
-	const handleClick = (key,choice) => {
+	const handleClick = (key, choice) => {
 		if (!choice1 && choice == 1) {
 			setChoiceSelected(choiceSelected ? [...choiceSelected, key] : key);
 			setChoice1(order);
@@ -101,7 +101,7 @@ const QuizItem = () => {
 		setChoice4("");
 		setChoiceSelected([]);
 		setOrder(1);
-		
+
 
 	};
 	const getData = () => {
@@ -123,7 +123,7 @@ const QuizItem = () => {
 					{number <= 3 ?
 						<div>
 							<div className="bar">
-								<p style={{ margin: "0px", fontSize: "16px" }}>คำถามที่ {number} จาก 35</p>
+								<p style={{ margin: "0px", fontSize: "14px" }}>คำถามที่ {number} จาก 35</p>
 								<Progress percent={percent} showInfo={false} strokeColor={{
 									"0%": "#3A13B8",
 									"100%": "#A255FF",
@@ -143,10 +143,10 @@ const QuizItem = () => {
 								{question && question.map(val =>
 									val.id === number && (
 										<>
-											<div onClick={() => handleClick(val.choice_1.split("::")[0],1)}><Choices order={choice1} title={val.choice_1.split("::")[1]} /></div>
-											<div onClick={() => handleClick(val.choice_2.split("::")[0],2)}><Choices order={choice2} title={val.choice_2.split("::")[1]} /></div>
-											<div onClick={() => handleClick(val.choice_3.split("::")[0],3)}><Choices order={choice3} title={val.choice_3.split("::")[1]} /></div>
-											<div onClick={() => handleClick(val.choice_4.split("::")[0],4)}><Choices order={choice4} title={val.choice_4.split("::")[1]} /></div>
+											<div onClick={() => handleClick(val.choice_1.split("::")[0], 1)}><Choices order={choice1} title={val.choice_1.split("::")[1]} /></div>
+											<div onClick={() => handleClick(val.choice_2.split("::")[0], 2)}><Choices order={choice2} title={val.choice_2.split("::")[1]} /></div>
+											<div onClick={() => handleClick(val.choice_3.split("::")[0], 3)}><Choices order={choice3} title={val.choice_3.split("::")[1]} /></div>
+											<div onClick={() => handleClick(val.choice_4.split("::")[0], 4)}><Choices order={choice4} title={val.choice_4.split("::")[1]} /></div>
 
 										</>
 									)
@@ -180,9 +180,9 @@ const QuizItem = () => {
 						</div>
 					}
 				</div>
-			</div>
+			</div >
 
-		</div>
+		</div >
 
 	);
 };

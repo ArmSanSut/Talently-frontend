@@ -7,6 +7,7 @@ import { Avatar, Form, Modal, Button } from "antd";
 import AchievementCreate from "./achievement/achievementCreate";
 import MotivateBar from "./motivateBar";
 import EnvironmentBar from "./environmentBar";
+import IdealworkBar from "./idealworkBar";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { BsFlag } from "react-icons/bs";
@@ -310,6 +311,14 @@ const LayoutProfile = () => {
 										</div>
 										<div>
 											<MotivateBar />
+											<hr />
+											<div className="motivated_result_left">
+												การช่วยเหลือผู้คน
+
+											</div>
+											<div className="motivated_result_right">
+												เมาท์คอนเซ็ปต์ แคนยอน ไอเดีย โรแมนติกนิรันดร์อาร์ติสต์แคมป์บลูเบอร์รี เอาท์ไฮกุเพียบแปร้โฮลวีต
+											</div>
 										</div>
 									</div>
 									<div className="environment-box">
@@ -320,7 +329,17 @@ const LayoutProfile = () => {
 										</div>
 										<div>
 											<EnvironmentBar />
+											<hr />
+											<div className="environment_result_left">
+												การช่วยเหลือผู้คน
+
+											</div>
+											<div className="environment_result_right">
+												เมาท์คอนเซ็ปต์ แคนยอน ไอเดีย โรแมนติกนิรันดร์อาร์ติสต์แคมป์บลูเบอร์รี เอาท์ไฮกุเพียบแปร้โฮลวีต
+											</div>
+
 										</div>
+
 									</div>
 									<div className="work-box">
 										<div className="work-header-box">
@@ -328,8 +347,18 @@ const LayoutProfile = () => {
 											<h3 className="text-motivated">Ideal Work</h3>
 										</div>
 										<div>
-											<MotivateBar />
+											<IdealworkBar />
+											<hr />
+
+											<div className="ideal_result_left">
+												การช่วยเหลือผู้คน
+
+											</div>
+											<div className="ideal_result_right">
+												เมาท์คอนเซ็ปต์ แคนยอน ไอเดีย โรแมนติกนิรันดร์อาร์ติสต์แคมป์บลูเบอร์รี เอาท์ไฮกุเพียบแปร้โฮลวีต
+											</div>
 										</div>
+
 									</div>
 								</div>
 								<div className="right-container">

@@ -12,7 +12,7 @@ hr {
 
 .motivated_result_left {
     position: absolute;
-    left: 16%;
+    left: 7%;
     font-weight: bold;
     font-size: 16px;
     line-height: 32px;
@@ -25,8 +25,8 @@ hr {
 
 .motivated_result_right {
     position: absolute;
-    left: 26%;
-    right: 54%;
+    left: 20%;
+    right: 58%;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -40,7 +40,7 @@ hr {
 
 .environment_result_left {
     position: absolute;
-    left: 16%;
+    left: 7%;
     font-weight: bold;
     font-size: 16px;
     line-height: 32px;
@@ -53,10 +53,8 @@ hr {
 
 .environment_result_right {
     position: absolute;
-    left: 26%;
-    right: 54%;
-  
-    
+    left: 20%;
+    right: 58%;  
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -70,7 +68,7 @@ hr {
 }
 .ideal_result_left {
     position: absolute;
-    left: 16%;
+    left: 7%;
     font-weight: bold;
     font-size: 16px;
     line-height: 32px;
@@ -82,8 +80,8 @@ hr {
 }
 .ideal_result_right {
     position: absolute;
-    left: 26%;
-    right: 54%;
+    left: 20%;
+    right: 58%;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

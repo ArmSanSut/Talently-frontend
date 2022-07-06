@@ -24,3 +24,13 @@
     background:  linear-gradient(107.87deg, #FFCE83 0%, #FF814B 100.04%);
     border-radius: 0px 0px 0px 0px;
 }
+
+.progress-display-gray-left .ant-progress-inner {
+    transform: rotate(3.142rad);
+}
+
+.progress-display-gray-left .ant-progress-bg,
+.progress-display-gray-right .ant-progress-bg {
+    background:  linear-gradient(107.87deg, #979595 0%, #bababb 100.04%);
+    border-radius: 0px 0px 0px 0px;
+}

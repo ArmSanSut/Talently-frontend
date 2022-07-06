@@ -8,6 +8,9 @@ const EnvironmentBar = () => {
 	// const [, setLoad] = useState(true);
 	const [percent, setPercent] = useState([]);
 
+	const progressBarTagLeft = ["Deliberate", "Reflective", "Steady","Cautious"];
+	const progressBarTagRight = ["Decisive", "Outgoing", "Spontaneous","Free Form"];
+
 	const UserScore = async ()=> {
 		// setLoad(false);
 		const getScore = await axios.get(`http://localhost:3000/api/user/score/${id}`);
@@ -16,7 +19,7 @@ const EnvironmentBar = () => {
 		// const [tempValue, ] = useState([]);
 		const temp = [];
 		
-		for (let index = 0; index < 6; index++) {
+		for (let index = 0; index < 4; index++) {
 			let mFirst = scoreM[`M${2*index + 1}`];
 			let mSecond = scoreM[`M${2*index + 2}`];
 			let score = mFirst - mSecond;
@@ -51,24 +54,30 @@ const EnvironmentBar = () => {
 	return (
 		<div style={{ display : "flex", width : "100%" }}>
 			<div className="left-side-bar">
-				<h5>Deliberate</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-environment-left"/>
-				<h5>Reflective</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-environment-left"/>
-				<h5>Steady</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-environment-left"/>
-				<h5>Cautious</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-environment-left"/>
+				{percent && percent.map ((val, index) => (
+					<>
+						<h5>{progressBarTagLeft[index]}</h5>
+						{val[0] == "L" ? (
+							<Progress percent={val[1]} showInfo={false} trailColor="#F3F8FF" className="progress-display-green-environment-left"/>
+						) : (
+							<Progress percent={100} showInfo={false} trailColor="#F3F8FF" className="progress-display-gray-environment-left"/>
+						)}
+						
+					</>
+				))}
 			</div>
 			<div className="right-side-bar">
-				<h5>Decisive</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-environment-right"/>
-				<h5>Outgoing</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-environment-right"/>
-				<h5>Spontaneous</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-environment-right"/>
-				<h5>Free Form</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-environment-right"/>
+				{percent && percent.map ((val, index) => (
+					<>
+						<h5>{progressBarTagRight[index]}</h5>
+						{val[0] == "R" ? (
+							<Progress percent={val[1]} showInfo={false} trailColor="#F3F8FF" className="progress-display-green-environment-right"/>
+						) : (
+							<Progress percent={100} showInfo={false} trailColor="#F3F8FF" className="progress-display-gray-environment-right"/>
+						)}
+						
+					</>
+				))}
 			</div>
 		</div>
 	);

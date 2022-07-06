@@ -1,9 +1,55 @@
 /* eslint-disable no-empty */
-import React  from "react";
+import React , {useEffect, useState} from "react";
 import { Progress } from "antd";
 import "./motivateBar.css";
-// import axios from "axios";
+import axios from "axios";
 const MotivateBar = () => {
+	const id = localStorage.getItem("ID");
+	// const [, setLoad] = useState(true);
+	const [percent, setPercent] = useState([]);
+
+	const progressBarTagLeft = ["Helping", "Supporting", "knowledge","Order","Service", "Belonging"];
+	const progressBarTagRight = ["Self Reliance", "Influence", "Practicality","Freedom","Financial Security", "Uniqueness"];
+
+	const UserScore = async ()=> {
+		// setLoad(false);
+		const getScore = await axios.get(`http://localhost:3000/api/user/score/${id}`);
+		const totalScore = getScore.data[0].score.score;
+		const scoreM = totalScore.scoreM;
+		// const [tempValue, ] = useState([]);
+		const temp = [];
+		
+		for (let index = 0; index < 6; index++) {
+			let mFirst = scoreM[`M${2*index + 1}`];
+			let mSecond = scoreM[`M${2*index + 2}`];
+			let score = mFirst - mSecond;
+			let percentDisplay = ((mFirst + mSecond)/40)*100;
+			// console.log(score);
+			if (score > 0 ){
+
+				temp.push(["L", percentDisplay]);
+	
+			}else if (score < 0) {
+
+				temp.push(["R", percentDisplay]);
+					
+			}else {
+
+				temp.push(["E", percentDisplay]);
+					
+			}
+			console.log(index);
+		}
+		setPercent(temp);
+		// return temp;
+	};
+		
+	console.log(percent);
+	useEffect(() => {
+		UserScore();
+
+		console.log(percent.length);	
+	}, []);
 
 	
 
@@ -11,32 +57,32 @@ const MotivateBar = () => {
 		<div style={{ display : "flex", width : "100%" }}>
 			
 			<div className="left-side-bar">
-				<h5>Helping</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-blue-left"/>
-				<h5>Supporting</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-blue-left"/>
-				<h5>knowledge</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-blue-left"/>
-				<h5>Order</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-blue-left"/>
-				<h5>Service</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-blue-left"/>
-				<h5>Belonging</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-blue-left"/>
+				{percent && percent.map ((val, index) => (
+					<>
+						<h5>{progressBarTagLeft[index]}</h5>
+						{val[0] == "L" ? (
+							<Progress percent={val[1]} showInfo={false} trailColor="#F3F8FF" className="progress-display-blue-left"/>
+						) : (
+							<Progress percent={100} showInfo={false} trailColor="#F3F8FF" className="progress-display-gray-left"/>
+						)}
+						
+					</>
+				))}
+				
+				
 			</div>
 			<div className="right-side-bar">
-				<h5>Self Reliance</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-blue-right"/>
-				<h5>Influence</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-blue-right"/>
-				<h5>Practicality</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-blue-right"/>
-				<h5>Freedom</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-blue-right"/>
-				<h5>Financial Security</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-blue-right"/>
-				<h5>Uniqueness</h5>
-				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-blue-right"/>
+				{percent && percent.map ((val, index) => (
+					<>
+						<h5>{progressBarTagRight[index]}</h5>
+						{val[0] == "R" ? (
+							<Progress percent={val[1]} showInfo={false} trailColor="#F3F8FF" className="progress-display-blue-right"/>
+						) : (
+							<Progress percent={100} showInfo={false} trailColor="#F3F8FF" className="progress-display-gray-right"/>
+						)}
+						
+					</>
+				))}
 			</div>
 			
 		</div>

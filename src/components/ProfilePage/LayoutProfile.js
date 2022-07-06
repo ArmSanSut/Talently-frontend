@@ -391,11 +391,11 @@ const LayoutProfile = () => {
 									</div>
 								</div>
 								<div className="display-achievement">
-<<<<<<< HEAD
-									{achievement && achievement.map((y,i) => (
-=======
+
+									
+
 									{achievement && achievement.map((y, i) => (
->>>>>>> d21a87b36bf2b3611583cdbe438a038c53dfb930
+
 										<div className="achievement" >
 											<div>
 												<h3 className="title" key={y.id}>{y.title}

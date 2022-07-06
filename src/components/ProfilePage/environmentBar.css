@@ -1,9 +1,22 @@
-.progress-display-environment-left .ant-progress-inner {
+.progress-display-green-left .ant-progress-inner {
     transform: rotate(3.142rad);
 }
 
-.progress-display-environment-left .ant-progress-bg,
-.progress-display-environment-right .ant-progress-bg {
-    background:  linear-gradient(107.87deg, #A1F8A5 0%, #0FA04C 100.04%);
+.progress-display-green-environment-left .ant-progress-bg,
+.progress-display-green-environment-right .ant-progress-bg {
+    background:  linear-gradient(107.87deg, #a1dfb0 0%, #209836 100.04%);
     border-radius: 0px 0px 0px 0px;
 }
+
+
+
+.progress-display-gray-environment-left .ant-progress-inner {
+    transform: rotate(3.142rad);
+}
+
+.progress-display-gray-environment-left .ant-progress-bg,
+.progress-display-gray-environment-right .ant-progress-bg {
+    background:  linear-gradient(107.87deg, #979595 0%, #bababb 100.04%);
+    border-radius: 0px 0px 0px 0px;
+}
+

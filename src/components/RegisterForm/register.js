@@ -1,8 +1,8 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-empty */
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import "antd/dist/antd.css";
-import { Button, Form, Input} from "antd";
+import { Button, Form, Input } from "antd";
 import "./register.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -24,6 +24,7 @@ const RegisterForm = () => {
 			formData.append("image", image);
 			const url = "http://localhost:3000";
 			await axios.post(`${url}/api/user/register/`, formData);
+			alert("Register is successful!! Go to Login page...");
 		}
 		catch (err) {
 			console.log(err);
@@ -34,12 +35,12 @@ const RegisterForm = () => {
 
 	};
 
-	
+
 	return (
 		<div className="register-bg" >
 			<img className="purple-bg" src="purpleRegister.png" />
 			<img className="group-bg" src="groupbgRegister.png" />
-			<div className="register-form" style={{ flexDirection : "column" }}>
+			<div className="register-form" style={{ flexDirection: "column" }}>
 				<Form
 					style={{
 						marginTop: "2.5rem",
@@ -49,7 +50,7 @@ const RegisterForm = () => {
 						span: 6,
 					}}
 					wrapperCol={{
-						span: 13,
+						span: 14,
 					}}
 					initialValues={{
 						remember: true,
@@ -68,7 +69,7 @@ const RegisterForm = () => {
 							},
 						]}
 					>
-						<Input className="input" />
+						<Input placeholder="Enter your name" className="input" />
 					</Form.Item>
 					<p>Sirname :</p>
 					<Form.Item
@@ -80,7 +81,7 @@ const RegisterForm = () => {
 							},
 						]}
 					>
-						<Input className="input" />
+						<Input placeholder="Enter your sirname" className="input" />
 					</Form.Item>
 					<p>Username :</p>
 					<Form.Item
@@ -92,7 +93,7 @@ const RegisterForm = () => {
 							},
 						]}
 					>
-						<Input className="input" />
+						<Input placeholder="Enter your username" className="input" />
 					</Form.Item>
 					<p>Email :</p>
 					<Form.Item
@@ -104,7 +105,7 @@ const RegisterForm = () => {
 							},
 						]}
 					>
-						<Input className="input" />
+						<Input placeholder="Enter your email" className="input" />
 					</Form.Item>
 					<p>Password :</p>
 					<Form.Item
@@ -116,9 +117,20 @@ const RegisterForm = () => {
 							},
 						]}
 					>
-						<Input.Password className="input" />
+						<Input.Password placeholder	="Enter your password" className="input" />
 					</Form.Item>
-					<input type="file" onChange={(e) => setImage(e.target.files[0])} /> Upload Image
+					<p>Upload Image : </p>
+					<Form.Item
+						name="upload_image"
+						rules={[
+							{
+								required: true,
+								message: "Please upload your image!",
+							},
+						]}
+					>
+						<input type="file" onChange={(e) => setImage(e.target.files[0])} />
+					</Form.Item>
 					<Form.Item
 						wrapperCol={{
 							offset: 0,
@@ -132,10 +144,10 @@ const RegisterForm = () => {
 					</Form.Item>
 
 				</Form>
-				
+
 			</div>
 
-		</div>
+		</div >
 	);
 
 };

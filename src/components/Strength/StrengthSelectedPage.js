@@ -2,8 +2,8 @@ import React from "react";
 import "./strength.css";
 import "antd/dist/antd.css";
 import { AiFillMinusCircle, AiOutlineArrowRight } from "react-icons/ai";
-import { useState, useEffect} from "react";
-// import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const StrengthSelectedPage = () => {
@@ -32,14 +32,14 @@ const StrengthSelectedPage = () => {
 		const id = localStorage.getItem("ID");
 		e.preventDefault();
 		axios.post(`http://localhost:3000/api/user/strength/${id}`, {
-			strength_1 : strengthSelected[0],
-			strength_2 : strengthSelected[1],
-			strength_3 : strengthSelected[2],
-			strength_4 : strengthSelected[3],
-			strength_5 : strengthSelected[4],
-			strength_6 : strengthSelected[5],
-			strength_7 : strengthSelected[6],
-			strength_8 : strengthSelected[7]
+			strength_1: strengthSelected[0],
+			strength_2: strengthSelected[1],
+			strength_3: strengthSelected[2],
+			strength_4: strengthSelected[3],
+			strength_5: strengthSelected[4],
+			strength_6: strengthSelected[5],
+			strength_7: strengthSelected[6],
+			strength_8: strengthSelected[7]
 		}).then((response) => {
 			console.log(response.data);
 			window.location.href = "/profile";
@@ -70,7 +70,7 @@ const StrengthSelectedPage = () => {
 	};
 
 	const box = strengthList.map((x) => (
-		<div className="item" key= {x.id}>
+		<div className="item" key={x.id}>
 			<ul className="column-item">
 				<li>
 					{x.isSelect && strengthSelected.length === 8 ? (
@@ -90,28 +90,41 @@ const StrengthSelectedPage = () => {
 		</div>
 	));
 
-	console.log("length",strengthSelected.length);
+	console.log("length", strengthSelected.length);
+
+	const token = localStorage.getItem("token");
 
 
 	return (
 		<div>
-			<h2 className="head">
-				Now, choose your top eight life priorities out of the following list:{" "}
-			</h2>
-			<form >
-				<div className="flex-container">
-					<div className="column">{box}</div>
+			{token ?
+				<div>
+					<h2 className="head">
+						Now, choose your top eight life priorities out of the following list:{" "}
+					</h2>
+					<form >
+						<div className="flex-container">
+							<div className="column">{box}</div>
+						</div>
+						<div className="checked-btn">
+							<button className="clear-ans-btn" type="reset">
+								<AiFillMinusCircle></AiFillMinusCircle> Clear Answer
+							</button>
+							<button className="continue-btn" onClick={handleSubmit}>
+								Continue <AiOutlineArrowRight></AiOutlineArrowRight>
+							</button>
+						</div>
+					</form>
 				</div>
-				<div className="checked-btn">
-					<button className="clear-ans-btn" type="reset">
-						<AiFillMinusCircle></AiFillMinusCircle> Clear Answer
-					</button>
-					<button className="continue-btn" onClick={handleSubmit}>
-						Continue <AiOutlineArrowRight></AiOutlineArrowRight>
-					</button>
+				:
+				<div className="not-authorized-page">
+					<h1 className="not-authorized">You are not authorized to access this page!!</h1>
+					<h2 className="login-first">Please Login...</h2>
+					<Link to="/"><button className="not-authorized-btn"> Back to Home</button></Link>
 				</div>
-			</form>
+			}
 		</div>
+
 	);
 };
 

@@ -7,6 +7,7 @@ import { Avatar, Form, Modal, Button } from "antd";
 import AchievementCreate from "./achievement/achievementCreate";
 import MotivateBar from "./motivateBar";
 import EnvironmentBar from "./environmentBar";
+import IdealworkBar from "./idealworkBar";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { BsFlag } from "react-icons/bs";
@@ -22,12 +23,12 @@ const LayoutProfile = () => {
 	const [firstName, setFirstName] = useState([]);
 	const [lastName, setLastName] = useState([]);
 	const [email, setEmail] = useState([]);
-	const [image , setImage] = useState(null);
-	const [profileImage , setProfileImage ] = useState(() => {
+	const [image, setImage] = useState(null);
+	const [profileImage, setProfileImage] = useState(() => {
 		return localStorage.getItem("image");
 	});
 	const [editAchievement, setEditAchievement] = useState(null);
-	const [,updateState] = useState();
+	const [, updateState] = useState();
 	const forceUpdate = React.useCallback(() => updateState({}), []);
 
 	useEffect(() => {
@@ -117,7 +118,7 @@ const LayoutProfile = () => {
 	const handleAddStrength = () => {
 		navigate("/strength");
 	};
-	const handleEditStrength = ()=> {
+	const handleEditStrength = () => {
 		console.log("click to edit");
 		navigate("/edit-strength");
 	};
@@ -136,8 +137,8 @@ const LayoutProfile = () => {
 		try {
 			const formData = new FormData();
 			formData.append("image", image);
-			console.log("profileImage",profileImage);
-			console.log("image",image);
+			console.log("profileImage", profileImage);
+			console.log("image", image);
 			const url = "http://localhost:3000";
 			const id = localStorage.getItem("ID");
 			axios.put(`${url}/api/user/edit-image/${id}`, formData).then(result => {
@@ -179,7 +180,7 @@ const LayoutProfile = () => {
 			}).catch(err => console.log(err));
 	};
 
-	console.log({editAchievement, isModalUpdateAchievement});
+	console.log({ editAchievement, isModalUpdateAchievement });
 
 	return (
 		<div className="profile">
@@ -304,6 +305,14 @@ const LayoutProfile = () => {
 								</div>
 								<div>
 									<MotivateBar />
+									<hr />
+									<div className="motivated_result_left">
+										การช่วยเหลือผู้คน
+
+									</div>
+									<div className="motivated_result_right">
+									เมาท์คอนเซ็ปต์ แคนยอน ไอเดีย โรแมนติกนิรันดร์อาร์ติสต์แคมป์บลูเบอร์รี เอาท์ไฮกุเพียบแปร้โฮลวีต
+									</div>
 								</div>
 							</div>
 							<div className="environment-box">
@@ -314,6 +323,15 @@ const LayoutProfile = () => {
 								</div>
 								<div>
 									<EnvironmentBar />
+									<hr />
+									<div className="environment_result_left">
+										การช่วยเหลือผู้คน
+
+									</div>
+									<div className="environment_result_right">
+									เมาท์คอนเซ็ปต์ แคนยอน ไอเดีย โรแมนติกนิรันดร์อาร์ติสต์แคมป์บลูเบอร์รี เอาท์ไฮกุเพียบแปร้โฮลวีต
+									</div>
+
 								</div>
 							</div>
 							<div className="work-box">
@@ -322,7 +340,16 @@ const LayoutProfile = () => {
 									<h3 className="text-motivated">Ideal Work</h3>
 								</div>
 								<div>
-									<MotivateBar />
+									<IdealworkBar />
+									<hr />
+
+									<div className="ideal_result_left">
+										การช่วยเหลือผู้คน
+
+									</div>
+									<div className="ideal_result_right">
+									เมาท์คอนเซ็ปต์ แคนยอน ไอเดีย โรแมนติกนิรันดร์อาร์ติสต์แคมป์บลูเบอร์รี เอาท์ไฮกุเพียบแปร้โฮลวีต
+									</div>
 								</div>
 							</div>
 						</div>
@@ -330,8 +357,8 @@ const LayoutProfile = () => {
 							<div className="strength-box">
 								<div className="strength-box-head">
 									<h5 className="text-right-container-2">จุดแข็ง 8 อันดับแรก</h5>
-									{ strength.length === 8 ?  	<button className="btn1" onClick={handleEditStrength}>+ แก้ไข</button>								
-										:					
+									{strength.length === 8 ? <button className="btn1" onClick={handleEditStrength}>+ แก้ไข</button>
+										:
 										<button className="btn1" onClick={handleAddStrength}>+ เพิ่ม</button>
 									}
 								</div>
@@ -364,11 +391,15 @@ const LayoutProfile = () => {
 									</div>
 								</div>
 								<div className="display-achievement">
+<<<<<<< HEAD
 									{achievement && achievement.map((y,i) => (
+=======
+									{achievement && achievement.map((y, i) => (
+>>>>>>> d21a87b36bf2b3611583cdbe438a038c53dfb930
 										<div className="achievement" >
 											<div>
 												<h3 className="title" key={y.id}>{y.title}
-													
+
 													<a className="delete-achievement" onClick={() => deleteAchievement(y.id)}><AiOutlineDelete></AiOutlineDelete></a>
 													<a className="edit-description" onClick={() => editDescription(i)}> <AiOutlineEdit></AiOutlineEdit></a>
 												</h3>

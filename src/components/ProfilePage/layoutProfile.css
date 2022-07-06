@@ -5,6 +5,95 @@
     height: 500vh;
     z-index: -2;
 }
+hr {
+    border: 1px solid #C0D9FD;
+    color: #C0D9FD;
+}
+
+.motivated_result_left {
+    position: absolute;
+    left: 16%;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.2px;
+    text-transform: capitalize;
+    color: #114E96;
+}
+
+.motivated_result_right {
+    position: absolute;
+    left: 26%;
+    right: 54%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.2px;
+    text-transform: capitalize;
+    color: #4F4F4F;
+}
+
+.environment_result_left {
+    position: absolute;
+    left: 16%;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.2px;
+    text-transform: capitalize;
+    color: #27AE60;
+}
+
+.environment_result_right {
+    position: absolute;
+    left: 26%;
+    right: 54%;
+  
+    
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.2px;
+    text-transform: capitalize;
+    
+    color: #4F4F4F;
+}
+.ideal_result_left {
+    position: absolute;
+    left: 16%;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.2px;
+    text-transform: capitalize;
+    color: #FF814B;
+}
+.ideal_result_right {
+    position: absolute;
+    left: 26%;
+    right: 54%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.2px;
+    text-transform: capitalize;
+    color: #4F4F4F;
+}
 
 .hide-navbar-profile {
     display: none;
@@ -277,7 +366,7 @@ p.description {
     background-color: #f3f8ff;
     border-radius: 15px;
     width: 95%;
-    height: 29%;
+    height: 37%;
     margin: 10px;
     margin-top: 20px;
 }

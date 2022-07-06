@@ -201,7 +201,7 @@ const LayoutProfile = () => {
 					</ul>
 					<ul className="right">
 						<li className="item-right">
-							<Link to="/">ออกจากระบบ</Link>
+							<Link to="/logout">ออกจากระบบ</Link>
 						</li>
 					</ul>
 				</nav>

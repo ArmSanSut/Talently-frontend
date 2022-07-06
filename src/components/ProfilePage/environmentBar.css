@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Prompt:ital,wght@0,200;1,100&display=swap");
+
+h5 {
+    font-family: "Prompt", sans-serif;
+}
+
 .progress-display-environment-left .ant-progress-inner {
     transform: rotate(3.142rad);
 }
@@ -5,5 +11,4 @@
 .progress-display-environment-left .ant-progress-bg,
 .progress-display-environment-right .ant-progress-bg {
     background:  linear-gradient(107.87deg, #A1F8A5 0%, #0FA04C 100.04%);
-    border-radius: 0px 0px 0px 0px;
 }

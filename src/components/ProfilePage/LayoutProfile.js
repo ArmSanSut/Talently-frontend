@@ -22,11 +22,12 @@ const LayoutProfile = () => {
 	const [firstName, setFirstName] = useState([]);
 	const [lastName, setLastName] = useState([]);
 	const [email, setEmail] = useState([]);
-	const [image , setImage] = useState(null);
-	const [profileImage , setProfileImage ] = useState(() => {
+	const [image, setImage] = useState(null);
+	const [profileImage, setProfileImage] = useState(() => {
 		return localStorage.getItem("image");
 	});
 	const [index, setIndex] = useState();
+
 
 	useEffect(() => {
 		const token = localStorage.getItem("token");
@@ -115,7 +116,7 @@ const LayoutProfile = () => {
 	const handleAddStrength = () => {
 		navigate("/strength");
 	};
-	const handleEditStrength = ()=> {
+	const handleEditStrength = () => {
 		console.log("click to edit");
 		navigate("/edit-strength");
 	};
@@ -134,8 +135,8 @@ const LayoutProfile = () => {
 		try {
 			const formData = new FormData();
 			formData.append("image", image);
-			console.log("profileImage",profileImage);
-			console.log("image",image);
+			console.log("profileImage", profileImage);
+			console.log("image", image);
 			const url = "http://localhost:3000";
 			const id = localStorage.getItem("ID");
 			axios.put(`${url}/api/user/edit-image/${id}`, formData).then(result => {
@@ -176,215 +177,232 @@ const LayoutProfile = () => {
 			}).catch(err => console.log(err));
 	};
 
-	
+	const token = localStorage.getItem("token");
 
 	return (
-		<div className="profile">
-			<div className="profile-bg">
-				<img className="profile-bluebg" src="bluebg.png" />
-				<img className="profile-purplebg" src="purplebg.png" />
-				<nav className="head-profile1">
-					<img className="profile-logo" src="logo.png" />
-					<ul className="center">
-						<li className="item-center">
-							<Link to="/about">เกี่ยวกับเรา</Link>
-						</li>
-						<li className="item-center">
-							<Link to="/quiz">แบบทดสอบ</Link>
-						</li>
-						<li className="item-center">
-							<Link to="/contact">ติดต่อเรา</Link>
-						</li>
-						<li className="item-center">
-							<Link to="/help">ช่วยเหลือ</Link>
-						</li>
-					</ul>
-					<ul className="right">
-						<li className="item-right">
-							<Link to="/logout">ออกจากระบบ</Link>
-						</li>
-					</ul>
-				</nav>
-				<nav className="head-profile2">
-					<img className="profile-logo" src="logo.png" />
-					<label className="label-profile" htmlFor="check">
-						{showSecondNav ? (
-							<i
-								className="fas fa-times"
-								id="profile-icon1"
-								onClick={handleHamburgerClick}
-							></i>
-						) : (
-							<i
-								className="fas fa-bars"
-								id="profile-icon2"
-								onClick={handleHamburgerClick}
-							></i>
-						)}
-					</label>
-					<ul className={`nav2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
-						<li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
-							<Link to="/about">เกี่ยวกับเรา</Link>
-						</li>
-						<li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
-							<Link to="/quiz">แบบทดสอบ</Link>
-						</li>
-						<li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
-							<Link to="/contact">ติดต่อเรา</Link>
-						</li>
-						<li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
-							<Link to="/help">ช่วยเหลือ</Link>
-						</li>
-						<li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
-							<Link to="/logout">ออกจากระบบ</Link>
-						</li>
-					</ul>
-				</nav>
-				<div className="dashboard-container">
-					<div className="about-me-container">
-						<div className="user-detail" >
-							<Avatar size={55} src={`http://localhost:3000/static/users_images/${profileImage}`} style={{ marginTop: 2 }} onClick={onEditImage} />
-							<Modal title="Edit Profile Image" visible={isEditModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
-								<Form
-									onFinish={handleSubmitForm}
-								>
-									<input type="file" onChange={(e) => setImage(e.target.files[0])} /> Upload Image
-									<Form.Item
-										wrapperCol={{
-											offset: 0,
-											span: 16,
-										}}
-									>
-										<Button className="btn-submit" htmlType="submit">
-											ยืนยันการเปลี่นแปลง
-										</Button>
+		<div>
+			{token ?
+				<div className="profile">
+					<div className="profile-bg">
+						<img className="profile-bluebg" src="bluebg.png" />
+						<img className="profile-purplebg" src="purple-profile.png" />
+						<nav className="head-profile1">
+							<img className="profile-logo" src="logo.png" />
+							<ul className="center">
+								<li className="item-center">
+									<Link to="/">เกี่ยวกับเรา</Link>
+								</li>
+								<li className="item-center">
+									<Link to="/quiz">แบบทดสอบ</Link>
+								</li>
+								<li className="item-center">
+									<Link to="/contact">ติดต่อเรา</Link>
+								</li>
+								<li className="item-center">
+									<Link to="/help">ช่วยเหลือ</Link>
+								</li>
+							</ul>
+							<ul className="right">
+								<li className="item-right">
+									<Link to="/logout">ออกจากระบบ</Link>
+								</li>
+							</ul>
+						</nav>
+						<nav className="head-profile2">
+							<img className="profile-logo" src="logo.png" />
+							<label className="label-profile" htmlFor="check">
+								{showSecondNav ? (
+									<i
+										className="fas fa-times"
+										id="profile-icon1"
+										onClick={handleHamburgerClick}
+									></i>
+								) : (
+									<i
+										className="fas fa-bars"
+										id="profile-icon2"
+										onClick={handleHamburgerClick}
+									></i>
+								)}
+							</label>
+							<ul className={`nav2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
+								<li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
+									<Link to="/">เกี่ยวกับเรา</Link>
+								</li>
+								<li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
+									<Link to="/quiz">แบบทดสอบ</Link>
+								</li>
+								<li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
+									<Link to="/contact">ติดต่อเรา</Link>
+								</li>
+								<li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
+									<Link to="/help">ช่วยเหลือ</Link>
+								</li>
+								<li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
+									<Link to="/logout">ออกจากระบบ</Link>
+								</li>
+							</ul>
+						</nav>
+						<div className="dashboard-container">
+							<div className="about-me-container">
+								<div className="user-detail" >
+									<Avatar size={100} src={`http://localhost:3000/static/users_images/${profileImage}`}  onClick={onEditImage} />
+									<Modal title="Edit Profile Image" visible={isEditModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
+										<Form
+											onFinish={handleSubmitForm}
+										>
+											<input type="file" onChange={(e) => setImage(e.target.files[0])} /> Upload Image
+											<Form.Item
+												wrapperCol={{
+													offset: 0,
+													span: 16,
+												}}
+											>
+												<Button className="btn-submit" htmlType="submit">
+													ยืนยันการเปลี่นแปลง
+												</Button>
 
-									</Form.Item>
-								</Form>
-							</Modal>
-							<h4>{firstName} {lastName}</h4>
-							<h4>{email}</h4>
-							<div className="hashtag-box">
-								<h4 className="hashtag">#dreamer</h4>
-							</div>
-						</div>
-						<div className="description-detail">
-							<h4 className="text-description">เกี่ยวกับตัวฉัน</h4>
-							<h4 className="text-description-2">ฉันชอบทำงานที่ให้อิสระทางความคิด และชื่นชอบที่จะได้พบปะกับผู้คนใหม่ๆ</h4>
-						</div>
-					</div>
-					<div className="personality-container">
-						<h5 className="text-personality-container">สื่อสารกับฉันอย่างไร</h5>
-						<div style={{ display: "flex", color: "black" }}>
-							<div>
-								<ul style={{ listStyleType: "none", width: "100%" }}>
-									<li><BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
-									<li><BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
-								</ul>
-							</div>
-							<div>
-								<ul style={{ listStyleType: "none", width: "100%" }}>
-									<li><BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
-									<li> <BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div className="results-container">
-						<div className="left-container">
-							<h5 className="text-results-container">ผลลัพธ์จากบททดสอบ</h5>
-							<div className="motivated-box">
-								<div className="motivate-header-box">
-									<img className="icon" src="icon.png" style={{ margin: 10, width: "30px", height: "30px" }} />
-									<h3 className="text-motivated">Motivated By</h3>
-									<img className="icon-2" src="important_sign.png" style={{ width: "20px", height: "20px", margin: 10, marginTop: 18 }} />
+											</Form.Item>
+										</Form>
+									</Modal>
+									<h4 className="firstname">{firstName} {lastName}</h4>
+									<h4 className="email">{email}</h4>
+									<div className="hashtag-box">
+										<h4 className="hashtag">#dreamer</h4>
+									</div>
 								</div>
-								<div>
-									<MotivateBar />
+								<div className="description-detail">
+									<div>
+										<h4 className="text-description">เกี่ยวกับตัวฉัน</h4>
+										<h4 className="text-description-2">ฉันชอบทำงานที่ให้อิสระทางความคิด และชื่นชอบที่จะได้พบปะกับผู้คนใหม่ๆ</h4>
+									</div>
+									<div>
+										<img src="circle.png" className="circle" />
+										<img src="person.png" className="person" />
+									</div>
 								</div>
-							</div>
-							<div className="environment-box">
-								<div className="environment-header-box">
-									<img className="icon" src="icon.png" style={{ margin: 10, width: "30px", height: "30px" }} />
-									<h3 className="text-motivated">Best Environment</h3>
-									<img className="icon-2" src="important_sign.png" style={{ width: "20px", height: "20px", margin: 10, marginTop: 18 }} />
-								</div>
-								<div>
-									<EnvironmentBar />
-								</div>
-							</div>
-							<div className="work-box">
-								<div className="work-header-box">
-									<img className="icon" src="icon.png" style={{ margin: 10, width: "30px", height: "30px" }} />
-									<h3 className="text-motivated">Ideal Work</h3>
-								</div>
-								<div>
-									<MotivateBar />
-								</div>
-							</div>
-						</div>
-						<div className="right-container">
-							<div className="strength-box">
-								<div className="strength-box-head">
-									<h5 className="text-right-container-2">จุดแข็ง 8 อันดับแรก</h5>
-									{ strength.length === 8 ?  	<button className="btn1" onClick={handleEditStrength}>+ แก้ไข</button>								
-										:					
-										<button className="btn1" onClick={handleAddStrength}>+ เพิ่ม</button>
-									}
-								</div>
-								<div className="display-image-strength">
-									{strength && strength.map(x => (
 
-										<div >
-											<img className="img-strength" key={x.image} src={"http://localhost:3000/strength_images/" + x.image} style={{ margin: 10, }} />
+							</div>
+							<div className="personality-container">
+								<h5 className="text-personality-container">สื่อสารกับฉันอย่างไร</h5>
+								<div style={{ display: "flex", color: "black" }}>
+									<div>
+										<ul style={{ listStyleType: "none", width: "100%" }}>
+											<li><BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
+											<li><BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
+										</ul>
+									</div>
+									<div>
+										<ul style={{ listStyleType: "none", width: "100%" }}>
+											<li><BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
+											<li> <BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div className="results-container">
+								<div className="left-container">
+									<h5 className="text-results-container">ผลลัพธ์จากบททดสอบ</h5>
+									<div className="motivated-box">
+										<div className="motivate-header-box">
+											<img className="icon" src="icon.png" style={{ margin: 10, width: "30px", height: "30px" }} />
+											<h3 className="text-motivated">Motivated By</h3>
+											<img className="icon-2" src="important_sign.png" style={{ width: "20px", height: "20px", margin: 10, marginTop: 18 }} />
 										</div>
+										<div>
+											<MotivateBar />
+										</div>
+									</div>
+									<div className="environment-box">
+										<div className="environment-header-box">
+											<img className="icon" src="icon.png" style={{ margin: 10, width: "30px", height: "30px" }} />
+											<h3 className="text-motivated">Best Environment</h3>
+											<img className="icon-2" src="important_sign.png" style={{ width: "20px", height: "20px", margin: 10, marginTop: 18 }} />
+										</div>
+										<div>
+											<EnvironmentBar />
+										</div>
+									</div>
+									<div className="work-box">
+										<div className="work-header-box">
+											<img className="icon" src="icon.png" style={{ margin: 10, width: "30px", height: "30px" }} />
+											<h3 className="text-motivated">Ideal Work</h3>
+										</div>
+										<div>
+											<MotivateBar />
+										</div>
+									</div>
+								</div>
+								<div className="right-container">
+									<div className="strength-box">
+										<div className="strength-box-head">
+											<h5 className="text-right-container-2">จุดแข็ง 8 อันดับแรก</h5>
+											{strength.length === 8 ? <button className="btn1" onClick={handleEditStrength}>+ แก้ไข</button>
+												:
+												<button className="btn1" onClick={handleAddStrength}>+ เพิ่ม</button>
+											}
+										</div>
+										<div className="display-image-strength">
+											{strength && strength.map(x => (
+
+												<div >
+													<img className="img-strength" key={x.image} src={"http://localhost:3000/strength_images/" + x.image} style={{ margin: 10, }} />
+												</div>
 
 
-									))}
-								</div>
-							</div>
-							<div className="achievement-box">
-								<div className="achievement-box-head">
-									<div>
-										<h5 className="text-right-container-3">ความสำเร็จในชีวิต</h5>
+											))}
+										</div>
 									</div>
-									<div>
-										{achievement.length <= 1 ?
-											<button className="btn2" onClick={handleAddAchievement}>+ เพิ่ม</button> :
-											<></>}
-										<Modal title="Achievements" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
-											<AchievementCreate setIsModalVisible={setIsModalVisible} />
-										</Modal>
-										<Modal title="Update Achievements" visible={isModalUpdateAchievement} onOk={handleOk} onCancel={handleCancel} footer={null}>
-											<UpdateAchievement setIsModalUpdateAchievement={setIsModalUpdateAchievement} achievement={achievement[index]} />
-										</Modal>
-									</div>
-								</div>
-								<div className="display-achievement">
-									{achievement && achievement.map((y, i) => (
-										<div className="achievement" >
+									<div className="achievement-box">
+										<div className="achievement-box-head">
 											<div>
-												<h3 className="title" key={y.id}>{y.title}
-													
-													<a className="delete-achievement" onClick={() => deleteAchievement(y.id)}><AiOutlineDelete></AiOutlineDelete></a>
-													<a className="edit-description" onClick={() => editDescription(i)}> <AiOutlineEdit></AiOutlineEdit></a>
-												</h3>
-												<Modal title="Achievement" visible={isModalDescription} onOk={handleOk} onCancel={handleCancel} footer={null}>
-													<h3 className="title">{y.title}</h3>
-													<h6>Description :<p className="description"> {y.description}</p></h6>
-													<h6>Duration <AiFillCalendar></AiFillCalendar> : <p className="date"> {y.date_start} to {y.date_end}</p></h6>
+												<h5 className="text-right-container-3">ความสำเร็จในชีวิต</h5>
+											</div>
+											<div>
+												{achievement.length <= 1 ?
+													<button className="btn2" onClick={handleAddAchievement}>+ เพิ่ม</button> :
+													<></>}
+												<Modal title="Achievements" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
+													<AchievementCreate setIsModalVisible={setIsModalVisible} />
 												</Modal>
-												<p className="date">{y.date_start} to {y.date_end} <a className="read-more" onClick={showDescription}>อ่านต่อ </a></p>
-												<p className="type-achievement"><BsFlag></BsFlag> {y.type}</p>
+												<Modal title="Update Achievements" visible={isModalUpdateAchievement} onOk={handleOk} onCancel={handleCancel} footer={null}>
+													<UpdateAchievement setIsModalUpdateAchievement={setIsModalUpdateAchievement} achievement={achievement[index]} />
+												</Modal>
 											</div>
 										</div>
-									))}
+										<div className="display-achievement">
+											{achievement && achievement.map((y, i) => (
+												<div className="achievement" >
+													<div>
+														<h3 className="title" key={y.id}>{y.title}
+
+															<a className="delete-achievement" onClick={() => deleteAchievement(y.id)}><AiOutlineDelete></AiOutlineDelete></a>
+															<a className="edit-description" onClick={() => editDescription(i)}> <AiOutlineEdit></AiOutlineEdit></a>
+														</h3>
+														<Modal title="Achievement" visible={isModalDescription} onOk={handleOk} onCancel={handleCancel} footer={null}>
+															<h3 className="title">{y.title}</h3>
+															<h6>Description :<p className="description"> {y.description}</p></h6>
+															<h6>Duration <AiFillCalendar></AiFillCalendar> : <p className="date"> {y.date_start} to {y.date_end}</p></h6>
+														</Modal>
+														<p className="date">{y.date_start} to {y.date_end} <a className="read-more" onClick={showDescription}>อ่านต่อ </a></p>
+														<p className="type-achievement"><BsFlag></BsFlag> {y.type}</p>
+													</div>
+												</div>
+											))}
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+				:
+				<div className="not-authorized-page">
+					<h1 className="not-authorized">You are not authorized to access this page!!</h1>
+					<h2 className="login-first">Please Login...</h2>
+					<Link to="/"><button className="not-authorized-btn"> Back to Home</button></Link>
+				</div>
+			}
 		</div>
 	);
 };

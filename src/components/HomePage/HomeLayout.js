@@ -29,11 +29,16 @@ const HomeLayout = () => {
             <img className="people-homebg" src="grouppeople.png" />
             <div className="head-home">
                 <ul className="head-home-nav">
-                    <li className="head-home-nav-item"><Link to="/about">เกี่ยวกับเรา</Link></li>
-                    <li className="head-home-nav-item">                    
-                        <Link to= {token ? "/quiz" : "/login"}>แบบทดสอบ</Link>
+                    <li className="head-home-nav-item"><Link to="/">เกี่ยวกับเรา</Link></li>
+                    <li className="head-home-nav-item">
+                        <Link to={token ? "/quiz" : "/login"}>แบบทดสอบ</Link>
                     </li>
-                    <li className="head-home-nav-item"><Link to="/login">เข้าสู่ระบบ</Link></li>
+                    <li className="head-home-nav-item">
+                    {token ? 
+                        <Link to="/logout">ออกจากระบบ</Link> :
+                        <Link to="/login">เข้าสู่ระบบ</Link>
+                    }
+                    </li>
                     <li className="head-home-nav-btn"><Button className="btn-to-quiz" onClick={linkToQuiz}>ทำแบบทดสอบ</Button></li>
                 </ul>
             </div>

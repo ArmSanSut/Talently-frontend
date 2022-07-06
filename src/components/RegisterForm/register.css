@@ -4,7 +4,8 @@
     text-align: center;
     font-weight: bolder;
     margin-bottom: 2rem !important;
-    font-size: 30px;
+    font-weight: 600;
+    font-size: 36px;
 }
 
 .register-bg {
@@ -75,7 +76,7 @@
 }
 
 p {
-    font-size: 12px;
+    font-size: 14px;
     margin: 0;
 }
 
@@ -83,6 +84,8 @@ input#basic_name.ant-input.input,
 input#basic_sirname.ant-input.input,
 input#basic_username.ant-input.input,
 input#basic_email.ant-input.input,
-span.ant-input-affix-wrapper.ant-input-password.input {
-    width: 285px;
+span.ant-input-affix-wrapper.ant-input-password.input,
+button.ant-btn.ant-btn-default.btn-submit {
+    Width: 326px;
+    Height:48px
 }

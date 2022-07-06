@@ -7,7 +7,7 @@ import { RiNumber1, RiNumber2, RiNumber3, RiNumber4 } from "react-icons/ri";
 const Choices = ({order, title}) => {
 	return (
 		<div className="choice-list-div">
-			<ul className="choiceList"  >
+			<ul className= {order ? "choiceList-selected" : "choiceList"}  >
 				<li className=  "selected">
 					{order === 1 && (<><li className="selected-list" ><RiNumber1 className="choiceBox"></RiNumber1></li><li className="seleect-title">{title}</li> </>)}
 					{order === 2 && (<><li className="selected-list" ><RiNumber2 className="choiceBox"></RiNumber2></li><li className="seleect-title">{title}</li></>)}

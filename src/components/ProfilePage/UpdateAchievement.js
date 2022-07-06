@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import "./achievement/achievement.css";
@@ -12,6 +13,17 @@ const { Option } = Select;
 
 const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement, setEditAchievement }) => {
 	const [dateSelected, setDateSelected] = useState([]);
+	// const [typeSelected, setTypeSelected] = useState([]);
+
+	// useEffect(() => {
+	// 	setTypeSelected(achievement.type);
+	// }, []);
+	// console.log(typeSelected);
+
+
+	// const achievement_list = achievement[parseInt(achievement.id)];
+	// console.log("11", achievement_list);
+	// const type_achievement = achievement_list.type;
 
 	const achievement_index = achievement.id;
 	console.log(achievement_index);
@@ -77,6 +89,7 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement, setEditAc
 				</Form.Item>
 				<Form.Item
 					label="Title"
+					// initialValue="hello-t"
 					name="title"
 					initialValue={achievement.title}
 					rules={[
@@ -90,6 +103,7 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement, setEditAc
 
 				<Form.Item
 					label="Description"
+					// initialValue={achievement.description}
 					name="description"
 					initialValue={achievement.description}
 					rules={[
@@ -103,6 +117,7 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement, setEditAc
 
 				<Form.Item
 					label="Time Selected"
+					// initialValue={achievement.date}
 					name="date"
 					wrapperCol={{
 						offset: 0,

@@ -1,0 +1,26 @@
+.left-side-bar {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 10px;
+}
+.right-side-bar {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px;
+}
+
+.progress-display-orange-left .ant-progress-inner {
+    transform: rotate(3.142rad);
+}
+
+.progress-display-orange-left .ant-progress-bg,
+.progress-display-orange-right .ant-progress-bg {
+    background:  linear-gradient(107.87deg, #FFCE83 0%, #FF814B 100.04%);
+    border-radius: 0px 0px 0px 0px;
+}

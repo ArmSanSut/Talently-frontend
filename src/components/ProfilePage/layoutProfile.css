@@ -139,9 +139,14 @@ p.description {
     font-size: 15px;
     color: #4b7eff;
     float: right;
+    margin-right: 10px;
+}
+.delete-achievement {
+    font-size: 15px;
+    color: #4b7eff;
+    float: right;
     /* margin-top: 10px; */
 }
-
 .read-more {
     font-size: 15px;
     color: #FF814B;

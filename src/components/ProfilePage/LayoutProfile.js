@@ -26,7 +26,9 @@ const LayoutProfile = () => {
 	const [profileImage , setProfileImage ] = useState(() => {
 		return localStorage.getItem("image");
 	});
-	const [index, setIndex] = useState();
+	const [editAchievement, setEditAchievement] = useState(null);
+	const [,updateState] = useState();
+	const forceUpdate = React.useCallback(() => updateState({}), []);
 
 	useEffect(() => {
 		const token = localStorage.getItem("token");
@@ -152,8 +154,10 @@ const LayoutProfile = () => {
 	};
 
 	const editDescription = (i) => {
+		console.log(i);
+		setEditAchievement(i);
 		setIsModalUpdateAchievement(true);
-		setIndex(i);
+		forceUpdate();
 	};
 
 	const deleteAchievement = async (id) => {
@@ -175,7 +179,7 @@ const LayoutProfile = () => {
 			}).catch(err => console.log(err));
 	};
 
-	
+	console.log({editAchievement, isModalUpdateAchievement});
 
 	return (
 		<div className="profile">
@@ -355,17 +359,18 @@ const LayoutProfile = () => {
 											<AchievementCreate setIsModalVisible={setIsModalVisible} />
 										</Modal>
 										<Modal title="Update Achievements" visible={isModalUpdateAchievement} onOk={handleOk} onCancel={handleCancel} footer={null}>
-											<UpdateAchievement setIsModalUpdateAchievement={setIsModalUpdateAchievement} achievement={achievement[index]} />
+											{editAchievement && isModalUpdateAchievement && <UpdateAchievement setIsModalUpdateAchievement={setIsModalUpdateAchievement} achievement={editAchievement} setEditAchievement={setEditAchievement} />}
 										</Modal>
 									</div>
 								</div>
 								<div className="display-achievement">
-									{achievement && achievement.map((y, i) => (
+									{achievement && achievement.map((y) => (
 										<div className="achievement" >
 											<div>
 												<h3 className="title" key={y.id}>{y.title}
-													<a className="edit-description" onClick={() => editDescription(i)}> <AiOutlineEdit></AiOutlineEdit></a>
 													<a className="delete-achievement" onClick={() => deleteAchievement(y.id)}><AiOutlineDelete></AiOutlineDelete></a>
+													<a className="edit-description" onClick={() => editDescription(y)}> <AiOutlineEdit></AiOutlineEdit></a>
+													
 												</h3>
 												<Modal title="Achievement" visible={isModalDescription} onOk={handleOk} onCancel={handleCancel} footer={null}>
 													<h3 className="title">{y.title}</h3>

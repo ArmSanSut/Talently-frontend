@@ -92,6 +92,7 @@ const StrengthSelectedPage = () => {
 
 	console.log("length",strengthSelected.length);
 
+
 	return (
 		<div>
 			<h2 className="head">

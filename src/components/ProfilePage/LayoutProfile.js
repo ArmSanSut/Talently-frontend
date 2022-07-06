@@ -7,6 +7,7 @@ import { Avatar, Form, Modal, Button } from "antd";
 import AchievementCreate from "./achievement/achievementCreate";
 import MotivateBar from "./motivateBar";
 import EnvironmentBar from "./environmentBar";
+import IdealworkBar from "./idealworkBar";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { BsFlag } from "react-icons/bs";
@@ -322,7 +323,7 @@ const LayoutProfile = () => {
 									<h3 className="text-motivated">Ideal Work</h3>
 								</div>
 								<div>
-									<MotivateBar />
+									<IdealworkBar />
 								</div>
 							</div>
 						</div>

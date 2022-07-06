@@ -15,11 +15,12 @@
     margin: 10px;
 }
 
-.progress-display-blue-left .ant-progress-inner {
+.progress-display-orange-left .ant-progress-inner {
     transform: rotate(3.142rad);
 }
 
-.progress-display-blue-left .ant-progress-bg,
-.progress-display-blue-right .ant-progress-bg {
-    background:  linear-gradient(107.87deg, #599BE9 0%, #0B25E0 100.04%);
+.progress-display-orange-left .ant-progress-bg,
+.progress-display-orange-right .ant-progress-bg {
+    background:  linear-gradient(107.87deg, #FFCE83 0%, #FF814B 100.04%);
+    border-radius: 0px 0px 0px 0px;
 }

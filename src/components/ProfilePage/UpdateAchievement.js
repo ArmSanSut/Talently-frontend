@@ -11,9 +11,7 @@ const { TextArea } = Input;
 const { RangePicker } = DatePicker;
 const { Option } = Select;
 
-const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement }) => {
-	console.log("id", achievement);
-	// const navigate = useNavigate();
+const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement, setEditAchievement }) => {
 	const [dateSelected, setDateSelected] = useState([]);
 	// const [typeSelected, setTypeSelected] = useState([]);
 
@@ -27,14 +25,14 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement }) => {
 	// console.log("11", achievement_list);
 	// const type_achievement = achievement_list.type;
 
+	const achievement_index = achievement.id;
+	console.log(achievement_index);
+
 	const onSelectedDate = (date, dateString) => {
-		console.log(dateString);
 		setDateSelected(dateString);
 	};
 	const onFinish = async (values) => {
-
 		console.log("successupdate", values);
-		console.log("date start", dateSelected);
 
 		await axios.put(`http://localhost:3000/api/user/update_achievement/${achievement.id}`, {
 			date_start: dateSelected[0],
@@ -44,13 +42,14 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement }) => {
 			type: values.type
 
 		});
+		setEditAchievement(null);
 		setIsModalUpdateAchievement(false);
-		// navigate("/profile");
 	};
 
 	const onFinishFailed = (errorInfo) => {
 		console.log("Failed:", errorInfo);
 	};
+	console.log("test", achievement);
 	return (
 		<div className="achievement-box">
 			<Form
@@ -62,9 +61,11 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement }) => {
 				wrapperCol={{
 					span: 16,
 				}}
-				initialValues={{
-					remember: true,
-				}}
+				// initialValues={{
+				// 	type : data.type,
+				// 	title : data.title,
+				// 	description : data.description,					
+				// }}
 				onFinish={onFinish}
 				onFinishFailed={onFinishFailed}
 				autoComplete="off"
@@ -72,7 +73,7 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement }) => {
 				<Form.Item
 					name="type"
 					label="Type"
-					// initialValue={type_achievement}
+					initialValue={achievement.type}
 					rules={[
 						{
 							required: true,
@@ -90,6 +91,7 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement }) => {
 					label="Title"
 					// initialValue="hello-t"
 					name="title"
+					initialValue={achievement.title}
 					rules={[
 						{
 							required: true,
@@ -103,6 +105,7 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement }) => {
 					label="Description"
 					// initialValue={achievement.description}
 					name="description"
+					initialValue={achievement.description}
 					rules={[
 						{
 							required: true,
@@ -116,7 +119,6 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement }) => {
 					label="Time Selected"
 					// initialValue={achievement.date}
 					name="date"
-
 					wrapperCol={{
 						offset: 0,
 						span: 18,

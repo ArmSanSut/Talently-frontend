@@ -94,6 +94,7 @@ const StrengthSelectedPage = () => {
 
 	const token = localStorage.getItem("token");
 
+
 	return (
 		<div>
 			{token ?

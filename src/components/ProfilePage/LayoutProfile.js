@@ -246,7 +246,7 @@ const LayoutProfile = () => {
 						<div className="dashboard-container">
 							<div className="about-me-container">
 								<div className="user-detail" >
-									<Avatar size={100} src={`http://localhost:3000/static/users_images/${profileImage}`}  onClick={onEditImage} />
+									<Avatar size={100} src={`http://localhost:3000/static/users_images/${profileImage}`} style={{ marginTop: 2 }} onClick={onEditImage} />
 									<Modal title="Edit Profile Image" visible={isEditModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
 										<Form
 											onFinish={handleSubmitForm}
@@ -281,7 +281,6 @@ const LayoutProfile = () => {
 										<img src="person.png" className="person" />
 									</div>
 								</div>
-
 							</div>
 							<div className="personality-container">
 								<h5 className="text-personality-container">สื่อสารกับฉันอย่างไร</h5>
@@ -393,9 +392,11 @@ const LayoutProfile = () => {
 									</div>
 								</div>
 							</div>
+
 						</div>
 					</div>
 				</div>
+
 				:
 				<div className="not-authorized-page">
 					<h1 className="not-authorized">You are not authorized to access this page!!</h1>

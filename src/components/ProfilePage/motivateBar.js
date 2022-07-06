@@ -32,6 +32,7 @@ const MotivateBar = () => {
 				<h5>Uniqueness</h5>
 				<Progress percent={50} showInfo={false} trailColor="#F3F8FF" className="progress-display-blue-right"/>
 			</div>
+			
 		</div>
 	);
 };

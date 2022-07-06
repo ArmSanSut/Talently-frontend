@@ -29,6 +29,8 @@ const LayoutProfile = () => {
 	});
 	const [index, setIndex] = useState();
 
+	// const [editAchievement, setEditAchievement] = useState([]);
+
 
 	useEffect(() => {
 		const token = localStorage.getItem("token");
@@ -244,229 +246,182 @@ const LayoutProfile = () => {
 								</li>
 							</ul>
 						</nav>
-						<div className="dashboard-container">
-							<div className="about-me-container">
-								<div className="user-detail" >
-									<Avatar size={100} src={`http://localhost:3000/static/users_images/${profileImage}`} style={{ marginTop: 2 }} onClick={onEditImage} />
-									<Modal title="Edit Profile Image" visible={isEditModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
-										<Form
-											onFinish={handleSubmitForm}
+					</div>
+
+					<div className="dashboard-container">
+						<div className="about-me-container">
+							<div className="user-detail" >
+								<Avatar size={100} src={`http://localhost:3000/static/users_images/${profileImage}`} style={{ marginTop: 2 }} onClick={onEditImage} />
+								<Modal title="Edit Profile Image" visible={isEditModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
+									<Form
+										onFinish={handleSubmitForm}
+									>
+										<input type="file" onChange={(e) => setImage(e.target.files[0])} /> Upload Image
+										<Form.Item
+											wrapperCol={{
+												offset: 0,
+												span: 16,
+											}}
 										>
-											<input type="file" onChange={(e) => setImage(e.target.files[0])} /> Upload Image
-											<Form.Item
-												wrapperCol={{
-													offset: 0,
-													span: 16,
-												}}
-											>
-												<Button className="btn-submit" htmlType="submit">
-													ยืนยันการเปลี่นแปลง
-												</Button>
+											<Button className="btn-submit" htmlType="submit">
+												ยืนยันการเปลี่นแปลง
+											</Button>
 
-											</Form.Item>
-										</Form>
-									</Modal>
-									<h4 className="firstname">{firstName} {lastName}</h4>
-									<h4 className="email">{email}</h4>
-									<div className="hashtag-box">
-										<h4 className="hashtag">#dreamer</h4>
-									</div>
-								</div>
-								<div className="description-detail">
-									<div>
-										<h4 className="text-description">เกี่ยวกับตัวฉัน</h4>
-										<h4 className="text-description-2">ฉันชอบทำงานที่ให้อิสระทางความคิด และชื่นชอบที่จะได้พบปะกับผู้คนใหม่ๆ</h4>
-									</div>
-									<div>
-										<img src="circle.png" className="circle" />
-										<img src="person.png" className="person" />
-									</div>
+										</Form.Item>
+									</Form>
+								</Modal>
+								<h4 className="firstname">{firstName} {lastName}</h4>
+								<h4 className="email">{email}</h4>
+								<div className="hashtag-box">
+									<h4 className="hashtag">#dreamer</h4>
 								</div>
 							</div>
-							<div className="personality-container">
-								<h5 className="text-personality-container">สื่อสารกับฉันอย่างไร</h5>
-								<div style={{ display: "flex", color: "black" }}>
-									<div>
-										<ul style={{ listStyleType: "none", width: "100%" }}>
-											<li><BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
-											<li><BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
-										</ul>
-									</div>
-									<div>
-										<ul style={{ listStyleType: "none", width: "100%" }}>
-											<li><BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
-											<li> <BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
-										</ul>
-									</div>
+							<div className="description-detail">
+								<div>
+									<h4 className="text-description">เกี่ยวกับตัวฉัน</h4>
+									<h4 className="text-description-2">ฉันชอบทำงานที่ให้อิสระทางความคิด และชื่นชอบที่จะได้พบปะกับผู้คนใหม่ๆ</h4>
+								</div>
+								<div>
+									<img src="circle.png" className="circle" />
+									<img src="person.png" className="person" />
 								</div>
 							</div>
-							<div className="results-container">
-								<div className="left-container">
-									<h5 className="text-results-container">ผลลัพธ์จากบททดสอบ</h5>
-									<div className="motivated-box">
-										<div className="motivate-header-box">
-											<img className="icon" src="icon.png" style={{ margin: 10, width: "30px", height: "30px" }} />
-											<h3 className="text-motivated">Motivated By</h3>
-											<img className="icon-2" src="important_sign.png" style={{ width: "20px", height: "20px", margin: 10, marginTop: 18 }} />
-										</div>
-										<div>
-											<MotivateBar />
-											<hr />
-											<div className="motivated_result_left">
-												การช่วยเหลือผู้คน
-
-<<<<<<< HEAD
-
-									))}
-								</div>
-							</div>
-							<div className="achievement-box">
-								<div className="achievement-box-head">
-									<div>
-										<h5 className="text-right-container-3">ความสำเร็จในชีวิต</h5>
-									</div>
-									<div>
-										{achievement.length <= 1 ?
-											<button className="btn2" onClick={handleAddAchievement}>+ เพิ่ม</button> :
-											<></>}
-										<Modal title="Achievements" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
-											<AchievementCreate setIsModalVisible={setIsModalVisible} />
-										</Modal>
-										<Modal title="Update Achievements" visible={isModalUpdateAchievement} onOk={handleOk} onCancel={handleCancel} footer={null}>
-											{editAchievement && isModalUpdateAchievement && <UpdateAchievement setIsModalUpdateAchievement={setIsModalUpdateAchievement} achievement={editAchievement} setEditAchievement={setEditAchievement} />}
-										</Modal>
-									</div>
-								</div>
-								<div className="display-achievement">
-
-									
-
-									{achievement && achievement.map((y, i) => (
-
-										<div className="achievement" >
-											<div>
-												<h3 className="title" key={y.id}>{y.title}
-
-													<a className="delete-achievement" onClick={() => deleteAchievement(y.id)}><AiOutlineDelete></AiOutlineDelete></a>
-													<a className="edit-description" onClick={() => editDescription(i)}> <AiOutlineEdit></AiOutlineEdit></a>
-												</h3>
-												<Modal title="Achievement" visible={isModalDescription} onOk={handleOk} onCancel={handleCancel} footer={null}>
-													<h3 className="title">{y.title}</h3>
-													<h6>Description :<p className="description"> {y.description}</p></h6>
-													<h6>Duration <AiFillCalendar></AiFillCalendar> : <p className="date"> {y.date_start} to {y.date_end}</p></h6>
-												</Modal>
-												<p className="date">{y.date_start} to {y.date_end} <a className="read-more" onClick={showDescription}>อ่านต่อ </a></p>
-												<p className="type-achievement"><BsFlag></BsFlag> {y.type}</p>
-=======
-											</div>
-											<div className="motivated_result_right">
-												เมาท์คอนเซ็ปต์ แคนยอน ไอเดีย โรแมนติกนิรันดร์อาร์ติสต์แคมป์บลูเบอร์รี เอาท์ไฮกุเพียบแปร้โฮลวีต
->>>>>>> b5dbe2bc1c32222b0fc38fe2e6699e7844fafa5a
-											</div>
-										</div>
-									</div>
-									<div className="environment-box">
-										<div className="environment-header-box">
-											<img className="icon" src="icon.png" style={{ margin: 10, width: "30px", height: "30px" }} />
-											<h3 className="text-motivated">Best Environment</h3>
-											<img className="icon-2" src="important_sign.png" style={{ width: "20px", height: "20px", margin: 10, marginTop: 18 }} />
-										</div>
-										<div>
-											<EnvironmentBar />
-											<hr />
-											<div className="environment_result_left">
-												การช่วยเหลือผู้คน
-
-											</div>
-											<div className="environment_result_right">
-												เมาท์คอนเซ็ปต์ แคนยอน ไอเดีย โรแมนติกนิรันดร์อาร์ติสต์แคมป์บลูเบอร์รี เอาท์ไฮกุเพียบแปร้โฮลวีต
-											</div>
-
-										</div>
-
-									</div>
-									<div className="work-box">
-										<div className="work-header-box">
-											<img className="icon" src="icon.png" style={{ margin: 10, width: "30px", height: "30px" }} />
-											<h3 className="text-motivated">Ideal Work</h3>
-										</div>
-										<div>
-											<IdealworkBar />
-											<hr />
-
-											<div className="ideal_result_left">
-												การช่วยเหลือผู้คน
-
-											</div>
-											<div className="ideal_result_right">
-												เมาท์คอนเซ็ปต์ แคนยอน ไอเดีย โรแมนติกนิรันดร์อาร์ติสต์แคมป์บลูเบอร์รี เอาท์ไฮกุเพียบแปร้โฮลวีต
-											</div>
-										</div>
-
-									</div>
-								</div>
-								<div className="right-container">
-									<div className="strength-box">
-										<div className="strength-box-head">
-											<h5 className="text-right-container-2">จุดแข็ง 8 อันดับแรก</h5>
-											{strength.length === 8 ? <button className="btn1" onClick={handleEditStrength}>+ แก้ไข</button>
-												:
-												<button className="btn1" onClick={handleAddStrength}>+ เพิ่ม</button>
-											}
-										</div>
-										<div className="display-image-strength">
-											{strength && strength.map(x => (
-
-												<div >
-													<img className="img-strength" key={x.image} src={"http://localhost:3000/strength_images/" + x.image} style={{ margin: 10, }} />
-												</div>
-
-
-											))}
-										</div>
-									</div>
-									<div className="achievement-box">
-										<div className="achievement-box-head">
-											<div>
-												<h5 className="text-right-container-3">ความสำเร็จในชีวิต</h5>
-											</div>
-											<div>
-												{achievement.length <= 1 ?
-													<button className="btn2" onClick={handleAddAchievement}>+ เพิ่ม</button> :
-													<></>}
-												<Modal title="Achievements" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
-													<AchievementCreate setIsModalVisible={setIsModalVisible} />
-												</Modal>
-												<Modal title="Update Achievements" visible={isModalUpdateAchievement} onOk={handleOk} onCancel={handleCancel} footer={null}>
-													<UpdateAchievement setIsModalUpdateAchievement={setIsModalUpdateAchievement} achievement={achievement[index]} />
-												</Modal>
-											</div>
-										</div>
-										<div className="display-achievement">
-											{achievement && achievement.map((y, i) => (
-												<div className="achievement" >
-													<div>
-														<h3 className="title" key={y.id}>{y.title}
-
-															<a className="delete-achievement" onClick={() => deleteAchievement(y.id)}><AiOutlineDelete></AiOutlineDelete></a>
-															<a className="edit-description" onClick={() => editDescription(i)}> <AiOutlineEdit></AiOutlineEdit></a>
-														</h3>
-														<Modal title="Achievement" visible={isModalDescription} onOk={handleOk} onCancel={handleCancel} footer={null}>
-															<h3 className="title">{y.title}</h3>
-															<h6>Description :<p className="description"> {y.description}</p></h6>
-															<h6>Duration <AiFillCalendar></AiFillCalendar> : <p className="date"> {y.date_start} to {y.date_end}</p></h6>
-														</Modal>
-														<p className="date">{y.date_start} to {y.date_end} <a className="read-more" onClick={showDescription}>อ่านต่อ </a></p>
-														<p className="type-achievement"><BsFlag></BsFlag> {y.type}</p>
-													</div>
-												</div>
-											))}
-										</div>
-									</div>
-								</div>
-							</div>
-
 						</div>
+						<div className="personality-container">
+							<h5 className="text-personality-container">สื่อสารกับฉันอย่างไร</h5>
+							<div style={{ display: "flex", color: "black" }}>
+								<div>
+									<ul style={{ listStyleType: "none", width: "100%" }}>
+										<li><BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
+										<li><BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
+									</ul>
+								</div>
+								<div>
+									<ul style={{ listStyleType: "none", width: "100%" }}>
+										<li><BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
+										<li> <BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div className="results-container">
+							<div className="left-container">
+								<h5 className="text-results-container">ผลลัพธ์จากบททดสอบ</h5>
+								<div className="motivated-box">
+									<div className="motivate-header-box">
+										<img className="icon" src="icon.png" style={{ margin: 10, width: "30px", height: "30px" }} />
+										<h3 className="text-motivated">Motivated By</h3>
+										<img className="icon-2" src="important_sign.png" style={{ width: "20px", height: "20px", margin: 10, marginTop: 18 }} />
+									</div>
+									<div>
+										<MotivateBar />
+										<hr />
+										<div className="motivated_result_left">
+											การช่วยเหลือผู้คน
+										</div>
+										<div className="motivated_result_right">
+											เมาท์คอนเซ็ปต์ แคนยอน ไอเดีย โรแมนติกนิรันดร์อาร์ติสต์แคมป์บลูเบอร์รี เอาท์ไฮกุเพียบแปร้โฮลวีต
+										</div>
+									</div>
+								</div>
+								<div className="environment-box">
+									<div className="environment-header-box">
+										<img className="icon" src="icon.png" style={{ margin: 10, width: "30px", height: "30px" }} />
+										<h3 className="text-motivated">Best Environment</h3>
+										<img className="icon-2" src="important_sign.png" style={{ width: "20px", height: "20px", margin: 10, marginTop: 18 }} />
+									</div>
+									<div>
+										<EnvironmentBar />
+										<hr />
+										<div className="environment_result_left">
+											การช่วยเหลือผู้คน
+										</div>
+										<div className="environment_result_right">
+											เมาท์คอนเซ็ปต์ แคนยอน ไอเดีย โรแมนติกนิรันดร์อาร์ติสต์แคมป์บลูเบอร์รี เอาท์ไฮกุเพียบแปร้โฮลวีต
+										</div>
+									</div>
+								</div>
+								<div className="work-box">
+									<div className="work-header-box">
+										<img className="icon" src="icon.png" style={{ margin: 10, width: "30px", height: "30px" }} />
+										<h3 className="text-motivated">Ideal Work</h3>
+									</div>
+									<div>
+										<IdealworkBar />
+										<hr />
+
+										<div className="ideal_result_left">
+											การช่วยเหลือผู้คน
+
+										</div>
+										<div className="ideal_result_right">
+											เมาท์คอนเซ็ปต์ แคนยอน ไอเดีย โรแมนติกนิรันดร์อาร์ติสต์แคมป์บลูเบอร์รี เอาท์ไฮกุเพียบแปร้โฮลวีต
+										</div>
+									</div>
+								</div>
+							</div>
+							<div className="right-container">
+								<div className="strength-box">
+									<div className="strength-box-head">
+										<h5 className="text-right-container-2">จุดแข็ง 8 อันดับแรก</h5>
+										{strength.length === 8 ? <button className="btn1" onClick={handleEditStrength}>+ แก้ไข</button>
+											:
+											<button className="btn1" onClick={handleAddStrength}>+ เพิ่ม</button>
+										}
+									</div>
+									<div className="display-image-strength">
+										{strength && strength.map(x => (
+
+											<div >
+												<img className="img-strength" key={x.image} src={"http://localhost:3000/strength_images/" + x.image} style={{ margin: 10, }} />
+											</div>
+
+
+										))}
+									</div>
+								</div>
+								<div className="achievement-box">
+									<div className="achievement-box-head">
+										<div>
+											<h5 className="text-right-container-3">ความสำเร็จในชีวิต</h5>
+										</div>
+										<div>
+											{achievement.length <= 1 ?
+												<button className="btn2" onClick={handleAddAchievement}>+ เพิ่ม</button> :
+												<></>}
+											<Modal title="Achievements" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
+												<AchievementCreate setIsModalVisible={setIsModalVisible} />
+											</Modal>
+											<Modal title="Update Achievements" visible={isModalUpdateAchievement} onOk={handleOk} onCancel={handleCancel} footer={null}>
+												<UpdateAchievement setIsModalUpdateAchievement={setIsModalUpdateAchievement} achievement={achievement[index]} />
+											</Modal>
+										</div>
+									</div>
+									<div className="display-achievement">
+										{achievement && achievement.map((y, i) => (
+											<div className="achievement" >
+												<div>
+													<h3 className="title" key={y.id}>{y.title}
+
+														<a className="delete-achievement" onClick={() => deleteAchievement(y.id)}><AiOutlineDelete></AiOutlineDelete></a>
+														<a className="edit-description" onClick={() => editDescription(i)}> <AiOutlineEdit></AiOutlineEdit></a>
+													</h3>
+													<Modal title="Achievement" visible={isModalDescription} onOk={handleOk} onCancel={handleCancel} footer={null}>
+														<h3 className="title">{y.title}</h3>
+														<h6>Description :<p className="description"> {y.description}</p></h6>
+														<h6>Duration <AiFillCalendar></AiFillCalendar> : <p className="date"> {y.date_start} to {y.date_end}</p></h6>
+													</Modal>
+													<p className="date">{y.date_start} to {y.date_end} <a className="read-more" onClick={showDescription}>อ่านต่อ </a></p>
+													<p className="type-achievement"><BsFlag></BsFlag> {y.type}</p>
+												</div>
+											</div>
+										))}
+									</div>
+								</div>
+							</div>
+						</div>
+
+
 					</div>
 				</div>
 

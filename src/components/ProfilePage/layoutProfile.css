@@ -4,6 +4,7 @@
     background: white;
     height: 500vh;
     z-index: -2;
+    font-family: "Prompt", sans-serif;
 }
 hr {
     border: 1px solid #C0D9FD;
@@ -102,7 +103,7 @@ hr {
     height: 60vh !important;
     max-width: 100% !important;
     position: relative;
-    font-family: "Prompt", sans-serif;
+    
     font-weight: bold;
     font-size: large;
     z-index: 0 !important;
@@ -260,7 +261,10 @@ p.description {
     border-radius: 10px;
     Width: 1091px;
     Height: 2397px;
-    margin: 160px;
+    /* margin-top: 0; */
+
+    margin: 0px auto 160px auto;
+    transform: translateY(-280px);
     display:flex;
     flex-direction: column;
     row-gap: 5px;

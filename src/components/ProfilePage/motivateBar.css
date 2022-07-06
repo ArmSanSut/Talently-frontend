@@ -23,9 +23,6 @@
 .progress-display-blue-right .ant-progress-bg {
     background:  linear-gradient(107.87deg, #599BE9 0%, #0B25E0 100.04%);
 }
-<<<<<<< HEAD
-
-
 
 .progress-display-gray-left .ant-progress-inner {
     transform: rotate(3.142rad);
@@ -36,5 +33,3 @@
     background:  linear-gradient(107.87deg, #979595 0%, #bababb 100.04%);
     border-radius: 0px 0px 0px 0px;
 }
-=======
->>>>>>> b5dbe2bc1c32222b0fc38fe2e6699e7844fafa5a

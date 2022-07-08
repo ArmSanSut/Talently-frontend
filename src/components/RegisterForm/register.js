@@ -18,7 +18,7 @@ const RegisterForm = () => {
 		try {
 			const formData = new FormData();
 			formData.append("name", values.name);
-			formData.append("sirname", values.sirname);
+			formData.append("surname", values.surname);
 			formData.append("username", values.username);
 			formData.append("email", values.email);
 			formData.append("password", values.password);
@@ -73,17 +73,17 @@ const RegisterForm = () => {
 					>
 						<Input placeholder="Enter your name" className="input" />
 					</Form.Item>
-					<p>Sirname :</p>
+					<p>Surname :</p>
 					<Form.Item
-						name="sirname"
+						name="surname"
 						rules={[
 							{
 								required: true,
-								message: "Please input your sirname!",
+								message: "Please input your surname!",
 							},
 						]}
 					>
-						<Input placeholder="Enter your sirname" className="input" />
+						<Input placeholder="Enter your surname" className="input" />
 					</Form.Item>
 					<p>Username :</p>
 					<Form.Item

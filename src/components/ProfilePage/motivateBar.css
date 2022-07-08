@@ -1,13 +1,31 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 .motivate-type {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 
 .left-side-bar-motivate {
     width: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     margin: 20px 20px 0px 40px;
 }
 
@@ -32,24 +50,38 @@
 
 .right-side-bar-motivate {
     width: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     margin: 20px 40px 0px 20px;
 }
 
 .progress-display-blue-left .ant-progress-inner {
-    transform: rotate(3.142rad);
+    -webkit-transform: rotate(3.142rad);
+        -ms-transform: rotate(3.142rad);
+            transform: rotate(3.142rad);
 }
 
 .progress-display-blue-left .ant-progress-bg,
 .progress-display-blue-right .ant-progress-bg {
+    background:  -o-linear-gradient(342.13deg, #599BE9 0%, #0B25E0 100.04%);
     background:  linear-gradient(107.87deg, #599BE9 0%, #0B25E0 100.04%);
 }
 
 .progress-display-gray-left .ant-progress-inner {
-    transform: rotate(3.142rad);
+    -webkit-transform: rotate(3.142rad);
+        -ms-transform: rotate(3.142rad);
+            transform: rotate(3.142rad);
 }
 
 .progress-display-gray-left .ant-progress-bg,

@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Prompt:ital,wght@0,200;1,100&display=swap');
 
 .layout-home {
@@ -54,6 +61,8 @@
 }
 
 ul.head-home-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     float: right;
     z-index: 999 !important;
@@ -80,6 +89,8 @@ ul li a:hover {
     border: none;
     width: 125px;
     height: 45px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#EB9714), to(#FF814B));
+    background: -o-linear-gradient(top, #EB9714 0%, #FF814B 100%);
     background: linear-gradient(180deg, #EB9714 0%, #FF814B 100%);
     color: white;
 }
@@ -117,6 +128,8 @@ p.home-paragraph {
     border: none;
     width: 191px;
     height: 64px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#EB9714), to(#FF814B));
+    background: -o-linear-gradient(top, #EB9714 0%, #FF814B 100%);
     background: linear-gradient(180deg, #EB9714 0%, #FF814B 100%);
     color: white;
     font-weight: 700;

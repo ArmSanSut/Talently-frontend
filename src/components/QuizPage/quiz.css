@@ -1,11 +1,26 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 .box {
     z-index: 3 !important;
     border: 1px solid black;
     background: white;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     margin: auto;
     border-radius: 15px;
     z-index: 5 !important;
@@ -16,8 +31,13 @@
 
 .inbox {
     color: black;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     position: relative;
 }
 
@@ -45,9 +65,16 @@
 }
 
 .btn {
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     padding: 20px 70px;
 }
 
@@ -70,6 +97,8 @@
     border: none;
     width: 125px;
     height: 45px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#EB9714), to(#FF814B));
+    background: -o-linear-gradient(top, #EB9714 0%, #FF814B 100%);
     background: linear-gradient(180deg, #EB9714 0%, #FF814B 100%);
     color: white;
 }
@@ -86,11 +115,13 @@
 
 .ant-modal-content {
     border-radius: 10px 10px 10px 10px !important;
-    box-shadow: 20px 20px 20px black;
+    -webkit-box-shadow: 20px 20px 20px black;
+            box-shadow: 20px 20px 20px black;
 }
 
 .ant-modal-header {
     border-radius: 10px 10px 0px 0px !important;
+    background: -o-linear-gradient(342.13deg, #599BE9 0%, #0B25E0 100.04%);
     background: linear-gradient(107.87deg, #599BE9 0%, #0B25E0 100.04%);
     /* border: 0.1rem solid black; */
 }
@@ -109,7 +140,11 @@
 }
 
 .sent-ans {
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 
@@ -125,6 +160,7 @@
     border: none;
     width: 150px;
     height: 55px;
+    background: -o-linear-gradient(342.13deg, #114E96 0%, #0B25E0 100.04%);
     background: linear-gradient(107.87deg, #114E96 0%, #0B25E0 100.04%);
     color: white;
     margin-top: 50px
@@ -163,6 +199,5 @@
         height: 400px;
     }
 }
-
 
 

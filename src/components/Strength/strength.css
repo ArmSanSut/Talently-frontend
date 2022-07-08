@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 .head {
     color: rgb(9, 9, 111);
     text-align: center;
@@ -6,24 +13,41 @@
 }
 
 .flex-container {
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     position: relative;
 }
 
 .column {
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 ul.column-item {
     list-style-type: none;
     padding: 0px;
     margin: 0;
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     margin: 10px 0px 0px 10px;
 }
@@ -55,14 +79,18 @@ li.column-item-text-desc {
     padding: 0;
     margin: 20px;
     background-color: white;
-    box-shadow: 1px 1px 1px 1px black;
+    -webkit-box-shadow: 1px 1px 1px 1px black;
+            box-shadow: 1px 1px 1px 1px black;
     width: 285px;
     height: 70px;
 }
 
 .checked-btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-around;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     margin: 50px 0px;
 }
 
@@ -102,4 +130,3 @@ li.column-item-text-desc {
     width: 30px;
     height: 30px;
 }
-

@@ -283,14 +283,14 @@ const LayoutProfile = () => {
 							<div style={{ display: "flex", color: "black", fontSize: "16px" }}>
 								<div>
 									<ul className="personality-column1" >
-										<li><img src="correct-icon.png" className="checkCicle-list" /><span>ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</span> </li>
-										<li><img src="correct-icon.png" className="checkCicle-list" /><span>หากเกิดปัญหา ฉันชอบแก้ไขสถานการณ์ด้วยเหตุผล</span> </li>
+										<li><img src="/correct-icon.png" className="checkCicle-list" /><span>ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</span> </li>
+										<li><img src="/correct-icon.png" className="checkCicle-list" /><span>หากเกิดปัญหา ฉันชอบแก้ไขสถานการณ์ด้วยเหตุผล</span> </li>
 									</ul>
 								</div>
 								<div>
 									<ul className="personality-column2" >
-										<li><img src="correct-icon.png" className="checkCicle-list" /><span>ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</span></li>
-										<li><img src="correct-icon.png" className="checkCicle-list" /><span>หากเกิดปัญหา ฉันชอบแก้ไขสถานการณ์ด้วยเหตุผล</span></li>
+										<li><img src="/correct-icon.png" className="checkCicle-list" /><span>ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</span></li>
+										<li><img src="/correct-icon.png" className="checkCicle-list" /><span>หากเกิดปัญหา ฉันชอบแก้ไขสถานการณ์ด้วยเหตุผล</span></li>
 									</ul>
 								</div>
 							</div>

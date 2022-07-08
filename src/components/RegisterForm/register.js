@@ -8,7 +8,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
-	const url = "http://localhost:3000";
+	const url = "http://54.179.56.185:3000";
 	const navigate = useNavigate();
 	const [image, setImage] = useState("");
 	const handleSubmitForm = async (values) => {

@@ -4,7 +4,7 @@ import "./environmentBar.css";
 import axios from "axios";
 
 const EnvironmentBar = () => {
-	const url = "http://localhost:3000";
+	const url = "http://54.179.56.185:3000";
 	const id = localStorage.getItem("ID");
 	// const [, setLoad] = useState(true);
 	const [percent, setPercent] = useState([]);

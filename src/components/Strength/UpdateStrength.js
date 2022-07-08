@@ -6,7 +6,7 @@ import { useState, useEffect} from "react";
 import axios from "axios";
 
 const StrengthEditedPage = () => {
-	const url = "http://localhost:3000";
+	const url = "http://54.179.56.185:3000";
 	const [updateState] = useState();
 	const forceUpdate = React.useCallback(() => updateState({}), []);
 	const [strengthSelected, setStrengthSelected] = useState([]);

@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const QuizItem = () => {
-	const url = "http://localhost:3000";
+	const url = "http://54.179.56.185:3000";
 	const navigate = useNavigate();
 	const answers_selected = useSelector(state => state.answer.answers);
 	// console.log("answers", answers_selected);
@@ -165,7 +165,6 @@ const QuizItem = () => {
 
 	};
 	const getData = () => {
-		const url = "http://localhost:3000";
 		axios.get(`${url}/api/user/`).then((res) => {
 			// console.log(res.data);
 			setQuestion(res.data);

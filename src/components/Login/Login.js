@@ -11,7 +11,7 @@ import "./login.css";
 
 // eslint-disable-next-line react/prop-types
 const Login = () => {
-	const url = "http://localhost:3000";
+	const url = "http://54.179.56.185:3000";
 	const navigate = useNavigate();
 
 	const onFinish = async (values) => {

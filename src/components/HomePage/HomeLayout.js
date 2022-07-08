@@ -21,12 +21,12 @@ const HomeLayout = () => {
 
     return (
         <div className="layout-home">
-            <img className="blue-homebg" src="bluebg.png" />
-            <img className="logo-homebg" src="logo.png" />
-            <img className="yellow-homebg" src="yellowbg.png" />
-            <img className="purple-homebg" src="purplebg.png" />
-            <img className="combine-homebg" src="groupcombine.png" />
-            <img className="people-homebg" src="grouppeople.png" />
+            <img className="blue-homebg" src="/bluebg.png" />
+            <img className="logo-homebg" src="/logo.png" />
+            <img className="yellow-homebg" src="/yellowbg.png" />
+            <img className="purple-homebg" src="/purplebg.png" />
+            <img className="combine-homebg" src="/groupcombine.png" />
+            <img className="people-homebg" src="/grouppeople.png" />
             <div className="head-home">
                 <ul className="head-home-nav">
                     <li className="head-home-nav-item"><Link to="/">เกี่ยวกับเรา</Link></li>

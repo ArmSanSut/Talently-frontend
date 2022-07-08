@@ -12,7 +12,7 @@ const { RangePicker } = DatePicker;
 const { Option } = Select;
 
 const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement }) => {
-	const url = "http://localhost:3000"; 
+	const url = "http://54.179.56.185:3000"; 
 	const [dateSelected, setDateSelected] = useState([]);
 
 	const [form] = Form.useForm();

@@ -17,7 +17,7 @@ import { BsCheckSquare } from "react-icons/bs";
 import UpdateAchievement from "./UpdateAchievement";
 
 const LayoutProfile = () => {
-	const url = "http://localhost:3000";
+	const url = "http://54.179.56.185:3000";
 	const [updateState] = useState();
 	const forceUpdate = React.useCallback(() => updateState({}), []);
 
@@ -178,10 +178,10 @@ const LayoutProfile = () => {
 			{token ?
 				<div className="profile">
 					<div className="profile-bg">
-						<img className="profile-bluebg" src="bluebg.png" />
-						<img className="profile-purplebg" src="purple-profile.png" />
+						<img className="profile-bluebg" src="/bluebg.png" />
+						<img className="profile-purplebg" src="/purple-profile.png" />
 						<nav className="head-profile1">
-							<img className="profile-logo" src="logo.png" />
+							<img className="profile-logo" src="/logo.png" />
 							<ul className="center">
 								<li className="item-center">
 									<Link to="/">เกี่ยวกับเรา</Link>
@@ -203,7 +203,7 @@ const LayoutProfile = () => {
 							</ul>
 						</nav>
 						<nav className="head-profile2">
-							<img className="profile-logo" src="logo.png" />
+							<img className="profile-logo" src="/logo.png" />
 							<label className="label-profile" htmlFor="check">
 								{showSecondNav ? (
 									<i
@@ -242,7 +242,7 @@ const LayoutProfile = () => {
 					<div className="dashboard-container">
 						<div className="about-me-container">
 							<div className="user-detail" >
-								<Avatar size={100} src={`http://localhost:3000/static/users_images/${profileImage}`} style={{ marginTop: 2 }} onClick={onEditImage} />
+								<Avatar size={100} src={`${url}/static/users_images/${profileImage}`} style={{ marginTop: 2 }} onClick={onEditImage} />
 								<Modal title="Edit Profile Image" visible={isEditModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
 									<Form
 										onFinish={handleSubmitForm}
@@ -273,8 +273,8 @@ const LayoutProfile = () => {
 									<h4 className="text-description-2">ฉันชอบทำงานที่ให้อิสระทางความคิด และชื่นชอบที่จะได้พบปะกับผู้คนใหม่ๆ</h4>
 								</div>
 								<div>
-									<img src="circle.png" className="circle" />
-									<img src="person.png" className="person" />
+									<img src="/circle.png" className="circle" />
+									<img src="/person.png" className="person" />
 								</div>
 							</div>
 						</div>
@@ -300,9 +300,9 @@ const LayoutProfile = () => {
 								<h5 className="text-results-container">ผลลัพธ์จากบททดสอบ</h5>
 								<div className="motivated-box">
 									<div className="motivate-header-box">
-										<img className="icon" src="icon.png" style={{ margin: 10, width: "30px", height: "30px" }} />
+										<img className="icon" src="/icon.png" style={{ margin: 10, width: "30px", height: "30px" }} />
 										<h3 className="text-motivated">Motivated By</h3>
-										<img className="icon-2" src="important_sign.png" style={{ width: "20px", height: "20px", margin: 10, marginTop: 18 }} />
+										<img className="icon-2" src="/important_sign.png" style={{ width: "20px", height: "20px", margin: 10, marginTop: 18 }} />
 									</div>
 									<div>
 										<MotivateBar />
@@ -317,9 +317,9 @@ const LayoutProfile = () => {
 								</div>
 								<div className="environment-box">
 									<div className="environment-header-box">
-										<img className="icon" src="icon.png" style={{ margin: 10, width: "30px", height: "30px" }} />
+										<img className="icon" src="/icon.png" style={{ margin: 10, width: "30px", height: "30px" }} />
 										<h3 className="text-motivated">Best Environment</h3>
-										<img className="icon-2" src="important_sign.png" style={{ width: "20px", height: "20px", margin: 10, marginTop: 18 }} />
+										<img className="icon-2" src="/important_sign.png" style={{ width: "20px", height: "20px", margin: 10, marginTop: 18 }} />
 									</div>
 									<div>
 										<EnvironmentBar />
@@ -334,7 +334,7 @@ const LayoutProfile = () => {
 								</div>
 								<div className="work-box">
 									<div className="work-header-box">
-										<img className="icon" src="icon.png" style={{ margin: 10, width: "30px", height: "30px" }} />
+										<img className="icon" src="/icon.png" style={{ margin: 10, width: "30px", height: "30px" }} />
 										<h3 className="text-motivated">Ideal Work</h3>
 									</div>
 									<div>
@@ -364,7 +364,7 @@ const LayoutProfile = () => {
 										{strength && strength.map(x => (
 
 											<div key = {"strength-box-" +x.id}>
-												<img className="img-strength" key={x.image} src={"http://localhost:3000/strength_images/" + x.image} style={{ margin: 10, }} />
+												<img className="img-strength" key={x.image} src={`${url}/strength_images/` + x.image} style={{ margin: 10, }} />
 											</div>
 
 

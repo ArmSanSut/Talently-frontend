@@ -26,6 +26,7 @@ function App() {
 			<Route path="/strength" element={<StrengthSelectedPage />} />
 			<Route path="/edit-strength" element={<StrengthEditedPage />} />
 			<Route path="/achievement" element={<AchievementCreate />} />
+			<Route path="*" element={<HomeLayout />} />
 		</Routes>
 
 	);

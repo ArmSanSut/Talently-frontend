@@ -242,7 +242,7 @@ const LayoutProfile = () => {
 					<div className="dashboard-container">
 						<div className="about-me-container">
 							<div className="user-detail" >
-								<Avatar size={100} src={`http://localhost:3000/static/users_images/${profileImage}`} style={{ marginTop: 2 }} onClick={onEditImage} />
+								<Avatar size={100} src={`${url}/static/users_images/${profileImage}`} style={{ marginTop: 2 }} onClick={onEditImage} />
 								<Modal title="Edit Profile Image" visible={isEditModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
 									<Form
 										onFinish={handleSubmitForm}
@@ -364,7 +364,7 @@ const LayoutProfile = () => {
 										{strength && strength.map(x => (
 
 											<div key = {"strength-box-" +x.id}>
-												<img className="img-strength" key={x.image} src={"http://localhost:3000/strength_images/" + x.image} style={{ margin: 10, }} />
+												<img className="img-strength" key={x.image} src={`${url}/strength_images/` + x.image} style={{ margin: 10, }} />
 											</div>
 
 

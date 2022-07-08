@@ -54,16 +54,16 @@ const MotivateBar = () => {
 	
 
 	return (
-		<div style={{ display : "flex", width : "100%" }}>
+		<div className="motivate-type">
 			
-			<div className="left-side-bar">
+			<div className="left-side-bar-motivate">
 				{percent && percent.map ((val, index) => (
 					<>
 						<h5>{progressBarTagLeft[index]}</h5>
 						{val[0] == "L" ? (
-							<Progress percent={val[1]} showInfo={false} trailColor="#F3F8FF" className="progress-display-blue-left"/>
+							<Progress percent={val[1]} showInfo={false} strokeWidth="10px" trailColor="#F3F8FF" className="progress-display-blue-left"/>
 						) : (
-							<Progress percent={100} showInfo={false} trailColor="#F3F8FF" className="progress-display-gray-left"/>
+							<Progress percent={100} showInfo={false} strokeWidth="10px" trailColor="#F3F8FF" className="progress-display-gray-left"/>
 						)}
 						
 					</>
@@ -71,14 +71,14 @@ const MotivateBar = () => {
 				
 				
 			</div>
-			<div className="right-side-bar">
+			<div className="right-side-bar-motivate">
 				{percent && percent.map ((val, index) => (
 					<>
 						<h5>{progressBarTagRight[index]}</h5>
 						{val[0] == "R" ? (
-							<Progress percent={val[1]} showInfo={false} trailColor="#F3F8FF" className="progress-display-blue-right"/>
+							<Progress percent={val[1]} showInfo={false} strokeWidth="10px" trailColor="#F3F8FF" className="progress-display-blue-right"/>
 						) : (
-							<Progress percent={100} showInfo={false} trailColor="#F3F8FF" className="progress-display-gray-right"/>
+							<Progress percent={100} showInfo={false} strokeWidth="10px" trailColor="#F3F8FF" className="progress-display-gray-right"/>
 						)}
 						
 					</>

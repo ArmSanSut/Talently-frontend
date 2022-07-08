@@ -79,7 +79,6 @@ ul.quiz-login1 {
 
 nav ul li {
     display: inline-block;
-    /* margin: 30px 50px; */
     top: 17px;
     left: 3%;
 }
@@ -244,7 +243,7 @@ ul li a {
         align-items: center;
         justify-content: center;
         z-index: 3;
-        background-color: rgb(83, 158, 245);
+        background-color: rgb(7, 7, 176);
         width: 100%;
         backdrop-filter: 10px;
     }

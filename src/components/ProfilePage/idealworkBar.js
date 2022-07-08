@@ -1,6 +1,6 @@
 import React,  { useEffect, useState } from "react";
 import { Progress } from "antd";
-import "./environmentBar.css";
+import "./IdealworkBar.css";
 import axios from "axios";
 
 const IdealWorkBar = () => {
@@ -52,28 +52,28 @@ const IdealWorkBar = () => {
 	}, []);
 
 	return (
-		<div style={{ display : "flex", width : "100%" }}>
-			<div className="left-side-bar">
+		<div className="ideal-type">
+			<div className="left-side-bar-ideal">
 				{percent && percent.map ((val, index) => (
 					<>
 						<h5>{progressBarTagLeft[index]}</h5>
 						{val[0] == "L" ? (
-							<Progress percent={val[1]} showInfo={false} trailColor="#F3F8FF" className="progress-display-orange-left"/>
+							<Progress percent={val[1]} strokeWidth="10px" showInfo={false} trailColor="#F3F8FF" className="progress-display-orange-left"/>
 						) : (
-							<Progress percent={100} showInfo={false} trailColor="#F3F8FF" className="progress-display-gray-left"/>
+							<Progress percent={100} strokeWidth="10px" showInfo={false} trailColor="#F3F8FF" className="progress-display-gray-left"/>
 						)}
 						
 					</>
 				))}
 			</div>
-			<div className="right-side-bar">
+			<div className="right-side-bar-ideal">
 				{percent && percent.map ((val, index) => (
 					<>
 						<h5>{progressBarTagRight[index]}</h5>
 						{val[0] == "R" ? (
-							<Progress percent={val[1]} showInfo={false} trailColor="#F3F8FF" className="progress-display-orange-right"/>
+							<Progress percent={val[1]} strokeWidth="10px" showInfo={false} trailColor="#F3F8FF" className="progress-display-orange-right"/>
 						) : (
-							<Progress percent={100} showInfo={false} trailColor="#F3F8FF" className="progress-display-gray-right"/>
+							<Progress percent={100} strokeWidth="10px" showInfo={false} trailColor="#F3F8FF" className="progress-display-gray-right"/>
 						)}
 						
 					</>

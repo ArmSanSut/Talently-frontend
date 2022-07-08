@@ -2,8 +2,7 @@
 
 .profile {
     background: white;
-    height: 500vh;
-    z-index: -2;
+    height: 350vh;
     font-family: "Prompt", sans-serif;
 }
 hr {
@@ -37,6 +36,8 @@ hr {
     letter-spacing: 0.2px;
     text-transform: capitalize;
     color: #4F4F4F;
+    width: 270px;
+    margin-left: 10px;
 }
 
 .environment_result_left {
@@ -102,8 +103,7 @@ hr {
     background: darkblue;
     height: 60vh !important;
     max-width: 100% !important;
-    position: relative;
-    
+    position: relative;  
     font-weight: bold;
     font-size: large;
     z-index: 0 !important;
@@ -143,6 +143,7 @@ nav.head-profile1 {
     display: flex;
     float: right;
     z-index: 3 !important;
+    font-size: 14px;
 }
 
 ul.center {
@@ -195,9 +196,9 @@ li.item-right {
 }
 
 .achievement {
-    margin: 10px 17px;
+    margin: 10px 10px 10px 25px;
     padding: 5px 20px;
-    width: 490px;
+    width: 400px;
     height: 120px;
     border-radius: 10px;
     background: rgb(223, 221, 221);
@@ -217,7 +218,7 @@ li.item-right {
 h3.title {
     font-weight: 600;
     font-size: 16px;
-line-height: 32px;
+    line-height: 32px;
 }
 
 p.description {
@@ -261,14 +262,35 @@ p.description {
     border-radius: 10px;
     Width: 1091px;
     Height: 2397px;
-    /* margin-top: 0; */
-
     margin: 0px auto 160px auto;
     transform: translateY(-280px);
     display:flex;
     flex-direction: column;
     row-gap: 5px;
     position: relative;
+}
+
+.edit-image-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input.update-image {
+    margin-left: 100px;
+}
+
+.btn-update-image {
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin-top: 30px;
+    border: none;
+    width: 160px;
+    height: 45px;
+    background: linear-gradient(107.87deg, #114E96 0%, #0B25E0 100.04%);
+    color: white;
+    font-family: "Prompt", sans-serif;
 }
 
 .about-me-container {
@@ -282,6 +304,12 @@ p.description {
     justify-content: center;
     align-items: center;
 }
+
+span.ant-avatar.ant-avatar-circle.ant-avatar-image {
+    width: 120px;
+    height: 120px;
+}
+
 
 h4.firstname {
     margin-top: 10px;
@@ -390,23 +418,20 @@ img.person {
     /* border: 2px solid black; */
     background-color: white;
     border-radius: 15px;
-    width: 50%;
-    height: 1500px;
-    margin: 5px;
+    width: 576;
+    height: 1700px;
+    margin: 5px 0px 5px 10px;
 }
 
 .motivated-box {
-    /* border: 2px solid black; */
     background-color: #f3f8ff;
     border-radius: 15px;
-    width: 95%;
-    height: 37%;
-    margin: 10px;
-    margin-top: 20px;
+    width: 527px;
+    height: 550px;
+    margin: 20px;
 }
 
 .motivate-header-box {
-    /* border: 2px solid red; */
     border-radius: 15px 15px 0px 0px;
     display: flex;
     justify-content: center;
@@ -437,34 +462,28 @@ img.person {
 }
 
 .environment-box {
-    /* border: 2px solid black; */
     background-color: #f3f8ff;
     border-radius: 15px;
-    width: 95%;
-    height: 29%;
-    margin: 10px;
-    margin-top: 20px;
+    width: 527px;
+    height: 450px;
+    margin: 20px;
 }
 
 .work-box {
-    /* border: 2px solid black; */
     background-color: #f3f8ff;
-    width: 95%;
+    width: 527px;
     border-radius: 15px;
-    height: 29%;
-    margin: 10px;
-    margin-top: 20px;
+    height: 460px;
+    margin: 20px;
 }
 
 .right-container {
-    /* border: 4px solid red; */
     width: 50%;
     height: 980px;
-    margin: 5px;
+    margin: 5px 10px 0px 0px ;
 }
 
 .radar-chart-box {
-    /* border: 2px solid black; */
     background-color: white;
     border-radius: 15px;
     width: 96%;
@@ -478,7 +497,7 @@ img.person {
     border-radius: 15px;
     width: 96%;
     height: 30%;
-    margin: 20px;
+    margin: 0px 20px 20px 20px;
 }
 .display-image-strength{
     display: flex;
@@ -490,7 +509,6 @@ img.person {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* gap: 1rem; */
 }
 
 .strength-box-head h5 {
@@ -527,7 +545,6 @@ img.person {
     color: #4F4F4F;
     font-weight: 700;
     font-size: 20px;
-
 }
 
 .text-right-container-2 {
@@ -541,7 +558,7 @@ img.person {
 }
 
 .text-results-container {
-    margin: 0.8rem;
+    margin: 1rem 2rem 2rem 2rem;
     font-weight: bold;
 }
 
@@ -561,8 +578,30 @@ h4.text-description-2 {
     margin-top: 20px;
     margin-left: 20px;
 }
-.checkCicle-list {
-    background:linear-gradient(104.01deg, #FF9B36 16.19%, #FF3879 48.23%, #A255FF 85%);
+
+ul.personality-column1 {
+    list-style-type:  none;
+    width: 100%;
+}
+
+ul.personality-column1 li span,
+ul.personality-column2 li span {
+    margin-left: 30px;
+}
+
+ul.personality-column2 {
+    list-style-type: none;
+    width: 100%;
+    margin-left: 150px;
+}
+
+.personality-column1 li,
+.personality-column2 li {
+    margin: 5px 0px;
+}
+
+img.checkCicle-list {
+    width: 20px;
 }
 
 .not-authorized-page {
@@ -595,14 +634,10 @@ button.not-authorized-btn {
 }
 
 @media (min-width: 1200px) {
-
     ul.nav2,
     i#profile-icon2,
     i#profile-icon1 {
         display: none;
-    }
-    .achievement {
-        width: 480px;
     }
 }
 
@@ -622,7 +657,7 @@ button.not-authorized-btn {
         display: none;
     }
     .achievement {
-        width: 360px;
+        width: 400px;
     }
 }
 
@@ -661,10 +696,56 @@ button.not-authorized-btn {
     i#profile-icon1 {
         display: none;
     }
-    .achievement {
-        width: 270px;
-        height: 100px;
+
+    .dashboard-container {
+        width: 980px;
     }
+
+    .about-me-container {
+        width: 940px;
+    }
+
+    ul.personality-column2 {
+        margin-left: 70px;
+        
+    }
+
+    ul.personality-column2 li {
+        width: 390px;
+    }
+
+    .left-container {
+        height: 1680px;
+        width: 530px;
+    }
+
+    .motivated-box {
+        height: 560px;
+        width: 485px;
+    }
+
+    .motivated_result_right,
+    .environment_result_right,
+    .ideal_result_right {
+        width: 270px;
+    }
+
+    .environment-box,
+    .work-box {
+        height: 470px;
+        width: 485px;
+    }
+
+    img.img-strength {
+        width: 60px
+    }
+
+    .achievement {
+        width: 325px;
+        height: 100px;
+        margin-left: 20px;
+    }
+
     h3.title {
         font-size: 12px;
     }
@@ -692,19 +773,7 @@ button.not-authorized-btn {
     .profile {
         height: 100vh;
     }
-    .left-container {
-        height: 1100px;
-    }
-    h5 {
-        font-size: 15px;
-    }
-    .motivated-box,
-    .work-box {
-        height: 300px;
-    }
-    .environment-box {
-        height: 400px;
-    }
+
 }
 
 @media (max-width: 768px) {
@@ -742,44 +811,176 @@ button.not-authorized-btn {
     i#profile-icon1 {
         display: none;
     }
+
     .profile {
         height: 100vh;
     }
+
     .dashboard-container {
-        width: 700px;
-        margin: 30px ;
+        width: 770px;
+        margin: 0px ;
+        z-index: 1;
     }
+
+    .about-me-container {
+        width: 730px;
+    }
+
+    span.ant-avatar.ant-avatar-circle.ant-avatar-image {
+        width: 90px;
+        height: 90px;
+    }
+
+    .description-detail {
+        width: 330px;
+        height: 200px;
+    }
+
+    h4.text-description {
+        font-size: 18px;
+    }
+
+    h4.text-description-2 {
+        font-size: 14px;
+    }
+
+    img.circle {
+        width: 60px;
+        margin-top: 15px;
+    }
+
+    img.person {
+        width: 40px;
+        margin-top: 20px;
+    }
+
+    .user-detail {
+        width: 330px;
+        height: 250px;
+    }
+
+    .personality-container {
+        height: 120px;
+    }
+
+    ul.personality-column2 {
+        margin-left: 30px;
+    }
+
+    ul.personality-column1 li span,
+    ul.personality-column2 li span {
+        margin-left: 10px;
+    }
+
+    ul.personality-column1 li,
+    ul.personality-column2 li {
+        font-size: 13px;
+    }
+
+    img.checkCicle-list {
+        width: 15px;
+    }
+
+    ul.personality-column2 li {
+        width: 330px;
+    }
+
     .left-container {
-        height: 1100px;
+        height: 1550px;
+        width: 400px;
     }
-    h5 {
-        font-size: 15px;
+
+    .motivated-box {
+        width: 370px;
+        height: 530px;
+        margin-left: 15px;
     }
-    .motivated-box,
+
+    .motivated_result_right,
+    .environment_result_right,
+    .ideal_result_right {
+        width: 210px;
+        font-size: 12px;
+        margin-left: 30px;
+    }
+
+    .motivated_result_left,
+    .environment_result_left,
+    .ideal_result_left {
+        margin-left: 10px;
+        font-size: 14px;
+    }
+
+    .environment-box,
     .work-box {
-        height: 300px;
+        width: 370px;
+        height: 430px;
+        margin-left: 15px;
     }
-    .environment-box {
-        height: 400px;
+
+    .right-container {
+        width: 320px;
+    }
+
+    .strength-box {
+        height: 220px;
+    }
+
+    img.img-strength {
+        width: 50px;
+    }
+
+    .achievement-box {
+        height: 320px;
+    }
+
+    .achievement {
+        width: 280px;
+        margin-left: 15px;
+    }
+
+    .title a {
+        width: 1px;
+    }
+
+    .title a.edit-description {
+        margin-right: 13px;
     }
 }
 
 @media (max-width: 576px) {
+    .profile {
+        z-index: 0 !important;
+    }
     .profile-bg {
         height: 40vh;
+        z-index: 1 !important ;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 576px;
     }
 
     .profile-bluebg {
         width: 200px;
+        z-index: -1;
     }
 
     .profile-purplebg {
         width: 300px;
+        top: 0%;
+        position: absolute;
+        z-index: -1;
+    }
+
+    .profile-purplebg-hide {
+        display: none;
     }
 
     .profile-logo {
         width: 180px;
         margin-top: 0;
+        position: absolute;
         z-index: -1;
     }
 
@@ -791,24 +992,25 @@ button.not-authorized-btn {
         position: absolute;
         top: 0px;
         left: 0 !important;
-        z-index: -1 !important;
         margin: 0;
         align-items: center;
         justify-content: center;
         margin: 0;
+        right: 0;
+        z-index: 4 !important;
     }
 
     ul.nav2 {
         font-size: 10px;
         display: flex;
         flex-direction: column;
-        /* margin-right: 250px; */
-        margin-top: 60px;
+        padding: 0px;
         align-items: center;
         justify-content: center;
-        float: none;
-        z-index: 3;
-        padding: 0;
+        z-index: 99 !important;
+        width: 100%;
+        backdrop-filter: 10px;
+        height: 386px;
     }
 
     nav.head-profile2 ul.nav2 li.item2 {
@@ -819,6 +1021,7 @@ button.not-authorized-btn {
 
     label.label-profile {
         float: right;
+        z-index: 5;
     }
 
     label.label-profile i#profile-icon1,
@@ -827,53 +1030,209 @@ button.not-authorized-btn {
         margin-top: 30px;
         margin-right: 20px;
         cursor: pointer !important;
-        z-index: 1 !important;
+        z-index: 3 ;
         display: block;
         margin-left: 500px;
     }
+
     .profile {
         height: 100vh;
     }
+
     .dashboard-container {
-        width: 500px;
-        margin: 0px 30px ;
+        width: 576px;
+        height: 2000px;
+        margin: 0px 0px ;
+        left: 0;
+        right: 0;
+        z-index: 5 !important;
     }
-    .left-container {
-        height: 980px;
+
+    .show-navbar-profile {
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        opacity: 0.3;
+        filter: blur(3px); 
+        pointer-events: none;
     }
-    h5 {
-        font-size: 12px;
+
+    .about-me-container {
+        width: 560px;
+        height: 240px;
+        margin: 10px 8px;
     }
-    .motivated-box,
-    .work-box {
-        height: 250px;
+
+    .user-detail {
+        margin: 0px 20px;
+        width: 250px;
+        height: 170px;
     }
-    .environment-box {
-        height: 360px;
+
+    span.ant-avatar.ant-avatar-circle.ant-avatar-image {
+        width: 60px;
+        height: 60px;
     }
-    .achievement {
-        width: 190px;
+
+    h4.firstname {
+        font-size: 16px;
+    }
+
+    h4.email {
+        font-size: 13px;
+    }
+
+    h4.hashtag {
+        font-size: 13px;
+        margin-right: 30px;
+        margin-left: 15px;
+    }
+
+    .description-detail {
+        margin: 0px 20px;
+        width: 250px;
         height: 150px;
     }
-    .img-strength {
+
+    h4.text-description {
+        margin: 20px;
+        font-size: 15px;
+    }
+
+    h4.text-description-2 {
+        margin: 20px;
+        font-size: 13px;
+    } 
+
+    img.circle {
+        width: 50px;
+        top: 35px;
+    }
+
+    img.person {
         width: 40px;
+        top: 20px;
+        right: 28px;
     }
-    .achievement-box {
-        height: 300px;
+
+    .personality-container {
+        width: 558px;
+        height: 100px;
+        margin: 10px;
     }
-    h3.title {
+
+    ul.personality-column1 {
+        margin-left: 5px;
+    }
+
+    ul.personality-column2 {
+        margin-left: 10px;
+    }
+
+    ul.personality-column1 li,
+    ul.personality-column2 li {
         font-size: 10px;
     }
+
+    ul.personality-column1 li span,
+    ul.personality-column2 li span {
+        margin-left: 5px;
+    }
+
+    img.checkCicle-list {
+        width: 10px;
+    }
+
+    ul.personality-column2 li {
+        width: 260px;
+    }
+
+    h5.text-results-container {
+        margin: 16px 32px 15px 20px
+    }
+
+    h5.text-personality-container {
+        margin: 16px 32px 5px 20px
+    }
+
+    .results-container {
+        margin: 5px;
+    }
+
+    .left-container {
+        height: 1350px;
+        width: 300px;
+    }
+
+    .motivated-box {
+        width: 290px;
+        height: 450px;
+        margin-left: 5px;
+    }
+
+    .motivated_result_right,
+    .environment_result_right,
+    .ideal_result_right {
+        margin-left: 30px;
+        font-size: 10px;
+        width: 150px;
+    }
+
+    .motivated_result_left,
+    .environment_result_left,
+    .ideal_result_left {
+        margin-left: 0px;
+        font-size: 12px;
+    }
+
+    .environment-box,
+    .work-box {
+        width: 290px;
+        height: 380px;
+        margin-left: 5px;
+    }
+
+    .strength-box {
+        width: 250px;
+        height: 250px;
+        margin: 0px 5px 20px 5px;
+    }
+
+    .display-image-strength {
+        margin-left: 30px;
+    }
+
+    img.img-strength {
+        width: 40px;
+    }
+
+    .achievement-box {
+        margin: 20px 5px;
+    }
+   
+    .achievement {
+        margin-top: 0px;
+        width: 210px;
+        height: 100px;
+    }
+
+    h3.title {
+        font-size: 9px;
+    }
+
     p.date, 
     a.read-more {
         font-size: 8px;
     }
+
     h5.text-right-container-3,
     h5.text-right-container-2,
     h5.text-right-container-1,
     h5.text-results-container  {
         font-size: 10px;
     }
+
     .strength-box-head button.btn1,
     .achievement-box-head button.btn2 {
         padding: 0px 10px;

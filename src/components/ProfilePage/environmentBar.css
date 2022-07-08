@@ -1,21 +1,124 @@
-.progress-display-green-left .ant-progress-inner {
-    transform: rotate(3.142rad);
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+.environment-type {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.left-side-bar-environment {
+    width: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 20px 20px 0px 40px;
+}
+
+.left-side-bar-environment h5,
+.right-side-bar-environment h5 {
+    margin: 0px;
+    font-size: 16px;
+}
+
+.progress-display-green-environment-left,
+.progress-display-gray-environment-left,
+.progress-display-green-environment-right,
+.progress-display-gray-environment-right {
+    margin-bottom: 15px;
+}
+
+.right-side-bar-environment {
+    width: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 20px 40px 0px 20px;
 }
 
 .progress-display-green-environment-left .ant-progress-bg,
 .progress-display-green-environment-right .ant-progress-bg {
+    background:  -o-linear-gradient(342.13deg, #a1dfb0 0%, #209836 100.04%);
     background:  linear-gradient(107.87deg, #a1dfb0 0%, #209836 100.04%);
-    border-radius: 0px 0px 0px 0px;
 }
 
-
-
-.progress-display-gray-environment-left .ant-progress-inner {
-    transform: rotate(3.142rad);
+.progress-display-gray-environment-left .ant-progress-inner,
+.progress-display-green-environment-left .ant-progress-inner {
+    -webkit-transform: rotate(3.142rad);
+        -ms-transform: rotate(3.142rad);
+            transform: rotate(3.142rad);
 }
 
 .progress-display-gray-environment-left .ant-progress-bg,
 .progress-display-gray-environment-right .ant-progress-bg {
-    background:  linear-gradient(107.87deg, #979595 0%, #bababb 100.04%);
-    border-radius: 0px 0px 0px 0px;
+    background:  #E0E0E0;
+}
+
+@media (max-width: 768px) {
+    .left-side-bar-environment h5,
+    .right-side-bar-environment h5 {
+        font-size: 12px;
+    }
+
+    .right-side-bar-environment {
+        margin: 20px 25px 0px 10px;
+    }
+
+    .left-side-bar-environment {
+        margin: 20px 10px 0px 25px;
+    }
+
+    .progress-display-green-environment-left,
+    .progress-display-gray-environment-left,
+    .progress-display-green-environment-right,
+    .progress-display-gray-environment-right {
+        stroke-width: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .right-side-bar-environment {
+        margin: 20px 20px 0px 10px;
+    }
+
+    .left-side-bar-environment {
+        margin: 20px 10px 0px 20px;
+    }
+
+    .left-side-bar-environment h5,
+    .right-side-bar-environment h5 {
+        font-size: 10px;
+    }
+
+    .progress-display-green-environment-left,
+    .progress-display-gray-environment-left,
+    .progress-display-green-environment-right,
+    .progress-display-gray-environment-right {
+        stroke-width: 8px;
+        margin-bottom: 5px;
+    }
 }

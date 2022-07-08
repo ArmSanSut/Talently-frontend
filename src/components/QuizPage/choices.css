@@ -1,11 +1,23 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 ul.choiceList {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     list-style-type: none;
-    box-shadow: 0px 4px 10px rgba(60, 100, 177, 0.14);
+    -webkit-box-shadow: 0px 4px 10px rgba(60, 100, 177, 0.14);
+            box-shadow: 0px 4px 10px rgba(60, 100, 177, 0.14);
     border: 1px solid #BDBDBD;
     border-radius: 0.5rem;
     margin: 10px 60px;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     padding: 0;
     height: 50px;
     width: 601px;
@@ -13,13 +25,18 @@ ul.choiceList {
 }
 
 ul.choiceList-selected {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     list-style-type: none;
     border: 1px solid #156EC6;
-    box-shadow: 0px 4px 10px rgba(60, 100, 177, 0.14);
+    -webkit-box-shadow: 0px 4px 10px rgba(60, 100, 177, 0.14);
+            box-shadow: 0px 4px 10px rgba(60, 100, 177, 0.14);
     border-radius: 0.5rem;
     margin: 10px 60px;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     padding: 0;
     height: 50px;
     width: 601px;
@@ -27,8 +44,13 @@ ul.choiceList-selected {
 }
 
 .choice-list-div {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 li.selected {
@@ -36,11 +58,16 @@ li.selected {
     color: #292930;
     letter-spacing: 0.2px;
     font-weight: 600;
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 
-.choiceBox-seleect-title {
+.choiceBox-select-title {
     margin-top: 8px;
 }
 
@@ -54,6 +81,7 @@ li.selected span.choiceBox {
 }
 
 .selected-list {
+    background: -o-linear-gradient(342.13deg, #599BE9 0%, #0B25E0 100.04%);
     background: linear-gradient(107.87deg, #599BE9 0%, #0B25E0 100.04%);
     margin-right: 1.5rem;
     border-radius: 5px 0px 0px 5px;
@@ -70,8 +98,8 @@ li.selected svg {
     color: white;
 }
 
-.seleect-title {
-    margin-top: 12.5px;
+.select-title {
+    margin-top: 13px;
 }
 
 @media (max-width: 576px) {
@@ -86,8 +114,23 @@ li.selected svg {
         margin-left: 0.3rem;
         border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
     }
+    .choiceBox-select-title{
+        margin-top: 9px;
+        font-size: 11px;
+    }
+    .selected-list {
+        background: -o-linear-gradient(342.13deg, #599BE9 0%, #0B25E0 100.04%);
+        background: linear-gradient(107.87deg, #599BE9 0%, #0B25E0 100.04%);
+        margin-right: 0.7rem;
+        border-radius: 5px 0px 0px 5px;
+        width: 56px;
+        height: 50px;
+    }
+    .select-title {
+        margin-top: 15.5px;
+        font-size: 11px;
+    }
 }
-
 
 
 

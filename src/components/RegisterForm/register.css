@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Prompt:ital,wght@0,200;1,100&display=swap');
 
 .header-text {
@@ -28,20 +35,33 @@
 }
 
 .register-form {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     font-family: 'Prompt', sans-serif;
     font-weight: 1500;
     position: absolute;
     top: 50%;
     left: 50%;
     width: 600px;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     background: white;
-    box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
     border-radius: 10px;
     opacity: 0.96;
 }
@@ -53,6 +73,7 @@
 }
 
 .btn-submit {
+    background: -o-linear-gradient(342.13deg, #114E96 0%, #0B25E0 100.04%);
     background: linear-gradient(107.87deg, #114E96 0%, #0B25E0 100.04%);
     border-radius: 30px;
     padding: 1.5rem 9rem;

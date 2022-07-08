@@ -13,7 +13,6 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { BsFlag } from "react-icons/bs";
 import { AiFillCalendar, AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
-import { BsCheckSquare } from "react-icons/bs";
 import UpdateAchievement from "./UpdateAchievement";
 
 const LayoutProfile = () => {
@@ -149,7 +148,7 @@ const LayoutProfile = () => {
 		setIsEditModalVisible(false);
 	};
 
-	const editDescription = (val ,i) => {
+	const editDescription = (val, i) => {
 		setIsModalUpdateAchievement(true);
 		setModalDetailValue(val);
 		setIndex(i);
@@ -239,22 +238,23 @@ const LayoutProfile = () => {
 						</nav>
 					</div>
 
-					<div className="dashboard-container">
+					<div className={`dashboard-container ${showSecondNav ? "show-navbar-profile" : ""}`}>
 						<div className="about-me-container">
 							<div className="user-detail" >
 								<Avatar size={100} src={`${url}/static/users_images/${profileImage}`} style={{ marginTop: 2 }} onClick={onEditImage} />
 								<Modal title="Edit Profile Image" visible={isEditModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
 									<Form
 										onFinish={handleSubmitForm}
+										className="edit-image-form"
 									>
-										<input type="file" onChange={(e) => setImage(e.target.files[0])} /> Upload Image
+										<input className="update-image" type="file" onChange={(e) => setImage(e.target.files[0])} />
 										<Form.Item
 											wrapperCol={{
 												offset: 0,
 												span: 16,
 											}}
 										>
-											<Button className="btn-submit" htmlType="submit">
+											<Button className="btn-update-image" htmlType="submit">
 												ยืนยันการเปลี่นแปลง
 											</Button>
 
@@ -280,17 +280,17 @@ const LayoutProfile = () => {
 						</div>
 						<div className="personality-container">
 							<h5 className="text-personality-container">สื่อสารกับฉันอย่างไร</h5>
-							<div style={{ display: "flex", color: "black" }}>
+							<div style={{ display: "flex", color: "black", fontSize: "16px" }}>
 								<div>
-									<ul style={{ listStyleType: "none", width: "100%" }}>
-										<li><BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
-										<li><BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
+									<ul className="personality-column1" >
+										<li><img src="correct-icon.png" className="checkCicle-list" /><span>ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</span> </li>
+										<li><img src="correct-icon.png" className="checkCicle-list" /><span>หากเกิดปัญหา ฉันชอบแก้ไขสถานการณ์ด้วยเหตุผล</span> </li>
 									</ul>
 								</div>
 								<div>
-									<ul style={{ listStyleType: "none", width: "100%" }}>
-										<li><BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
-										<li> <BsCheckSquare className="checkCicle-list"></BsCheckSquare> ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</li>
+									<ul className="personality-column2" >
+										<li><img src="correct-icon.png" className="checkCicle-list" /><span>ฉันเป็นคนสื่อสารอย่างตรงไปตรงมา</span></li>
+										<li><img src="correct-icon.png" className="checkCicle-list" /><span>หากเกิดปัญหา ฉันชอบแก้ไขสถานการณ์ด้วยเหตุผล</span></li>
 									</ul>
 								</div>
 							</div>
@@ -355,7 +355,7 @@ const LayoutProfile = () => {
 								<div className="strength-box">
 									<div className="strength-box-head">
 										<h5 className="text-right-container-2">จุดแข็ง 8 อันดับแรก</h5>
-										{strength.length === 8 ? <button className="btn1" onClick={handleEditStrength}>+ แก้ไข</button>
+										{strength.length === 8 ? <button className="btn1" onClick={handleEditStrength}><AiOutlineEdit style={{ marginTop: "5px", marginRight: "5px" }}></AiOutlineEdit> แก้ไข</button>
 											:
 											<button className="btn1" onClick={handleAddStrength}>+ เพิ่ม</button>
 										}
@@ -363,7 +363,7 @@ const LayoutProfile = () => {
 									<div className="display-image-strength">
 										{strength && strength.map(x => (
 
-											<div key = {"strength-box-" +x.id}>
+											<div key={"strength-box-" + x.id}>
 												<img className="img-strength" key={x.image} src={`${url}/strength_images/` + x.image} style={{ margin: 10, }} />
 											</div>
 
@@ -384,7 +384,7 @@ const LayoutProfile = () => {
 												<AchievementCreate setIsModalVisible={setIsModalVisible} />
 											</Modal>
 											<Modal title="Update Achievements" visible={isModalUpdateAchievement} onOk={handleOk} onCancel={handleCancel} footer={null}>
-												{ index > -1 ? <UpdateAchievement setIsModalUpdateAchievement={setIsModalUpdateAchievement} achievement={achievement[index]} /> 
+												{index > -1 ? <UpdateAchievement setIsModalUpdateAchievement={setIsModalUpdateAchievement} achievement={achievement[index]} />
 													: <div>Loading...</div>
 												}
 											</Modal>
@@ -409,11 +409,11 @@ const LayoutProfile = () => {
 										)}
 										{achievement && achievement.map((y, i) => {
 											return (
-												<div className="achievement" key={"achievement-box-" +i} >
+												<div className="achievement" key={"achievement-box-" + i} >
 													<div>
 														<h3 className="title" key={y.id}>{y.title}
 															<a className="delete-achievement" onClick={() => deleteAchievement(y.id)}><AiOutlineDelete></AiOutlineDelete></a>
-															<a className="edit-description" onClick={() => editDescription(y,i)}> <AiOutlineEdit></AiOutlineEdit></a>
+															<a className="edit-description" onClick={() => editDescription(y, i)}> <AiOutlineEdit></AiOutlineEdit></a>
 														</h3>
 														<p className="date">{y.date_start} to {y.date_end} <a className="read-more" onClick={() => showDescription(y)}> อ่านต่อ </a></p>
 														<p className="type-achievement"><BsFlag></BsFlag> {y.type}</p>

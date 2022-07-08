@@ -1,18 +1,42 @@
-.left-side-bar {
+.motivate-type {
+    display: flex;
+}
+
+.left-side-bar-motivate {
     width: 50%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
-    margin: 10px;
+    margin: 20px 20px 0px 40px;
 }
-.right-side-bar {
+
+.left-side-bar-motivate h5,
+.right-side-bar-motivate h5 {
+    margin: 0px;
+    font-size: 16px;
+}
+
+.ant-progress-bg {
+    width: 100%;
+    height: 10px;
+}
+
+.progress-display-blue-left,
+.progress-display-gray-left,
+.progress-display-blue-right,
+.progress-display-gray-right {
+    margin-bottom: 15px;
+    
+}
+
+.right-side-bar-motivate {
     width: 50%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    margin: 10px;
+    margin: 20px 40px 0px 20px;
 }
 
 .progress-display-blue-left .ant-progress-inner {
@@ -30,6 +54,51 @@
 
 .progress-display-gray-left .ant-progress-bg,
 .progress-display-gray-right .ant-progress-bg {
-    background:  linear-gradient(107.87deg, #979595 0%, #bababb 100.04%);
+    background:  #E0E0E0;
     border-radius: 0px 0px 0px 0px;
+}
+
+@media (max-width: 768px) {
+    .left-side-bar-motivate h5,
+    .right-side-bar-motivate h5 {
+        font-size: 12px;
+    }
+
+    .right-side-bar-motivate {
+        margin: 20px 25px 0px 10px;
+    }
+
+    .left-side-bar-motivate {
+        margin: 20px 10px 0px 25px;
+    }
+
+    .progress-display-blue-left,
+    .progress-display-gray-left,
+    .progress-display-blue-right,
+    .progress-display-gray-right {
+        stroke-width: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .right-side-bar-motivate {
+        margin: 20px 20px 0px 10px;
+    }
+
+    .left-side-bar-motivate {
+        margin: 20px 10px 0px 20px;
+    }
+
+    .left-side-bar-motivate h5,
+    .right-side-bar-motivate h5 {
+        font-size: 10px;
+    }
+
+    .progress-display-blue-left,
+    .progress-display-gray-left,
+    .progress-display-blue-right,
+    .progress-display-gray-right {
+        /* stroke-width: 8px; */
+        margin-bottom: 5px;
+    }
 }

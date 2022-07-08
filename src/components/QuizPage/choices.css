@@ -40,7 +40,7 @@ li.selected {
     display: flex;
 }
 
-.choiceBox-seleect-title {
+.choiceBox-select-title {
     margin-top: 8px;
 }
 
@@ -70,8 +70,8 @@ li.selected svg {
     color: white;
 }
 
-.seleect-title {
-    margin-top: 12.5px;
+.select-title {
+    margin-top: 13px;
 }
 
 @media (max-width: 576px) {
@@ -85,6 +85,21 @@ li.selected svg {
         margin-right: 1.5rem;
         margin-left: 0.3rem;
         border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+    }
+    .choiceBox-select-title{
+        margin-top: 9px;
+        font-size: 11px;
+    }
+    .selected-list {
+        background: linear-gradient(107.87deg, #599BE9 0%, #0B25E0 100.04%);
+        margin-right: 0.7rem;
+        border-radius: 5px 0px 0px 5px;
+        width: 56px;
+        height: 50px;
+    }
+    .select-title {
+        margin-top: 15.5px;
+        font-size: 11px;
     }
 }
 

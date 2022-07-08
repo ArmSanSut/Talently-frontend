@@ -53,28 +53,28 @@ const EnvironmentBar = () => {
 	}, []);
 
 	return (
-		<div style={{ display : "flex", width : "100%" }}>
-			<div className="left-side-bar">
+		<div className="environment-type">
+			<div className="left-side-bar-environment">
 				{percent && percent.map ((val, index) => (
 					<>
 						<h5>{progressBarTagLeft[index]}</h5>
 						{val[0] == "L" ? (
-							<Progress percent={val[1]} showInfo={false} trailColor="#F3F8FF" className="progress-display-green-environment-left"/>
+							<Progress percent={val[1]} showInfo={false} strokeWidth="10px"  trailColor="#F3F8FF" className="progress-display-green-environment-left"/>
 						) : (
-							<Progress percent={100} showInfo={false} trailColor="#F3F8FF" className="progress-display-gray-environment-left"/>
+							<Progress percent={100} showInfo={false} strokeWidth="10px" trailColor="#F3F8FF" className="progress-display-gray-environment-left"/>
 						)}
 						
 					</>
 				))}
 			</div>
-			<div className="right-side-bar">
+			<div className="right-side-bar-environment">
 				{percent && percent.map ((val, index) => (
 					<>
 						<h5>{progressBarTagRight[index]}</h5>
 						{val[0] == "R" ? (
-							<Progress percent={val[1]} showInfo={false} trailColor="#F3F8FF" className="progress-display-green-environment-right"/>
+							<Progress percent={val[1]} showInfo={false} strokeWidth="10px" trailColor="#F3F8FF" className="progress-display-green-environment-right"/>
 						) : (
-							<Progress percent={100} showInfo={false} trailColor="#F3F8FF" className="progress-display-gray-environment-right"/>
+							<Progress percent={100} showInfo={false} strokeWidth="10px" trailColor="#F3F8FF" className="progress-display-gray-environment-right"/>
 						)}
 						
 					</>

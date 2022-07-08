@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const QuizItem = () => {
+	const url = "http://localhost:3000";
 	const navigate = useNavigate();
 	const answers_selected = useSelector(state => state.answer.answers);
 	// console.log("answers", answers_selected);
@@ -32,9 +33,7 @@ const QuizItem = () => {
 
 	const onSubmitAnswer = () => {
 		if (number === 36) {
-			// console.log("answers bug", answers_selected);
 			const answerStr = JSON.stringify(answers_selected);
-			// console.log("3",answerStr);
 			let answers = JSON.parse(answerStr);
 		const id = parseInt(localStorage.getItem("ID"), 10);
 		if (answers) {
@@ -93,12 +92,10 @@ const QuizItem = () => {
 				}
 			}
 			console.log({id,score});
-			// console.log("test answers",answers);
 			for (let index = 0; index < answers.length; index++) {
 				answers[index][0] = id;
 			}
-			// console.log("test2",{answers,score});
-			axios.post("http://localhost:3000/api/user/quiz/", {	
+			axios.post(`${url}/api/user/quiz/`, {	
 				user_id,
 				answers,
 				score

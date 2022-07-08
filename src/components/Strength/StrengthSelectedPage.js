@@ -7,13 +7,13 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const StrengthSelectedPage = () => {
+	const url = "http://localhost:3000";
 	const [updateState] = useState();
 	const forceUpdate = React.useCallback(() => updateState({}), []);
 	const [strengthSelected, setStrengthSelected] = useState([]);
 	const [strengthList, setStrengthList] = useState([]);
 
 	const getData = async () => {
-		const url = "http://localhost:3000";
 		await axios.get(`${url}/api/user/strength`).then((res) => {
 			let strength = res.data;
 			strength = strength.map(val => {
@@ -31,7 +31,7 @@ const StrengthSelectedPage = () => {
 	const handleSubmit = (e) => {
 		const id = localStorage.getItem("ID");
 		e.preventDefault();
-		axios.post(`http://localhost:3000/api/user/strength/${id}`, {
+		axios.post(`${url}/api/user/strength/${id}`, {
 			strength_1: strengthSelected[0],
 			strength_2: strengthSelected[1],
 			strength_3: strengthSelected[2],

@@ -4,14 +4,13 @@ import "./achievement.css";
 import { Button, DatePicker, Form, Input, Select } from "antd";
 import "antd/dist/antd.css";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
 
 const { TextArea } = Input;
 const { RangePicker } = DatePicker;
 const { Option } = Select;
 
 const AchievementCreate = ({ setIsModalVisible }) => {
-	// const navigate = useNavigate();
+	const url = "http://localhost:3000";
 	const [dateSelected, setDateSelected] = useState([]);
 
 	const onSelectedDate = (date, dateString) => {
@@ -24,7 +23,7 @@ const AchievementCreate = ({ setIsModalVisible }) => {
 		console.log("date start", dateSelected);
 
 		const id = localStorage.getItem("ID");
-		await axios.post(`http://localhost:3000/api/user/achievement/${id}`, {
+		await axios.post(`${url}/api/user/achievement/${id}`, {
 			date_start: dateSelected[0],
 			date_end: dateSelected[1],
 			title: values.title,
@@ -33,7 +32,6 @@ const AchievementCreate = ({ setIsModalVisible }) => {
 
 		});
 		setIsModalVisible(false);
-		// navigate("/profile");
 	};
 
 	const onFinishFailed = (errorInfo) => {

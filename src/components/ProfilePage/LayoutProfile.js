@@ -1,3 +1,4 @@
+/* eslint-disable no-empty */
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-mixed-spaces-and-tabs */
 import React, { useState, useEffect } from "react";
@@ -15,6 +16,10 @@ import { AiFillCalendar, AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import UpdateAchievement from "./UpdateAchievement";
 
 const LayoutProfile = () => {
+	const url = "http://localhost:3000";
+	const [updateState] = useState();
+	const forceUpdate = React.useCallback(() => updateState({}), []);
+
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	const [isEditModalVisible, setIsEditModalVisible] = useState(false);
 	const [isModalDescription, setIsModalDescription] = useState(false);
@@ -27,6 +32,7 @@ const LayoutProfile = () => {
 		return localStorage.getItem("image");
 	});
 	const [index, setIndex] = useState();
+	const [modalDetailValue, setModalDetailValue] = useState();
 
 	// const [editAchievement, setEditAchievement] = useState([]);
 
@@ -35,7 +41,6 @@ const LayoutProfile = () => {
 		const token = localStorage.getItem("token");
 		if (token) {
 			var decode = jwt_decode(token);
-			console.log(decode);
 
 			const getFirstName = decode.firstname;
 			setFirstName(getFirstName);
@@ -51,6 +56,7 @@ const LayoutProfile = () => {
 	const handleOk = () => {
 		setIsModalVisible(false);
 		setIsModalDescription(false);
+		// isModalDescription[i] = false;
 		setIsEditModalVisible(false);
 		setIsModalUpdateAchievement(false);
 	};
@@ -58,22 +64,21 @@ const LayoutProfile = () => {
 	const handleCancel = () => {
 		setIsModalVisible(false);
 		setIsModalDescription(false);
+		// isModalDescription[i] = false;
 		setIsEditModalVisible(false);
 		setIsModalUpdateAchievement(false);
 	};
 
-
 	const [showSecondNav, setShowSecondNav] = useState(false);
-	const [strength, setStrength] = useState([]);
+	let [strength, setStrength] = useState([]);
 	const [achievement, setAchievement] = useState([]);
 
 	const navigate = useNavigate();
 
-
 	useEffect(() => {
 		const getStrength = () => {
 			const id = localStorage.getItem("ID");
-			axios.get(`http://localhost:3000/api/user/strength/${id}`)
+			axios.get(`${url}/api/user/strength/${id}`)
 				.then((res) => {
 					setStrength(res.data);
 				}).catch(err => console.log(err));
@@ -84,31 +89,23 @@ const LayoutProfile = () => {
 	useEffect(() => {
 		const getAchievement = () => {
 			const id = localStorage.getItem("ID");
-			axios.get(`http://localhost:3000/api/user/achievement/${id}`)
+			axios.get(`${url}/api/user/achievement/${id}`)
 				.then((response) => {
-					console.log("data", response);
 					setAchievement(response.data);
-					console.log(response.data);
-					console.log(achievement.length);
 				}).catch(err => console.log(err));
 		};
 		getAchievement();
-		console.log(achievement);
 	}, [isModalVisible]);
 
 	useEffect(() => {
 		const getAchievement = () => {
 			const id = localStorage.getItem("ID");
-			axios.get(`http://localhost:3000/api/user/achievement/${id}`)
+			axios.get(`${url}/api/user/achievement/${id}`)
 				.then((response) => {
-					console.log("data", response);
 					setAchievement(response.data);
-					console.log(response.data);
-					console.log("achievement", achievement);
 				}).catch(err => console.log(err));
 		};
 		getAchievement();
-		console.log(achievement);
 	}, [isModalUpdateAchievement]);
 
 	const handleHamburgerClick = (e) => {
@@ -119,63 +116,57 @@ const LayoutProfile = () => {
 		navigate("/strength");
 	};
 	const handleEditStrength = () => {
-		console.log("click to edit");
 		navigate("/edit-strength");
 	};
 	const handleAddAchievement = () => {
 		setIsModalVisible(true);
 	};
 
-	const showDescription = () => {
+	const showDescription = (val) => {
+		setModalDetailValue(val);
 		setIsModalDescription(true);
+		forceUpdate();
 	};
+
 	const onEditImage = () => {
-		console.log("click to edit");
 		setIsEditModalVisible(true);
 	};
 	const handleSubmitForm = () => {
 		try {
 			const formData = new FormData();
 			formData.append("image", image);
-			console.log("profileImage", profileImage);
-			console.log("image", image);
-			const url = "http://localhost:3000";
+			// const url = "http://localhost:3000";
 			const id = localStorage.getItem("ID");
 			axios.put(`${url}/api/user/edit-image/${id}`, formData).then(result => {
 				setProfileImage(result.data.profileImage);
 				localStorage.setItem("image", result.data.profileImage);
-				console.log(result.data);
 			});
 		}
 		catch (err) {
 			console.log("ERROR", err);
 		}
 		setIsEditModalVisible(false);
-		// setImage(image);
 	};
 
-	const editDescription = (i) => {
-		console.log("i", i);
+	const editDescription = (val ,i) => {
 		setIsModalUpdateAchievement(true);
+		setModalDetailValue(val);
 		setIndex(i);
+		forceUpdate();
 	};
 
 	const deleteAchievement = async (id) => {
-		console.log("id", id);
 		try {
-			await axios.delete(`http://localhost:3000/api/user/achievement/${id}`);
+			await axios.delete(`${url}/api/user/achievement/${id}`);
 
 		} catch (e) {
 			console.log(e);
 		}
 
 		const user_id = localStorage.getItem("ID");
-		axios.get(`http://localhost:3000/api/user/achievement/${user_id}`)
+		axios.get(`${url}/api/user/achievement/${user_id}`)
 			.then((response) => {
-				console.log("data", response);
 				setAchievement(response.data);
-				console.log(response.data);
-				console.log("achievement", achievement);
 			}).catch(err => console.log(err));
 	};
 
@@ -372,7 +363,7 @@ const LayoutProfile = () => {
 									<div className="display-image-strength">
 										{strength && strength.map(x => (
 
-											<div >
+											<div key = {"strength-box-" +x.id}>
 												<img className="img-strength" key={x.image} src={"http://localhost:3000/strength_images/" + x.image} style={{ margin: 10, }} />
 											</div>
 
@@ -393,29 +384,43 @@ const LayoutProfile = () => {
 												<AchievementCreate setIsModalVisible={setIsModalVisible} />
 											</Modal>
 											<Modal title="Update Achievements" visible={isModalUpdateAchievement} onOk={handleOk} onCancel={handleCancel} footer={null}>
-												<UpdateAchievement setIsModalUpdateAchievement={setIsModalUpdateAchievement} achievement={achievement[index]} />
+												{ index > -1 ? <UpdateAchievement setIsModalUpdateAchievement={setIsModalUpdateAchievement} achievement={achievement[index]} /> 
+													: <div>Loading...</div>
+												}
 											</Modal>
 										</div>
 									</div>
 									<div className="display-achievement">
-										{achievement && achievement.map((y, i) => (
-											<div className="achievement" >
-												<div>
-													<h3 className="title" key={y.id}>{y.title}
-
-														<a className="delete-achievement" onClick={() => deleteAchievement(y.id)}><AiOutlineDelete></AiOutlineDelete></a>
-														<a className="edit-description" onClick={() => editDescription(i)}> <AiOutlineEdit></AiOutlineEdit></a>
-													</h3>
-													<Modal title="Achievement" visible={isModalDescription} onOk={handleOk} onCancel={handleCancel} footer={null}>
-														<h3 className="title">{y.title}</h3>
-														<h6>Description :<p className="description"> {y.description}</p></h6>
-														<h6>Duration <AiFillCalendar></AiFillCalendar> : <p className="date"> {y.date_start} to {y.date_end}</p></h6>
-													</Modal>
-													<p className="date">{y.date_start} to {y.date_end} <a className="read-more" onClick={showDescription}>อ่านต่อ </a></p>
-													<p className="type-achievement"><BsFlag></BsFlag> {y.type}</p>
+										{isModalDescription && (
+											<Modal title="Achievement" visible={isModalDescription} onOk={handleOk} onCancel={handleCancel} footer={null}>
+												<div className="modal-display-achievement">
+													<h6>Title :  </h6>
+													<p className="title-2">{modalDetailValue.title}</p>
 												</div>
-											</div>
-										))}
+												<div className="modal-display-achievement">
+													<h6>Description :  </h6>
+													<p className="description">{modalDetailValue.description}</p>
+												</div>
+												<div className="modal-display-achievement">
+													<h6>Duration <AiFillCalendar></AiFillCalendar> :  </h6>
+													<p className="date">{modalDetailValue.date_start} to {modalDetailValue.date_end}</p>
+												</div>
+											</Modal>
+										)}
+										{achievement && achievement.map((y, i) => {
+											return (
+												<div className="achievement" key={"achievement-box-" +i} >
+													<div>
+														<h3 className="title" key={y.id}>{y.title}
+															<a className="delete-achievement" onClick={() => deleteAchievement(y.id)}><AiOutlineDelete></AiOutlineDelete></a>
+															<a className="edit-description" onClick={() => editDescription(y,i)}> <AiOutlineEdit></AiOutlineEdit></a>
+														</h3>
+														<p className="date">{y.date_start} to {y.date_end} <a className="read-more" onClick={() => showDescription(y)}> อ่านต่อ </a></p>
+														<p className="type-achievement"><BsFlag></BsFlag> {y.type}</p>
+													</div>
+												</div>
+											);
+										})}
 									</div>
 								</div>
 							</div>

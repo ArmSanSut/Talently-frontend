@@ -11,14 +11,14 @@ import "./login.css";
 
 // eslint-disable-next-line react/prop-types
 const Login = () => {
-
+	const url = "http://localhost:3000";
 	const navigate = useNavigate();
 
 	const onFinish = async (values) => {
 		console.log("Success:", values);
 
 		try {
-			const url = "http://localhost:3000";
+			
 			const result = await axios.post(`${url}/api/auth/token/`, {
 				username: values.username,
 				password: values.password,

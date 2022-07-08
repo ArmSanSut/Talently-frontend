@@ -102,7 +102,7 @@ p {
 }
 
 input#basic_name.ant-input.input,
-input#basic_sirname.ant-input.input,
+input#basic_surname.ant-input.input,
 input#basic_username.ant-input.input,
 input#basic_email.ant-input.input,
 span.ant-input-affix-wrapper.ant-input-password.input,

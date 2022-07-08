@@ -4,6 +4,7 @@ import "./environmentBar.css";
 import axios from "axios";
 
 const EnvironmentBar = () => {
+	const url = "http://localhost:3000";
 	const id = localStorage.getItem("ID");
 	// const [, setLoad] = useState(true);
 	const [percent, setPercent] = useState([]);
@@ -13,15 +14,15 @@ const EnvironmentBar = () => {
 
 	const UserScore = async ()=> {
 		// setLoad(false);
-		const getScore = await axios.get(`http://localhost:3000/api/user/score/${id}`);
+		const getScore = await axios.get(`${url}/api/user/score/${id}`);
 		const totalScore = getScore.data[0].score.score;
-		const scoreM = totalScore.scoreM;
+		const scoreB = totalScore.scoreB;
 		// const [tempValue, ] = useState([]);
 		const temp = [];
 		
 		for (let index = 0; index < 4; index++) {
-			let mFirst = scoreM[`M${2*index + 1}`];
-			let mSecond = scoreM[`M${2*index + 2}`];
+			let mFirst = scoreB[`B${2*index + 1}`];
+			let mSecond = scoreB[`B${2*index + 2}`];
 			let score = mFirst - mSecond;
 			let percentDisplay = ((mFirst + mSecond)/40)*100;
 			// console.log(score);

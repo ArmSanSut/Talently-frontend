@@ -4,6 +4,7 @@ import { Progress } from "antd";
 import "./motivateBar.css";
 import axios from "axios";
 const MotivateBar = () => {
+	const url = "http://localhost:3000";
 	const id = localStorage.getItem("ID");
 	// const [, setLoad] = useState(true);
 	const [percent, setPercent] = useState([]);
@@ -13,7 +14,7 @@ const MotivateBar = () => {
 
 	const UserScore = async ()=> {
 		// setLoad(false);
-		const getScore = await axios.get(`http://localhost:3000/api/user/score/${id}`);
+		const getScore = await axios.get(`${url}/api/user/score/${id}`);
 		const totalScore = getScore.data[0].score.score;
 		const scoreM = totalScore.scoreM;
 		// const [tempValue, ] = useState([]);

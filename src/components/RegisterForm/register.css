@@ -89,3 +89,8 @@ button.ant-btn.ant-btn-default.btn-submit {
     Width: 326px;
     Height:48px
 }
+
+.ant-form-item-explain-error {
+    width: 280px;
+    font-size: 12px;
+}

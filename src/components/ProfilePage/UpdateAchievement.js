@@ -1,40 +1,29 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./achievement/achievement.css";
 import { Button, DatePicker, Form, Input, Select } from "antd";
 import "antd/dist/antd.css";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
+import moment from "moment";
 
 const { TextArea } = Input;
 const { RangePicker } = DatePicker;
 const { Option } = Select;
 
-const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement, setEditAchievement }) => {
+const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement }) => {
+	const url = "http://localhost:3000"; 
 	const [dateSelected, setDateSelected] = useState([]);
-	// const [typeSelected, setTypeSelected] = useState([]);
 
-	// useEffect(() => {
-	// 	setTypeSelected(achievement.type);
-	// }, []);
-	// console.log(typeSelected);
-
-
-	// const achievement_list = achievement[parseInt(achievement.id)];
-	// console.log("11", achievement_list);
-	// const type_achievement = achievement_list.type;
-
-	const achievement_index = achievement.id;
-	console.log(achievement_index);
+	const [form] = Form.useForm();
 
 	const onSelectedDate = (date, dateString) => {
 		setDateSelected(dateString);
 	};
 	const onFinish = async (values) => {
-		console.log("successupdate", values);
+		console.log("success update", values);
 
-		await axios.put(`http://localhost:3000/api/user/update_achievement/${achievement.id}`, {
+		await axios.put(`${url}/api/user/update_achievement/${achievement.id}`, {
 			date_start: dateSelected[0],
 			date_end: dateSelected[1],
 			title: values.title,
@@ -42,15 +31,23 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement, setEditAc
 			type: values.type
 
 		});
-		setEditAchievement(null);
 		setIsModalUpdateAchievement(false);
 	};
 
 	const onFinishFailed = (errorInfo) => {
 		console.log("Failed:", errorInfo);
 	};
-	console.log("test", achievement);
-	return (
+
+	useEffect(() => {
+		form.setFieldsValue({
+			type: achievement.type,
+			title: achievement.title,
+			description: achievement.description,
+			date : [moment(achievement.date_start),moment(achievement.date_end)]
+		});
+	}, [achievement]);
+
+	return achievement.id ? (
 		<div className="achievement-box">
 			<Form
 				className="achievement-form"
@@ -61,19 +58,14 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement, setEditAc
 				wrapperCol={{
 					span: 16,
 				}}
-				// initialValues={{
-				// 	type : data.type,
-				// 	title : data.title,
-				// 	description : data.description,					
-				// }}
 				onFinish={onFinish}
 				onFinishFailed={onFinishFailed}
 				autoComplete="off"
+				form={form}
 			>
 				<Form.Item
 					name="type"
 					label="Type"
-					initialValue={achievement.type}
 					rules={[
 						{
 							required: true,
@@ -89,9 +81,7 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement, setEditAc
 				</Form.Item>
 				<Form.Item
 					label="Title"
-					// initialValue="hello-t"
 					name="title"
-					initialValue={achievement.title}
 					rules={[
 						{
 							required: true,
@@ -103,9 +93,7 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement, setEditAc
 
 				<Form.Item
 					label="Description"
-					// initialValue={achievement.description}
 					name="description"
-					initialValue={achievement.description}
 					rules={[
 						{
 							required: true,
@@ -117,12 +105,16 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement, setEditAc
 
 				<Form.Item
 					label="Time Selected"
-					// initialValue={achievement.date}
 					name="date"
 					wrapperCol={{
 						offset: 0,
 						span: 18,
 					}}
+					rules={[
+						{
+							required: true,
+						},
+					]}
 				>
 					<RangePicker
 						format="YYYY-MM-DD"
@@ -142,6 +134,6 @@ const UpdateAchievement = ({ setIsModalUpdateAchievement, achievement, setEditAc
 				</Form.Item>
 			</Form>
 		</div>
-	);
+	) : null;
 };
 export default UpdateAchievement;

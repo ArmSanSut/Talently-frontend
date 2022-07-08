@@ -594,6 +594,21 @@ button.not-authorized-btn {
     color: white;
 }
 
+.modal-display-achievement {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    margin: 15px;
+}
+.modal-display-achievement .title-2, 
+.modal-display-achievement .description, 
+.modal-display-achievement .date{
+    margin-left: 10px;
+    transform: translateY(-3px);
+    font-size: 15px;
+}
+
 @media (min-width: 1200px) {
 
     ul.nav2,

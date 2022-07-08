@@ -8,6 +8,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
+	const url = "http://localhost:3000";
 	const navigate = useNavigate();
 	const [image, setImage] = useState("");
 	const handleSubmitForm = async (values) => {
@@ -22,7 +23,7 @@ const RegisterForm = () => {
 			formData.append("email", values.email);
 			formData.append("password", values.password);
 			formData.append("image", image);
-			const url = "http://localhost:3000";
+			
 			await axios.post(`${url}/api/user/register/`, formData);
 			alert("Register is successful!! Go to Login page...");
 		}
@@ -35,6 +36,7 @@ const RegisterForm = () => {
 
 	};
 
+	const validatePassword = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/ ;
 
 	return (
 		<div className="register-bg" >
@@ -47,10 +49,10 @@ const RegisterForm = () => {
 					}}
 					name="basic"
 					labelCol={{
-						span: 6,
+						span: 4,
 					}}
 					wrapperCol={{
-						span: 14,
+						span: 8,
 					}}
 					initialValues={{
 						remember: true,
@@ -100,6 +102,10 @@ const RegisterForm = () => {
 						name="email"
 						rules={[
 							{
+								type: "email",
+								message: "The input is not valid E-mail!",
+							  },
+							{
 								required: true,
 								message: "Please input your email!",
 							},
@@ -112,10 +118,26 @@ const RegisterForm = () => {
 						name="password"
 						rules={[
 							{
+								min: 8,
+								message: "Password should contain at least 8 characters",
+							  },
+							{
+								validator : (_, val) => {
+									if (validatePassword.test(val)){
+										return Promise.resolve();
+									}else{
+										return Promise.reject("Password must includes capital letter, small letter, numbers, and special character");
+									}
+								}
+							},
+							{
 								required: true,
 								message: "Please input your password!",
 							},
 						]}
+						
+						// pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+						//title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
 					>
 						<Input.Password placeholder	="Enter your password" className="input" />
 					</Form.Item>

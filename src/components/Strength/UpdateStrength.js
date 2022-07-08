@@ -3,17 +3,16 @@ import "./strength.css";
 import "antd/dist/antd.css";
 import { AiFillMinusCircle, AiOutlineArrowRight } from "react-icons/ai";
 import { useState, useEffect} from "react";
-// import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const StrengthEditedPage = () => {
+	const url = "http://localhost:3000";
 	const [updateState] = useState();
 	const forceUpdate = React.useCallback(() => updateState({}), []);
 	const [strengthSelected, setStrengthSelected] = useState([]);
 	const [strengthList, setStrengthList] = useState([]);
 
 	const getData = async () => {
-		const url = "http://localhost:3000";
 		await axios.get(`${url}/api/user/strength`).then((res) => {
 			let strength = res.data;
 			strength = strength.map(val => {
@@ -31,7 +30,7 @@ const StrengthEditedPage = () => {
 	const handleSubmit = (e) => {
 		const user_id = localStorage.getItem("ID");
 		e.preventDefault();
-		axios.put(`http://localhost:3000/api/user/update_strength/${user_id}`, {
+		axios.put(`${url}/api/user/update_strength/${user_id}`, {
 			strength_1 : strengthSelected[0],
 			strength_2 : strengthSelected[1],
 			strength_3 : strengthSelected[2],

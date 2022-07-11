@@ -59,6 +59,7 @@ const Login = () => {
 			className="login-form"
 		>
 			<Form.Item
+				className="username-login"
 				label="Username"
 				name="username"
 				rules={[
@@ -72,6 +73,7 @@ const Login = () => {
 			</Form.Item>
 
 			<Form.Item
+				className="password-login"
 				label="Password"
 				name="password"
 				rules={[
@@ -85,19 +87,21 @@ const Login = () => {
 			</Form.Item>
 
 			<Form.Item
+				className="remember-me"
 				name="remember"
 				valuePropName="checked"
 				wrapperCol={{
-					offset: 9,
-					span: 16,
+					offset: 0,
+					span: 0,
 				}}
 			>
 				<Checkbox>Remember me</Checkbox>
 			</Form.Item>
 
 			<Form.Item
+				className="submit-login"
 				wrapperCol={{
-					offset: 10,
+					offset: 0,
 					span: 16,
 				}}
 			>
@@ -106,9 +110,10 @@ const Login = () => {
 				</Button>
 			</Form.Item>
 			<Form.Item
+				className="donot-have-account"
 				wrapperCol={{
-					offset: 7,
-					span: 16,
+					offset: 0,
+					span: 0,
 				}}
 			>
 				<Link to="/register">

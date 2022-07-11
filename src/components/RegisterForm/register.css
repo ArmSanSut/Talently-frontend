@@ -5,6 +5,13 @@
 * Browsers: last 4 version
 */
 
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Prompt:ital,wght@0,200;1,100&display=swap');
 
 .header-text {
@@ -98,6 +105,7 @@
 
 p {
     font-size: 14px;
+    font-weight: 1000;
     margin: 0;
 }
 
@@ -114,4 +122,80 @@ button.ant-btn.ant-btn-default.btn-submit {
 .ant-form-item-explain-error {
     width: 280px;
     font-size: 12px;
+}
+
+@media (max-width: 992px) {
+    img.group-bg {
+        width: 1100px;
+    }
+    .register-form {
+        width: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    img.group-bg {
+        width: 800px;
+    }
+    .register-form {
+        width: 400px;
+    }
+}
+
+@media (max-width: 576px) {
+    img.group-bg {
+        width: 600px;
+    }
+    .register-form {
+        width: 400px;
+    }
+}
+
+@media (max-width: 428px) {
+    img.group-bg {
+        width: 430px;
+    }
+    .register-form {
+        width: 380px;
+    }
+    form#basic.ant-form.ant-form-horizontal {
+        width: 300px;
+    }
+    input#basic_name.ant-input.input,
+    input#basic_surname.ant-input.input,
+    input#basic_username.ant-input.input,
+    input#basic_email.ant-input.input,
+    span.ant-input-affix-wrapper.ant-input-password.input,
+    button.ant-btn.ant-btn-default.btn-submit {
+        Width: 290px;
+        Height:38px
+    }
+}
+
+@media (max-width: 360px) {
+    img.group-bg {
+        width: 380px;
+    }
+    .register-form {
+        width: 320px;
+    }
+    form#basic.ant-form.ant-form-horizontal {
+        width: 300px;
+        margin-left: 10px;
+    }
+    input#basic_name.ant-input.input,
+    input#basic_surname.ant-input.input,
+    input#basic_username.ant-input.input,
+    input#basic_email.ant-input.input,
+    span.ant-input-affix-wrapper.ant-input-password.input,
+    button.ant-btn.ant-btn-default.btn-submit {
+        Width: 290px;
+        Height:36px
+    }
+    h1.header-text {
+        font-size: 30px;
+    }
+    p {
+        font-size: 12px;
+    }
 }

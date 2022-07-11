@@ -5,6 +5,13 @@
 * Browsers: last 4 version
 */
 
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Prompt:ital,wght@0,200;1,100&display=swap');
 
 .layout-login {
@@ -97,4 +104,215 @@ p.paragraph {
     margin-bottom: 50px;
     font-weight:bolder;
     font-size: 25px;
+}
+.donot-have-account {
+    margin-left: 150px;
+    width: 200px;
+}
+.remember-me {
+    margin-left: 180px;
+    width: 200px;
+}
+.submit-login {
+    margin-left: 200px;
+}
+
+@media (max-width: 1200px) {
+    .box-login {
+        width: 450px;
+        margin-left: 80px;
+    }
+    .donot-have-account {
+        margin-left: 130px;
+    }
+    .remember-me {
+        margin-left: 160px;
+    }
+    .submit-login {
+        margin-left: 190px;
+    }
+}
+
+@media (max-width: 992px) {
+    img.blue-loginbg {
+        width: 300px;
+    }
+    img.yellow-loginbg {
+        width: 350px;
+        top: 89.8%
+    }
+    .box-login {
+        width: 400px;
+        margin-left: 50px;
+    }
+    h1.word {
+        font-size: 40px;
+    }
+    p.paragraph {
+        padding: 0px 100px;
+    }
+    .donot-have-account {
+        margin-left: 110px;
+    }
+    .remember-me {
+        margin-left: 140px;
+    }
+    .submit-login {
+        margin-left: 170px;
+    }
+}
+
+@media (max-width: 768px) {
+    img.blue-loginbg {
+        width: 300px;
+    }
+    img.yellow-loginbg {
+        width: 300px;
+        top:91.2%
+    }
+    .box-login {
+        width: 350px;
+        margin-left: 15px;
+    }
+    h1.word {
+        font-size: 36px;
+    }
+    p.paragraph {
+        padding: 0px 70px;
+    }
+    h4.head-login {
+        margin-left: 40px;
+    }
+    .donot-have-account {
+        margin-left: 90px;
+    }
+    .remember-me {
+        margin-left: 120px;
+    }
+    .submit-login {
+        width: 100px;
+        margin-left: 150px;
+    }
+}
+
+@media (max-width: 576px) {
+    img.blue-loginbg {
+        width: 230px;
+    }
+    img.yellow-loginbg {
+        width: 250px;
+        top:92.7%
+    }
+    .box-login {
+        width: 280px;
+        margin-left: 5px;
+    }
+    h1.word {
+        font-size: 32px;
+    }
+    p.paragraph {
+        padding: 0px 50px;
+        font-size: 14px;
+    }
+    h4.head-login {
+        margin-left: 40px;
+    }
+    form#basic.ant-form.ant-form-horizontal.login-form {
+        width: 250px;
+    }
+    label.ant-form-item-required {
+        font-size: 12px;
+    }
+    .ant-col .ant-col-14 .ant-form-item-control {
+        width: 300px;
+    }
+    .donot-have-account {
+        margin-left: 40px;
+    }
+    .remember-me {
+        margin-left: 70px;
+    }
+    .submit-login {
+        width: 100px;
+        margin-left: 90px;
+    }
+    .username-login,
+    .password-login {
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 428px) {
+    .layout-login {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        height: 1200px;
+        position: relative;
+        width: 428px;
+        background: darkblue;
+    }
+    .layout-l {
+        width: 428px;
+        position: absolute;
+        top: 0;
+    }
+    h1.word {
+        font-size: 30px;
+        margin-top: 50px;
+    }
+    .word-description {
+        margin-top: 100px;
+    }
+    img.yellow-loginbg {
+        position: absolute;
+        top: 364.5%;
+    }
+    .layout-r {
+        width: 428px;
+        position: absolute;
+        top: 10%;
+    }
+    .box-login {
+        width: 400px;
+        height: 500px;
+        background: white;
+        left: 2%;
+    }
+    .box-login form#basic.ant-form.ant-form-horizontal.login-form {
+        width: 300px;
+        margin-left: 50px;
+    }
+    .donot-have-account {
+        margin-left: 50px;
+    }
+    .remember-me, 
+    .submit-login {
+        margin-left: 63px;
+        width: 200px;
+    }
+    
+}
+
+@media (max-width: 360px) {
+    .remember-me {
+        margin-left: 75px;
+    }
+    .submit-login {
+        margin-left: 95px;
+    }
+    .username-login,
+    .password-login {
+        margin-left: 20px;
+    }
 }

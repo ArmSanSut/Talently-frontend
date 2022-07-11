@@ -5,6 +5,13 @@
 * Browsers: last 4 version
 */
 
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 .motivate-type {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -132,5 +139,12 @@
     .progress-display-gray-right {
         /* stroke-width: 8px; */
         margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 428px) {
+    .right-side-bar-motivate h5,
+    .left-side-bar-motivate h5 {
+        font-size: 8px;
     }
 }

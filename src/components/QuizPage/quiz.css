@@ -5,6 +5,13 @@
 * Browsers: last 4 version
 */
 
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 .box {
     z-index: 3 !important;
     border: 1px solid black;
@@ -97,8 +104,8 @@
     border: none;
     width: 125px;
     height: 45px;
-    background: -webkit-gradient(linear, left top, left bottom, from(#EB9714), to(#FF814B));
     background: -o-linear-gradient(top, #EB9714 0%, #FF814B 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#EB9714), to(#FF814B));
     background: linear-gradient(180deg, #EB9714 0%, #FF814B 100%);
     color: white;
 }
@@ -166,12 +173,17 @@
     margin-top: 50px
 }
 
+.finished-ans {
+    width: 728px;
+}
+
 @media (max-width: 576px) {
     .thanks {
         font-size: 20px;
+        margin-top: 200px;
     }
     .finished-ans {
-        width: 514px;
+        width: 530px;
         height: 400px;
     }
     .box {
@@ -190,14 +202,54 @@
     }
 }
 
-@media (max-width: 414px) {
+@media (max-width: 428px) {
+    .box {
+        width: 420px;
+    }
+    .inbox {
+        width: 420px;
+    }
     .thanks {
         font-size: 20px;
+        margin: 200px 0px 0px 0px;
     }
     .finished-ans {
-        width: 352px;
+        width: 420px;
         height: 400px;
     }
 }
 
+@media (max-width: 414px) {
+    .thanks {
+        font-size: 20px;
+        margin: 200px 0px 0px 0px;
+    }
+    .finished-ans {
+        width: 400px;
+        height: 400px;
+    }
+    .box {
+        width: 400px;
+    }
+    .inbox {
+        width: 400px;
+    }
+}
+
+@media (max-width: 360px) {
+    .box {
+        width: 350px;
+    }
+    .inbox {
+        width: 350px;
+    }
+    .thanks {
+        font-size: 20px;
+        margin: 200px 0px 0px 0px;
+    }
+    .finished-ans {
+        width: 350px;
+        height: 400px;
+    }
+}
 

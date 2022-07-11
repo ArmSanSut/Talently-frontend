@@ -39,7 +39,6 @@
 
 .purple-homebg {
     position: absolute;
-    left: 39.97%;
     right: 0%;
     top: 15.49%;
 }
@@ -58,6 +57,10 @@
     right: 5.65%;
     top: 27.11%;
     bottom: 19.56%;
+}
+
+ul.head-home-nav2 {
+    display: none;
 }
 
 ul.head-home-nav {
@@ -89,8 +92,8 @@ ul li a:hover {
     border: none;
     width: 125px;
     height: 45px;
-    background: -webkit-gradient(linear, left top, left bottom, from(#EB9714), to(#FF814B));
     background: -o-linear-gradient(top, #EB9714 0%, #FF814B 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#EB9714), to(#FF814B));
     background: linear-gradient(180deg, #EB9714 0%, #FF814B 100%);
     color: white;
 }
@@ -128,10 +131,272 @@ p.home-paragraph {
     border: none;
     width: 191px;
     height: 64px;
-    background: -webkit-gradient(linear, left top, left bottom, from(#EB9714), to(#FF814B));
     background: -o-linear-gradient(top, #EB9714 0%, #FF814B 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#EB9714), to(#FF814B));
     background: linear-gradient(180deg, #EB9714 0%, #FF814B 100%);
     color: white;
     font-weight: 700;
-font-size: 24px;
+    font-size: 24px;
+}
+
+@media (max-width: 1200px) {
+    img.combine-homebg {
+        width: 500px;
+        right: 5%;
+    }
+    img.purple-homebg {
+        width: 800px;
+        bottom: 0;
+        top:auto;
+        right: 0;
+    }
+    img.people-homebg {
+        width: 500px;
+        right: 5%;
+    }
+}
+
+@media (max-width: 992px) {
+    img.blue-homebg {
+        width: 300px;
+    }
+    img.logo-homebg {
+        width: 280px;
+    }
+    img.people-homebg {
+        width: 480px;
+    }
+    ul.head-home-nav {
+        margin-right: 100px;
+    }
+    h1.talent-home {
+        font-size: 40px;
+    }
+    p.home-paragraph {
+        padding-right: 600px;
+    }
+    .btn-to-quiz-content {
+        width: 180px;
+        height: 60px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    img.blue-homebg {
+        width: 250px;
+    }
+    img.logo-homebg {
+        width: 230px;
+    }
+    img.purple-homebg {
+        width: 500px;
+        height: 600px;
+    }
+    img.yellow-homebg {
+        width: 400px;
+        position: absolute;
+        bottom: 0;
+        top: 88.4%;
+    }
+    img.people-homebg {
+        width: 370px;
+        right: 0;
+        top: 50%;
+        position: absolute;
+    }
+    img.combine-homebg {
+        width: 390px;
+        right: 0;
+        top: 40%;
+        position: absolute;
+    }
+    ul.head-home-nav {
+        margin-right: 40px;
+        font-size: 12px;
+    }
+    .btn-to-quiz { 
+        font-size: 12px;
+        width: 120px;
+    }
+    h1.talent-home {
+        font-size: 35px;
+    }
+    p.home-paragraph {
+        padding-right: 400px;
+    }
+    .btn-to-quiz-content {
+        width: 180px;
+        height: 60px;
+        font-size: 20px;
+    }
+    .btn-to-quiz-content {
+        width: 140px;
+        height: 50px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 576px) {
+    img.blue-homebg {
+        width: 200px;
+    }
+    img.logo-homebg {
+        width: 180px;
+    }
+    img.purple-homebg {
+        width: 400px;
+        height: 500px;
+    }
+    img.yellow-homebg {
+        width: 300px;
+        position: absolute;
+        bottom: 0;
+        top: 91.2%;
+    }
+    img.people-homebg {
+        width: 400px;
+        left: 25%;
+        top: 50%;
+        position: absolute;
+    }
+    img.combine-homebg {
+        width: 420px;
+        left: 20%;
+        top: 40%;
+        position: absolute;
+    }
+    ul.head-home-nav {
+        display: none;
+    }
+    ul.head-home-nav2 {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        margin-right: 0;
+        padding-left: 0;
+        width: 100%;
+        list-style-type: none;
+    }
+    ul.head-home-nav2 li.head-home-nav-item2{
+        margin: 30px 0px;
+    }
+    ul.head-home-nav2 li.head-home-nav-btn2{
+        margin: 30px 0px;
+    }
+    .btn-to-quiz { 
+        font-size: 10px;
+        width: 100px;
+        height: 40px;
+    }
+    .content-home {
+        top: 20%
+    }
+    h1.talent-home {
+        font-size: 35px;
+    }
+    p.home-paragraph {
+        padding-right: 100px;
+        font-size: 14px;
+    }
+    .btn-to-quiz-content {
+        width: 180px;
+        height: 60px;
+        font-size: 20px;
+    }
+    .btn-to-quiz-content {
+        width: 140px;
+        height: 50px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 428px) {
+    img.people-homebg {
+        width: 300px;
+        left: 20%;
+        top: 60%;
+        position: absolute;
+    }
+    img.combine-homebg {
+        width: 300px;
+        left: 20%;
+        top: 50%;
+        position: absolute;
+    }
+    .btn-to-quiz-content {
+        font-size: 12px;
+        width: 120px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 414px) {
+    img.blue-homebg {
+        width: 200px;
+    }
+    img.logo-homebg {
+        width: 180px;
+    }
+    img.purple-homebg {
+        width: 300px;
+        height: 500px;
+    }
+    img.yellow-homebg {
+        width: 300px;
+        position: absolute;
+        bottom: 0;
+        top: 91.2%;
+    }
+    img.people-homebg {
+        width: 250px;
+        left: 20%;
+        top: 60%;
+        position: absolute;
+    }
+    img.combine-homebg {
+        width: 285px;
+        left: 20%;
+        top: 50%;
+        position: absolute;
+    }
+    h1.talent-home {
+        font-size: 28px;
+    }
+    p.home-paragraph {
+        padding-right: 50px;
+        font-size: 12px;
+    }
+    ul.head-home-nav2 {
+        width: 100%;    
+    }
+    ul.head-home-nav {
+        display: none; 
+    }
+}
+
+@media (max-width: 360px) {
+    img.blue-homebg {
+        width: 170px;
+    }
+    img.logo-homebg {
+        width: 150px;
+    }
+    p.home-paragraph {
+        padding-right: 50px;
+        font-size: 10px;
+    }
+    ul.head-home-nav {
+        display: none;
+    }
 }

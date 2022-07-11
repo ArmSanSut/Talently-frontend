@@ -178,7 +178,7 @@ const LayoutProfile = () => {
 				<div className="profile">
 					<div className="profile-bg">
 						<img className="profile-bluebg" src="/bluebg.png" />
-						<img className="profile-purplebg" src="/purple-profile.png" />
+						<img className={`profile-purplebg ${showSecondNav ? "hide-image" : ""}`} src="/purple-profile.png" />
 						<nav className="head-profile1">
 							<img className="profile-logo" src="/logo.png" />
 							<ul className="center">
@@ -241,7 +241,7 @@ const LayoutProfile = () => {
 					<div className={`dashboard-container ${showSecondNav ? "show-navbar-profile" : ""}`}>
 						<div className="about-me-container">
 							<div className="user-detail" >
-								<Avatar size={100} src={`${url}/static/users_images/${profileImage}`} style={{ marginTop: 2 }} onClick={onEditImage} />
+								<Avatar src={`${url}/static/users_images/${profileImage}`} style={{ marginTop: 2 }} onClick={onEditImage} />
 								<Modal title="Edit Profile Image" visible={isEditModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
 									<Form
 										onFinish={handleSubmitForm}
@@ -355,7 +355,7 @@ const LayoutProfile = () => {
 								<div className="strength-box">
 									<div className="strength-box-head">
 										<h5 className="text-right-container-2">จุดแข็ง 8 อันดับแรก</h5>
-										{strength.length === 8 ? <button className="btn1" onClick={handleEditStrength}><AiOutlineEdit style={{ marginTop: "5px", marginRight: "5px" }}></AiOutlineEdit> แก้ไข</button>
+										{strength.length === 8 ? <button className="btn1" onClick={handleEditStrength}><AiOutlineEdit className="achievement-edit"></AiOutlineEdit> แก้ไข</button>
 											:
 											<button className="btn1" onClick={handleAddStrength}>+ เพิ่ม</button>
 										}
@@ -380,7 +380,7 @@ const LayoutProfile = () => {
 											{achievement.length <= 1 ?
 												<button className="btn2" onClick={handleAddAchievement}>+ เพิ่ม</button> :
 												<></>}
-											<Modal title="Achievements" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
+											<Modal className="achievement-modal" title="Achievements" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
 												<AchievementCreate setIsModalVisible={setIsModalVisible} />
 											</Modal>
 											<Modal title="Update Achievements" visible={isModalUpdateAchievement} onOk={handleOk} onCancel={handleCancel} footer={null}>

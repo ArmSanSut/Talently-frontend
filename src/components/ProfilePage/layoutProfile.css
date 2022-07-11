@@ -5,6 +5,13 @@
 * Browsers: last 4 version
 */
 
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 @import url("https://fonts.googleapis.com/css2?family=Inter&family=Prompt:ital,wght@0,200;1,100&display=swap");
 
 .profile {
@@ -132,7 +139,7 @@ hr {
 
 .profile-bg {
     background: darkblue;
-    height: 60vh !important;
+    height: 60vh ;
     max-width: 100% !important;
     position: relative;  
     font-weight: bold;
@@ -568,8 +575,8 @@ img.person {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    background: -webkit-gradient(linear, left top, left bottom, from(#eb9714), to(#ff814b));
     background: -o-linear-gradient(top, #eb9714 0%, #ff814b 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#eb9714), to(#ff814b));
     background: linear-gradient(180deg, #eb9714 0%, #ff814b 100%);
 }
 
@@ -627,6 +634,10 @@ img.person {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     margin: 10px;
+}
+.achievement-edit {
+    margin-top: 5px;
+    margin-right: 5px;
 }
 
 .strength-box-head {
@@ -761,8 +772,8 @@ h2.login-first {
 
 button.not-authorized-btn {
     position: absolute;
-    background: -webkit-gradient(linear, left top, left bottom, from(#EB9714), to(#FF814B));
     background: -o-linear-gradient(top, #EB9714 0%, #FF814B 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(#EB9714), to(#FF814B));
     background: linear-gradient(180deg, #EB9714 0%, #FF814B 100%);
     padding: 20px 50px;
     margin: 300px 580px;
@@ -793,6 +804,10 @@ button.not-authorized-btn {
         -ms-transform: translateY(-3px);
             transform: translateY(-3px);
     font-size: 15px;
+}
+
+.hide-image {
+    display: none;
 }
 
 @media (min-width: 1200px) {
@@ -1115,7 +1130,7 @@ button.not-authorized-btn {
         z-index: 0 !important;
     }
     .profile-bg {
-        height: 40vh;
+        height: 350px;
         z-index: 1 !important ;
         position: relative;
         top: 0;
@@ -1186,7 +1201,7 @@ button.not-authorized-btn {
         width: 100%;
         -webkit-backdrop-filter: 10px;
                 backdrop-filter: 10px;
-        height: 386px;
+        height: 300px;
     }
 
     nav.head-profile2 ul.nav2 li.item2 {
@@ -1220,6 +1235,7 @@ button.not-authorized-btn {
         width: 576px;
         height: 2000px;
         margin: 0px 0px ;
+        top: 8%;
         left: 0;
         right: 0;
         z-index: 5 !important;
@@ -1227,6 +1243,7 @@ button.not-authorized-btn {
 
     .show-navbar-profile {
         position: absolute;
+        top: 58%;
         left: 0;
         right: 0;
         z-index: -1;
@@ -1249,8 +1266,8 @@ button.not-authorized-btn {
     }
 
     span.ant-avatar.ant-avatar-circle.ant-avatar-image {
-        width: 60px;
-        height: 60px;
+        width: 80px;
+        height: 80px;
     }
 
     h4.firstname {
@@ -1390,8 +1407,8 @@ button.not-authorized-btn {
     }
    
     .achievement {
-        margin-top: 0px;
-        width: 210px;
+        margin: 10px;
+        width: 230px;
         height: 100px;
     }
 
@@ -1415,5 +1432,335 @@ button.not-authorized-btn {
     .achievement-box-head button.btn2 {
         padding: 0px 10px;
         font-size: 10px;
+    }
+}
+
+@media (max-width: 428px) {
+    .profile-bg {
+        height: 350px;
+    }
+    .profile-bluebg {
+        width: 200px;
+    }
+    .profile-logo {
+        width: 180px;
+    }
+    .profile-purplebg  {
+        width: 250px;
+    }
+    .dashboard-container {
+        width: 428px;
+        height: 1800px;
+        position: absolute;
+        top: 60%;
+    }
+    ul.nav2 {
+        height: 300px;
+    }
+    .about-me-container {
+        width: 415px;
+        height: 150px;
+        margin: 10px 5px;
+    }
+    .user-detail {
+        margin: 0px;
+        height: 120px;
+    }
+    h4.firstname {
+        font-size: 12px;
+    }
+    h4.email {
+        font-size: 10px;
+    }
+    h4.hashtag {
+        font-size: 11px;
+        width: 80px;
+        margin: 5px 0px;
+    }
+    .hashtag-box ::before {
+        z-index: 90;
+        width: 80px;
+        height: 25px;
+    }
+    span.ant-avatar.ant-avatar-circle.ant-avatar-image {
+        width: 50px;
+        height: 50px;
+    }
+    .description-detail {
+        margin: 0px 5px;
+        height: 120px;
+    }
+    h4.text-description {
+        font-size: 14px;
+    }
+    h4.text-description-2 {
+        font-size: 10px;
+    }
+    img.circle {
+        width: 40px;
+    }
+    img.person {
+        width: 30px;
+        right: 12%;
+    }
+    .personality-container {
+        width: 415px;
+        margin: 10px 5px;
+    }
+    .text-personality-container {
+        font-size: 18px;
+    }
+    ul.personality-column1 {
+        padding-left: 20px;
+        width: 190px;
+    }
+    ul.personality-column1 li,
+    ul.personality-column2 li {
+        font-size: 8px;
+        width: 180px;
+    }
+    ul.personality-column2 {
+        width: 190px;
+        padding-left: 10px;
+    }
+    .results-container {
+        width: 415px;
+        margin: 10px 5px;
+    }
+    .left-container {
+        width: 230px;
+        margin: 0;
+    }
+    .motivated-box {
+        width: 220px;
+        height: 470px;
+    }
+    .environment-box,
+    .work-box {
+        width: 220px;
+        height: 390px;
+    }
+    .motivated_result_left,
+    .environment_result_left,
+    .ideal_result_left {
+        font-size: 10px;
+        left: 5%;
+    }
+    .motivated_result_right,
+    .environment_result_right,
+    .ideal_result_right{
+        width: 100px;
+        font-size: 8px;
+    }
+    h3.text-motivated {
+        font-size: 12px;
+    }
+    .right-container {
+        width: 180px;
+        margin: 0px;
+    }
+    .strength-box {
+        width: 180px;
+        height: 220px;
+    }
+    img.img-strength {
+        width: 30px;
+    }
+    .display-image-strength {
+        margin-left: 10px;
+    }
+    .achievement-box {
+        width: 180px;
+    }
+    .achievement {
+        width: 170px;
+        margin-left: 3px;
+    }
+    h5.text-right-container-2,
+    h5.text-right-container-3 {
+        margin-left: 10px;
+    }
+    .type-achievement {
+        font-size: 10px;
+    }
+    .strength-box-head button.btn1 {
+        margin: 15px 10px 0px 0px;
+    }
+    .ant-modal-content {
+        width: 400px;
+        height: 600px;
+        margin: 0px auto;
+    }
+    .achievement-modal {
+        width: 400px;
+    }
+    .ant-modal-body {
+        margin-left: 30px;
+    }
+    form#basic.ant-form.ant-form-horizontal.achievement-form {
+        margin: 0px;
+    }
+    .ant-select.ant-select-in-form-item.ant-select-single.ant-select-show-arrow,
+    .ant-form-item-control-input,
+    textarea#basic_description.ant-input,
+    .ant-picker.ant-picker-range.ant-picker-status-success,
+    .ant-picker.ant-picker-range {
+        width: 300px !important;
+    }
+    .ant-col.ant-col-16.ant-col-offset-10.ant-form-item-control {
+        margin: 10px 100px;
+    }
+    .display-achievement {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 414px) {
+    .profile-bg {
+        height: 350px;
+    }
+    .profile-bluebg {
+        width: 180px;
+    }
+    .profile-logo {
+        width: 160px;
+        top: 2%;
+    }
+    .profile-purplebg  {
+        width: 220px;
+    }
+    .dashboard-container {
+        width: 414px;
+        height: 1800px;
+        position: absolute;
+        top: 60%;
+    }
+    .about-me-container {
+        width: 404px;
+    }
+    .personality-container {
+        width: 404px;
+    }
+    .results-container {
+        width: 404px;
+    }
+    .left-container {
+        width: 225px;
+    }
+    .motivated-box,
+    .environment-box,
+    .work-box {
+        width: 215px;
+    }
+    .strength-box,
+    .achievement-box {
+        width: 175px;
+    }
+    .ant-modal-content {
+        width: 400px;
+        height: 600px;
+        margin: 0px auto;
+    }
+    .achievement-modal {
+        width: 400px;
+    }
+    .ant-modal-body {
+        margin-left: 30px;
+    }
+    form#basic.ant-form.ant-form-horizontal.achievement-form {
+        margin: 0px;
+    }
+}
+
+@media (max-width:360px) {
+    .dashboard-container {
+        width: 360px;
+    }
+    .about-me-container,
+    .personality-container,
+    .results-container {
+        width: 350px;
+    }
+    h5.text-personality-container {
+        font-size: 15px;
+    }
+    img.checkCicle-list{
+        width: 7px;
+    }
+    ul.personality-column1 {
+        padding-left: 5px;
+        width: 155px;
+    }
+    ul.personality-column1 li,
+    ul.personality-column2 li  {
+        font-size: 7px;
+    }
+    .left-container {
+        width: 205px;
+    }
+    .motivated-box,
+    .environment-box,
+    .work-box {
+        width: 200px;
+        margin: 10px 3px 20px 3px;
+    }
+    h3.text-motivated {
+        font-size: 10px;
+    }
+    .strength-box {
+        width: 140px;
+        height: 200px;
+    }
+    img.img-strength {
+        width: 28px;
+        margin: 5px !important;
+    }
+    h5.text-results-container,
+    h5.text-right-container-2,
+    h5.text-right-container-3 {
+        font-size: 8px;
+    }
+    .strength-box-head button.btn1 {
+        width: 40px;
+        font-size: 8px;
+        padding: 0;
+    }
+    .achievement-edit {
+        margin: 2px 2px 2px 5px;
+    }
+    .achievement-box {
+        width: 140px;
+    }
+    .achievement-box-head button.btn2 {
+        margin: 12px 10px 0px 10px;
+    }
+    .achievement {
+        width: 135px;
+        padding: 8px;
+    }
+    .edit-description svg,
+    .delete-achievement svg {
+        width: 10px;
+    }
+    a.edit-description {
+        margin-right: 10px !important;
+    }
+    a.delete-achievement {
+        margin-right: 5px !important;
+    }
+    .type-achievement {
+        font-size: 8px;
+    }
+    .ant-modal-content {
+        width: 350px;
+        height: 600px;
+        margin: 0px auto;
+    }
+    .ant-select.ant-select-in-form-item.ant-select-single.ant-select-show-arrow,
+    .ant-form-item-control-input,
+    textarea#basic_description.ant-input,
+    .ant-picker.ant-picker-range.ant-picker-status-success,
+    .ant-picker.ant-picker-range {
+        width: 270px !important;
     }
 }

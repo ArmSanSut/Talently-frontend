@@ -5,6 +5,13 @@
 * Browsers: last 4 version
 */
 
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 ul.choiceList {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -132,5 +139,48 @@ li.selected svg {
     }
 }
 
+@media (max-width: 428px) {
+    ul.choiceList,
+    ul.choiceList-selected {
+        width: 380px;
+        margin: 10px 20px;
+    }
+    h5.head-quiz {
+        font-size: 14px;
+    }
+    button.list-btn1,
+    button.ant-btn.ant-btn-default.list-btn2 {
+        width: 120px;
+        height: 40px;
+        font-size: 12px;
+    }
+}
 
+@media (max-width: 414px) {
+    ul.choiceList,
+    ul.choiceList-selected {
+        width: 360px;
+        margin: 10px 20px;
+    }
+    h5.head-quiz {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 360px) {
+    ul.choiceList,
+    ul.choiceList-selected {
+        width: 330px;
+        margin: 10px 10px;
+    }
+    h5.head-quiz {
+        font-size: 14px;
+    }
+    h5.head-quiz {
+        margin: 0px 20px;
+    }
+    .bar {
+        margin: 20px;
+    }
+}
 

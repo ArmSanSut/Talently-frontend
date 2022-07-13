@@ -10,9 +10,12 @@ const LayoutQuiz = () => {
 	const [showSecondNav, setShowSecondNav] = useState(false);
 
 	const handleHamburgerClick = (e) => {
+		console.log("hamberger", e);
 		e.preventDefault();
 		setShowSecondNav(!showSecondNav);
 	};
+
+	console.log(showSecondNav);
 
 	const token = localStorage.getItem("token");
 
@@ -52,21 +55,21 @@ const LayoutQuiz = () => {
 					</div>
 					<nav className="nav-quiz2">
 						<img className="quiz-logo" src="logo.png" />
-						<label className="label-quiz" htmlFor="check">
-							{showSecondNav ? (
+						{showSecondNav ? (
+							<label className="label-quiz1" htmlFor="check" onClick={handleHamburgerClick}>
 								<i
 									className="fas fa-times"
 									id="quiz-icon1"
-									onClick={handleHamburgerClick}
 								></i>
-							) : (
+							</label>
+						) : (
+							<label className="label-quiz2" htmlFor="check" onClick={handleHamburgerClick} >
 								<i
 									className="fas fa-bars"
 									id="quiz-icon2"
-									onClick={handleHamburgerClick}
 								></i>
-							)}
-						</label>
+							</label>
+						)}
 						<ul className={`quiz ${showSecondNav ? "" : "hide-navbar-quiz"}`}>
 							<li className={`item-quiz ${showSecondNav ? "" : "hide-navbar-quiz"}`}>
 								<Link to="/">เกี่ยวกับเรา</Link>

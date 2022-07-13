@@ -35,7 +35,7 @@ const HomeLayout = () => {
             <img className={`combine-homebg ${showSecondNav ? "show-navbar-quiz" : ""}`} src="/groupcombine.png" />
             <img className={`people-homebg ${showSecondNav ? "show-navbar-quiz" : ""}`} src="/grouppeople.png" />
             <div className="head-home">
-            <ul className="head-home-nav">
+                <ul className="head-home-nav">
                     <li className="head-home-nav-item">
                         <Link to="/">เกี่ยวกับเรา</Link>
                     </li>
@@ -53,21 +53,24 @@ const HomeLayout = () => {
                     </li>
                 </ul>
                 <img className="quiz-logo" src="logo.png" />
-                <label className="label-quiz" htmlFor="check">
-                    {showSecondNav ? (
+
+                {showSecondNav ? (
+                    <label className="label-home1" htmlFor="check" onClick={handleHamburgerClick}>
                         <i
                             className="fas fa-times"
-                            id="quiz-icon1"
-                            onClick={handleHamburgerClick}
-                        ></i>
-                    ) : (
+                            id="home-icon1"
+                        >
+                        </i>
+                    </label>
+                ) : (
+                    <label className="label-home2" htmlFor="check" onClick={handleHamburgerClick}>
                         <i
                             className="fas fa-bars"
-                            id="quiz-icon2"
-                            onClick={handleHamburgerClick}
+                            id="home-icon2"
                         ></i>
-                    )}
-                </label>
+                    </label>
+                )}
+
                 <ul className={`head-home-nav2 ${showSecondNav ? "" : "hide-navbar-quiz"}`}>
                     <li className={`head-home-nav-item2 ${showSecondNav ? "" : "hide-navbar-quiz"}`}>
                         <Link to="/">เกี่ยวกับเรา</Link>

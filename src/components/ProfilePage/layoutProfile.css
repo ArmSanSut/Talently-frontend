@@ -184,11 +184,13 @@ nav.head-profile1 {
     float: right;
     z-index: 3 !important;
     font-size: 14px;
+    margin-top: 20px;
 }
 
 ul.center {
-    margin-right: 250px;
+    margin-right: 200px;
     padding: 0;
+    font-size: 18px;
 }
 
 li.item-center {
@@ -198,8 +200,9 @@ li.item-center {
 }
 
 ul.right {
-    margin-right: 200px;
+    margin-right: 150px;
     padding: 0;
+    font-size: 18px;
 }
 
 li.item-right {
@@ -845,6 +848,7 @@ button.not-authorized-btn {
 
     .profile-purplebg {
         width: 450px;
+        top: 0px;
     }
 
     .profile-logo {
@@ -862,10 +866,12 @@ button.not-authorized-btn {
 
     ul.center {
         margin-right: 85px;
+        font-size: 14px;
     }
 
     ul.right {
         margin-right: 100px;
+        font-size: 14px;
     }
 
     ul.nav2,
@@ -941,9 +947,6 @@ button.not-authorized-btn {
         padding: 0px 10px;
         font-size: 15px;
     }
-    .profile-purplebg {
-       top: 20px;
-    }
     .img-strength {
         width: 50px;
     }
@@ -977,10 +980,12 @@ button.not-authorized-btn {
 
     ul.center {
         margin-right: 50px;
+        font-size: 12px;
     }
 
     ul.right {
         margin-right: 80px;
+        font-size: 12px;
     }
 
     ul.nav2,
@@ -1125,6 +1130,13 @@ button.not-authorized-btn {
     }
 }
 
+@media (min-width: 577px) {
+    label.label-profile1  svg,
+    label.label-profile2  svg {
+        display: none;
+    }
+}
+
 @media (max-width: 576px) {
     .profile {
         z-index: 0 !important;
@@ -1211,20 +1223,18 @@ button.not-authorized-btn {
                 filter: none;
     }
 
-    label.label-profile {
+    label.label-profile1,
+    label.label-profile2 {
         float: right;
-        z-index: 5;
-    }
-
-    label.label-profile i#profile-icon1,
-    label.label-profile i#profile-icon2 {
-        font-size: 25px;
-        margin-top: 30px;
+        margin-top: 20px;
         margin-right: 20px;
         cursor: pointer !important;
-        z-index: 3 ;
-        display: block;
-        margin-left: 500px;
+        z-index: 1 !important;
+    }
+    label.label-profile1 svg,
+    label.label-profile2 svg {
+        width: 25px;
+        height: 25px;
     }
 
     .profile {

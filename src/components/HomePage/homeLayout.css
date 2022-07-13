@@ -237,6 +237,13 @@ p.home-paragraph {
     }
 }
 
+@media (min-width: 577px) {
+    label.label-home1  svg,
+    label.label-home2  svg {
+        display: none;
+    }
+}
+
 @media (max-width: 576px) {
     img.blue-homebg {
         width: 200px;
@@ -293,6 +300,19 @@ p.home-paragraph {
     }
     ul.head-home-nav2 li.head-home-nav-btn2{
         margin: 30px 0px;
+    }
+    label.label-home1,
+    label.label-home2 {
+        float: right;
+        margin-top: 20px;
+        margin-right: 20px;
+        cursor: pointer !important;
+        z-index: 1 !important;
+    }
+    label.label-home1 svg,
+    label.label-home2 svg {
+        width: 25px;
+        height: 25px;
     }
     .btn-to-quiz { 
         font-size: 10px;

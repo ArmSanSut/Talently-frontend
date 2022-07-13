@@ -203,21 +203,22 @@ const LayoutProfile = () => {
 						</nav>
 						<nav className="head-profile2">
 							<img className="profile-logo" src="/logo.png" />
-							<label className="label-profile" htmlFor="check">
-								{showSecondNav ? (
+							{showSecondNav ? (
+								<label className="label-profile1" htmlFor="check" onClick={handleHamburgerClick}>
 									<i
 										className="fas fa-times"
 										id="profile-icon1"
-										onClick={handleHamburgerClick}
 									></i>
-								) : (
+								</label>
+							) : (
+								<label className="label-profile2" htmlFor="check" onClick={handleHamburgerClick}>
 									<i
 										className="fas fa-bars"
 										id="profile-icon2"
-										onClick={handleHamburgerClick}
 									></i>
-								)}
-							</label>
+								</label>
+							)}
+
 							<ul className={`nav2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
 								<li className={`item2 ${showSecondNav ? "" : "hide-navbar-profile"}`}>
 									<Link to="/">เกี่ยวกับเรา</Link>
@@ -355,7 +356,7 @@ const LayoutProfile = () => {
 								<div className="strength-box">
 									<div className="strength-box-head">
 										<h5 className="text-right-container-2">จุดแข็ง 8 อันดับแรก</h5>
-										{strength.length === 8 ? <button className="btn1" onClick={handleEditStrength}><AiOutlineEdit className="achievement-edit"></AiOutlineEdit> แก้ไข</button>
+										{strength.length === 8 ? <button className="btn1" onClick={handleEditStrength}><AiOutlineEdit className="achievem"></AiOutlineEdit> แก้ไข</button>
 											:
 											<button className="btn1" onClick={handleAddStrength}>+ เพิ่ม</button>
 										}
